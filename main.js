@@ -12,6 +12,11 @@ function initialize() {
      document.getElementById('website').value = place.website;
      document.getElementById('phone-number').value = place.formatted_phone_number;
      document.getElementById('formatted-address').value = place.formatted_address;
+     document.getElementById('street-number').value = place.address_components[1].long_name;
+     document.getElementById('street-address').value = place.address_components[2].long_name;
+     document.getElementById('city').value = place.address_components[3].long_name;
+     document.getElementById('state').value = place.address_components[4].long_name;
+     document.getElementById('zip-code').value = place.address_components[6].long_name;
      });
 }
 google.maps.event.addDomListener(window, 'load', initialize); 
