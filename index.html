@@ -1,32 +1,8 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Happy Hour Form</title>
-  
-
-  <style type = "text/css">
-  	body{
-  			background-image: url("30.gif");
-  	}
-    hr{
-        background-color: black;
-        width: 55%;
-        height: 2px;
-    }
-    .left{
-        position: absolute;
-        left: 350px;
-    }
-    .bigbutton{
-        width: 100px;
-    }
-    .timeButton{
-        width: 60px;
-    }
-    .latitude{
-        cityLat: ;
-    }
-  </style>
+  <style src="index.css" filetype="text/css"></style>
+  <title>Deal Entry Form</title>
 </head>
 
 <body>
@@ -37,13 +13,14 @@
   </center>
   <form id="my-form" class = "left"><font size="5">
   </br>
-  	Restaurant:
+    Google Maps Search: 
     <input id="searchTextField" type="text" size="50" placeholder="Enter a restaurant" autocomplete="on" runat="server" />
-    <input type="text" id="city2" name="city2" />
-    <input type="hidden" id="cityLat" name="cityLat" />
-    <input type="hidden" id="cityLng" name="cityLng" />
+    <br/><br/>
+  	Restaurant Name:
+    <input type="text" id="name" name="name" size="70"/>
+    <br/><br/>
     Restaurant Description:
-    <input id="restaurant-description" type="text" name="Restaurant Description" size = "70">
+    <input id="restaurant-description" type="textarea" name="Restaurant Description" size = "70">
     <br/><br/>
     Website:
     <input id="website" type="text" name="Website" size = "70">
@@ -68,6 +45,12 @@
     <br/><br/>
     Zip Code:
     <input id="zip-code" type="text" name="Zip Code" size = "70">
+    <br/><br/>
+    Latitude:
+    <input id="latitude" type="text" name="Latitude">
+    <br/><br/>
+    Longitude:
+    <input id="longitude" type="text" name="Longitude">
     <br/><br/>
     Restaurant Picture:
     <input id="restaurant-picture" type="url" name="Restaurant Picture" size = "70">
@@ -116,7 +99,7 @@
   	<input id="deal" type="text" name="Deal name" size = "70">
   	<br/><br/>
   	Deal Description:
-  	<input id="deal-description" type="text" name="Deal Description" size = "70">
+  	<input id="deal-description" type="textarea" name="Deal Description" size = "70">
   	<br/><br/>
     From:
     <select class = "timeButton">
@@ -157,15 +140,6 @@
       <option>pm</option> 
     </select>
     <br/><br/>
-  	Deal Picture:
-  	<input id="deal-picture" type="url" name="Picture Link" size = "70">
-  	<br/><br/>
-  	Latitude:
-  	<input id="latitude" type="text" name="Latitude">
-  	<br/><br/>
-  	Longitude:
-  	<input id="longitude" type="text" name="Longitude">
-  	<br/><br/>
     <center>
 	  <input class = "bigbutton" type="submit" value="Submit">
     </center>

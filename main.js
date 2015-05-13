@@ -5,18 +5,19 @@ function initialize() {
      var input = document.getElementById('searchTextField');
      var autocomplete = new google.maps.places.Autocomplete(input);
      google.maps.event.addListener(autocomplete, 'place_changed', function () {
-     var place = autocomplete.getPlace();
-     document.getElementById('city2').value = place.name;
-     document.getElementById('latitude').value = place.geometry.location.lat();
-     document.getElementById('longitude').value = place.geometry.location.lng();
-     document.getElementById('website').value = place.website;
-     document.getElementById('phone-number').value = place.formatted_phone_number;
-     document.getElementById('formatted-address').value = place.formatted_address;
-     document.getElementById('street-number').value = place.address_components[1].long_name;
-     document.getElementById('street-address').value = place.address_components[2].long_name;
-     document.getElementById('city').value = place.address_components[3].long_name;
-     document.getElementById('state').value = place.address_components[4].long_name;
-     document.getElementById('zip-code').value = place.address_components[6].long_name;
+       var place = autocomplete.getPlace();
+       document.getElementById('name').value = place.name;
+       document.getElementById('latitude').value = place.geometry.location.lat();
+       document.getElementById('longitude').value = place.geometry.location.lng();
+       document.getElementById('website').value = place.website;
+       document.getElementById('phone-number').value = place.formatted_phone_number;
+       document.getElementById('formatted-address').value = place.formatted_address;
+       document.getElementById('street-number').value = place.address_components[0].long_name;
+       document.getElementById('street-address').value = place.address_components[1].long_name;
+       document.getElementById('city').value = place.address_components[2].long_name;
+       document.getElementById('state').value = place.address_components[3].short_name;
+       document.getElementById('zip-code').value = place.address_components[5].long_name;
+
      });
 }
 google.maps.event.addDomListener(window, 'load', initialize); 
@@ -24,56 +25,65 @@ google.maps.event.addDomListener(window, 'load', initialize);
 function processForm(e) {
     if (e.preventDefault) e.preventDefault();
 
-    var Restaurant = Parse.Object.extend("restaurants");
-    var restaurant = new Restaurant();
-    var restaurantQuery = new Parse.Query(Restaurant);
-
-    restaurant.set("name", document.getElementById('city2').value);
-    restaurant.set("description", document.getElementById('restaurant-description').value);
-    restaurant.set("phoneNumber", document.getElementById('phone-number').value);
-    restaurant.set("website", document.getElementById('website').value);
-    restaurant.set("streetNumber", document.getElementById('street-number').value);
-    restaurant.set("streetAddress", document.getElementById('street-address').value);
-    restaurant.set("city", document.getElementById('city').value);
-    restaurant.set("zipCode", document.getElementById('zip-code').value);
-
-    restaurantQuery.notEqualTo("name", restaurant.name);
-    restaurantQuery.find({
-      success: function(restaurant) {
-        alert('Adding restaurant object with objectID: ' + restaurant.id);;
-        // Do something with the returned Parse.Object values
-        for (var i = 0; i < results.length; i++) { 
-          var object = results[i];
-          alert(object.id + ' - ' + object.get('playerName'));
-        }
-      },
-      error: function(error) {
-        alert("Error: " + error.code + " " + error.message);
-      }
-    });
-   /*restaurant.save(null, {
-      success: function(restaurant) {
-         alert('New restaurant object created with objectID: ' + restaurant.id);
-      },
-      error: function(restaurant, error) {
-         alert('Failed to create new restaurant object, with error: ' + error.message);
-      }
-   });*/
-
     var Deal = Parse.Object.extend("deals");
     var deal = new Deal();
 
     deal.set("title", document.getElementById('deal').value);
     deal.set("description", document.getElementById('deal-description').value);
-    var point = new Parse.GeoPoint({latitude: parseFloat(document.getElementById('latitude').value),
-       longitude: parseFloat(document.getElementById('longitude').value)});
-    deal.set("locations", point);
-    deal.set("restaurantId", restaurant);
 
     deal.save(null, {
       success: function(deal) {
         // Execute any logic that should take place after the object is saved.
-        alert('New deal object created with objectId: ' + deal.id);
+        var Restaurant = Parse.Object.extend("restaurants");
+        
+        var restaurantQuery = new Parse.Query(Restaurant);
+        restaurantQuery.equalTo("name", document.getElementById('name').value);
+        restaurantQuery.equalTo("streetAddress", document.getElementById('street-address').value)
+        restaurantQuery.find({
+          success: function(restaurants) {
+            if (restaurants.length == 0) {
+              // New restaurant.
+              var restaurant = new Restaurant();
+              restaurant.set("name", document.getElementById('name').value);
+              restaurant.set("description", document.getElementById('restaurant-description').value);
+              restaurant.set("phoneNumber", document.getElementById('phone-number').value);
+              restaurant.set("website", document.getElementById('website').value);
+              restaurant.set("streetNumber", document.getElementById('street-number').value);
+              restaurant.set("streetAddress", document.getElementById('street-address').value);
+              restaurant.set("city", document.getElementById('city').value);
+              restaurant.set("zipCode", document.getElementById('zip-code').value);
+              restaurant.set("state", document.getElementById('state').value)
+              var point = new Parse.GeoPoint({latitude: parseFloat(document.getElementById('latitude').value),
+                 longitude: parseFloat(document.getElementById('longitude').value)});
+              restaurant.set("location", point);
+              restaurant.set("deals",[{"__type":"Pointer","className":"deals","objectId":deal.id}]);
+              restaurant.save(null, {
+                success: function(restaurant) {
+                  alert("Succesfully created new restaurant and deal")
+                },
+                error: function(error) {
+                  alert("Failed to create restaurant, deal still created. You may need to delete this deal. Error code: " + error.message)
+                }
+              });
+            } else if (restaurants.length == 1) {
+              restaurants[0].add("deals",{"__type":"Pointer","className":"deals","objectId":deal.id});
+              restaurants[0].save({
+                success: function(restaurant) {
+                  alert("Succesfully created new deal and added to existing restaurant")
+                },
+                error: function(error) {
+                  alert("Failed to update existing restaurant, deal still created. You may need to delete this deal. Error code: " + error.message)
+                }
+              });
+            } else {
+              alert("Multiple restaurants with that name and address found");
+            }
+          },
+          error: function(error) {
+            alert("Failed to query the database for that restaurant. Error code: " + error.message)
+          }
+    });
+
       },
       error: function(deal, error) {
         // Execute any logic that should take place if the save fails.
