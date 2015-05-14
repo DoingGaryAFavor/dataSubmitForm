@@ -17,7 +17,6 @@ function initialize() {
        document.getElementById('city').value = place.address_components[2].long_name;
        document.getElementById('state').value = place.address_components[3].short_name;
        document.getElementById('zip-code').value = place.address_components[5].long_name;
-
      });
 }
 google.maps.event.addDomListener(window, 'load', initialize); 
@@ -28,8 +27,29 @@ function processForm(e) {
     var Deal = Parse.Object.extend("deals");
     var deal = new Deal();
 
+    var restaurantAvailabilityObject = { 
+      sundaySt: document.getElementById('sundaySt').value, sundayEn: document.getElementById('sundayEn').value,
+      mondaySt: document.getElementById('mondaySt').value, mondayEn: document.getElementById('mondayEn').value,
+      tuesdaySt: document.getElementById('tuesdaySt').value, tuesdayEn: document.getElementById('tuesdayEn').value,
+      wednesdaySt: document.getElementById('wednesdaySt').value, wednesdayEn: document.getElementById('wednesdayEn').value,
+      thursdaySt: document.getElementById('thursdaySt').value, thursdayEn: document.getElementById('thursdayEn').value,
+      fridaySt: document.getElementById('fridaySt').value, fridayEn: document.getElementById('fridayEn').value,
+      saturdaySt: document.getElementById('saturdaySt').value, saturdayEn: document.getElementById('saturdayEn').value
+    };
+
+    var dealAvailabilityObject = { 
+      sundaySt: document.getElementById('sundayDealSt').value, sundayEn: document.getElementById('sundayDealEn').value,
+      mondaySt: document.getElementById('mondayDealSt').value, mondayEn: document.getElementById('mondayDealEn').value,
+      tuesdaySt: document.getElementById('tuesdayDealSt').value, tuesdayEn: document.getElementById('tuesdayDealEn').value,
+      wednesdaySt: document.getElementById('wednesdayDealSt').value, wednesdayEn: document.getElementById('wednesdayDealEn').value,
+      thursdaySt: document.getElementById('thursdayDealSt').value, thursdayEn: document.getElementById('thursdayDealEn').value,
+      fridaySt: document.getElementById('fridayDealSt').value, fridayEn: document.getElementById('fridayDealEn').value,
+      saturdaySt: document.getElementById('saturdayDealSt').value, saturdayEn: document.getElementById('saturdayDealEn').value
+    };
+
     deal.set("title", document.getElementById('deal').value);
     deal.set("description", document.getElementById('deal-description').value);
+    deal.set("availability", dealAvailabilityObject);
 
     deal.save(null, {
       success: function(deal) {
@@ -56,6 +76,7 @@ function processForm(e) {
               var point = new Parse.GeoPoint({latitude: parseFloat(document.getElementById('latitude').value),
                  longitude: parseFloat(document.getElementById('longitude').value)});
               restaurant.set("location", point);
+              restaurant.set("availability", restaurantAvailabilityObject);
               restaurant.set("deals",[{"__type":"Pointer","className":"deals","objectId":deal.id}]);
               restaurant.save(null, {
                 success: function(restaurant) {
