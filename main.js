@@ -1,6 +1,5 @@
 Parse.initialize("aOa7pfDy6GLtckl4cYBEMCnkBW9NyDLZ7ta4FVoI", "jFHEVpzYS5rVlEPJha3N9YK6KP5ifHHy71roi7pl");
 
-
 function initialize() {
      var input = document.getElementById('searchTextField');
      var autocomplete = new google.maps.places.Autocomplete(input);
@@ -23,6 +22,14 @@ google.maps.event.addDomListener(window, 'load', initialize);
 
 function processForm(e) {
     if (e.preventDefault) e.preventDefault();
+
+    var fileUpload = document.getElementById('picture');
+    if (fileUpload.files.length > 0) {
+      var file = fileUpload.files[0];
+      var name = document.getElementById('picture-name').value;
+
+      var parseFile = new Parse.File(name, file);
+    }
 
     var Deal = Parse.Object.extend("deals");
     var deal = new Deal();
@@ -78,6 +85,7 @@ function processForm(e) {
               restaurant.set("location", point);
               restaurant.set("availability", restaurantAvailabilityObject);
               restaurant.set("deals",[{"__type":"Pointer","className":"deals","objectId":deal.id}]);
+              restaurant.set("picture", parseFile);
               restaurant.save(null, {
                 success: function(restaurant) {
                   alert("Succesfully created new restaurant and deal")
