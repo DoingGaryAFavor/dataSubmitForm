@@ -1,0 +1,355 @@
+<style src="index.css" filetype="text/css"></style>
+
+<head>
+<title>Deal Entry Form</title>
+</head>
+
+<body>
+  <center>
+  	<h1>Deal</h1>
+    <hr />
+    <hr />
+  </center>
+  <form id="my-form" class = "left"><font size="5">
+  </br>
+  Google Maps Search: 
+    <input id="searchTextField" type="text" size="50" placeholder="Enter a restaurant" autocomplete="on" runat="server" />
+    <br/><br/>
+  Restaurant Name:
+    <input type="text" id="name" name="name" size="70"/>
+    <br/><br/>
+  Restaurant Description:
+    <input id="restaurant-description" type="textarea" name="Restaurant Description" size = "70">
+    <br/><br/>
+  Website:
+    <input id="website" type="text" name="Website" size = "70">
+    <br/><br/>
+  Phone Number:
+    <input id="phone-number" type="tel" name="Phone Number" size = "70">
+    <br/><br/>
+  Formatted Address:
+    <input id="formatted-address" type="text" name="Formatted Address" size = "70">
+    <br/><br/>
+    <sub> Please validate all location fields! </sub>
+    <br/><br/>
+  Street Number:
+    <input id="street-number" type="text" name="Street Number" size = "70">
+    <br/><br/>
+  Street Address:
+    <input id="street-address" type="text" name="Street Address" size = "70">
+    <br/><br/>
+  City:
+    <input id="city" type="text" name="City" size = "70">
+    <br/><br/>
+  State:
+    <input id="state" type="text" name="City" size = "70">
+    <br/><br/>
+  Zip Code:
+    <input id="zip-code" type="text" name="Zip Code" size = "70">
+    <br/><br/>
+  Latitude:
+    <input id="latitude" type="text" name="Latitude">
+    <br/><br/>
+  Longitude:
+    <input id="longitude" type="text" name="Longitude">
+    <br/><br/>
+
+  Restaurant Picture:
+    <input id="picture" type="file" name="Picture">
+  Picture Name:
+    <input id="picture-name" type="text" placeholder="Please include filetype" name="Picture Name">
+    <br/><br/>
+  Restaurant Availability:
+    <ul>
+    <li>Sunday:
+    <input id="sundaySt" type="text" name="Sunday Open" placeholder="Please use 24 hour time" size="20">
+    To:
+    <input id="sundayEn" type="text" name="Sunday Close" placeholder="For example: 0900" size="20">
+    </li>
+    <br/><br/>
+    
+    <li>Monday:
+    <input id="mondaySt" type="text" name="Monday Open" placeholder="Please use 24 hour time" size="20">
+    To:
+    <input id="mondayEn" type="text" name="Monday Close" placeholder="For example: 0900" size="20">
+    </li>
+    <br/><br/>
+    
+    <li>Tuesday:
+    <input id="tuesdaySt" type="text" name="Tuesday Open" placeholder="Please use 24 hour time" size="20">
+    To:
+    <input id="tuesdayEn" type="text" name="Tuesday Close" placeholder="For example: 0900" size="20">
+    </li>
+    <br/><br/>
+    
+    <li>Wednesday:
+    <input id="wednesdaySt" type="text" name="Wednesday Open" placeholder="Please use 24 hour time" size="20">
+    To:
+    <input id="wednesdayEn" type="text" name="Wednesday Close" placeholder="For example: 0900" size="20">
+    </li>
+    <br/><br/>
+    
+    <li>Thursday:
+    <input id="thursdaySt" type="text" name="Thursday Open" placeholder="Please use 24 hour time" size="20">
+    To:
+    <input id="thursdayEn" type="text" name="Thursday Close" placeholder="For example: 0900" size="20">
+    </li>
+    <br/><br/>
+
+    <li>Friday:
+    <input id="fridaySt" type="text" name="Friday Open" placeholder="Please use 24 hour time" size="20">
+    To:
+    <input id="fridayEn" type="text" name="Friday Close" placeholder="For example: 0900" size="20">
+    </li>
+    <br/><br/>
+
+    <li>Saturday:
+    <input id="saturdaySt" type="text" name="Saturday Open" placeholder="Please use 24 hour time" size="20">
+    To:
+    <input id="saturdayEn" type="text" name="Saturday Close" placeholder="For example: 0900" size="20">
+    </li>
+    <br/><br/>
+    </ul>
+    
+  Deal:
+  	<input id="deal" type="text" name="Deal name" size = "70">
+  	<br/><br/>
+  Deal Description:
+  	<input id="deal-description" type="textarea" name="Deal Description" size = "70">
+  	<br/><br/>
+  Deal Availability:
+    <ul>
+    <li>Sunday:
+    <input id="sundayDealSt" type="text" name="Sunday Deal Start" placeholder="Please use 24 hour time" size="20">
+    To:
+    <input id="sundayDealEn" type="text" name="Sunday Deal End" placeholder="For example: 0900" size="20">
+    </li>
+    <br/><br/>
+    
+    <li>Monday:
+    <input id="mondayDealSt" type="text" name="Monday Deal Start" placeholder="Please use 24 hour time" size="20">
+    To:
+    <input id="mondayDealEn" type="text" name="Monday Deal End" placeholder="For example: 0900" size="20">
+    </li>
+    <br/><br/>
+    
+    <li>Tuesday:
+    <input id="tuesdayDealSt" type="text" name="Tuesday Deal Start" placeholder="Please use 24 hour time" size="20">
+    To:
+    <input id="tuesdayDealEn" type="text" name="Tuesday Deal End" placeholder="For example: 0900" size="20">
+    </li>
+    <br/><br/>
+    
+    <li>Wednesday:
+    <input id="wednesdayDealSt" type="text" name="Wednesday Deal Start" placeholder="Please use 24 hour time" size="20">
+    To:
+    <input id="wednesdayDealEn" type="text" name="Wednesday Deal End" placeholder="For example: 0900" size="20">
+    </li>
+    <br/><br/>
+    
+    <li>Thursday:
+    <input id="thursdayDealSt" type="text" name="Thursday Deal Start" placeholder="Please use 24 hour time" size="20">
+    To:
+    <input id="thursdayDealEn" type="text" name="Thursday Deal End" placeholder="For example: 0900" size="20">
+    </li>
+    <br/><br/>
+
+    <li>Friday:
+    <input id="fridayDealSt" type="text" name="Friday Deal Start" placeholder="Please use 24 hour time" size="20">
+    To:
+    <input id="fridayDealEn" type="text" name="Friday Deal End" placeholder="For example: 0900" size="20">
+    </li>
+    <br/><br/>
+
+    <li>Saturday:
+    <input id="saturdayDealSt" type="text" name="Saturday Deal Start" placeholder="Please use 24 hour time" size="20">
+    To:
+    <input id="saturdayDealEn" type="text" name="Saturday Deal End" placeholder="For example: 0900" size="20">
+    </li>
+    <br/><br/>
+    </ul>
+
+    <center>
+	  <input class = "bigbutton" type="submit" value="Submit">
+    </center>
+  </font>
+  </form>
+</body>
+
+<script src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+<script type="text/javascript">
+Parse.initialize("aOa7pfDy6GLtckl4cYBEMCnkBW9NyDLZ7ta4FVoI", "jFHEVpzYS5rVlEPJha3N9YK6KP5ifHHy71roi7pl");
+  if (!Parse.User.current()) {
+    window.location.href='/';
+  } else {
+    Parse.Cloud.run('getGitHubData', {}).then(function(response) {
+        $('#name').text(response.name);
+        $('#login').text(response.login);
+        $('#location').text(response.location);
+        $('#blog').text(response.blog);
+        $('#company').text(response.company);
+        $('#followers').text(response.followers);
+        $('#following').text(response.following);
+        $('#github_details').show();
+  }, function(error) {
+    alert('There was an error getting your GitHub details, ' +
+      'please check the console for more information.');
+    console.log(error);
+  });
+}
+</script>
+
+<script type="text/javascript">
+function initialize() {
+     var input = document.getElementById('searchTextField');
+     var autocomplete = new google.maps.places.Autocomplete(input);
+     google.maps.event.addListener(autocomplete, 'place_changed', function () {
+       var place = autocomplete.getPlace();
+       document.getElementById('name').value = place.name;
+       document.getElementById('latitude').value = place.geometry.location.lat();
+       document.getElementById('longitude').value = place.geometry.location.lng();
+       document.getElementById('website').value = place.website;
+       document.getElementById('phone-number').value = place.formatted_phone_number;
+       document.getElementById('formatted-address').value = place.formatted_address;
+       document.getElementById('street-number').value = place.address_components[0].long_name;
+       document.getElementById('street-address').value = place.address_components[1].long_name;
+       document.getElementById('city').value = place.address_components[2].long_name;
+       document.getElementById('state').value = place.address_components[3].short_name;
+       document.getElementById('zip-code').value = place.address_components[5].long_name;
+     });
+}
+google.maps.event.addDomListener(window, 'load', initialize); 
+
+function processForm(e) {
+    if (e.preventDefault) e.preventDefault();
+
+    var fileUpload = document.getElementById('picture');
+    if (fileUpload.files.length > 0) {
+      var file = fileUpload.files[0];
+      var name = document.getElementById('picture-name').value;
+
+      var parseFile = new Parse.File(name, file);
+    }
+
+    var Deal = Parse.Object.extend("deals");
+    var deal = new Deal();
+
+    var restaurantAvailabilityObject = { 
+      sundaySt: document.getElementById('sundaySt').value, sundayEn: document.getElementById('sundayEn').value,
+      mondaySt: document.getElementById('mondaySt').value, mondayEn: document.getElementById('mondayEn').value,
+      tuesdaySt: document.getElementById('tuesdaySt').value, tuesdayEn: document.getElementById('tuesdayEn').value,
+      wednesdaySt: document.getElementById('wednesdaySt').value, wednesdayEn: document.getElementById('wednesdayEn').value,
+      thursdaySt: document.getElementById('thursdaySt').value, thursdayEn: document.getElementById('thursdayEn').value,
+      fridaySt: document.getElementById('fridaySt').value, fridayEn: document.getElementById('fridayEn').value,
+      saturdaySt: document.getElementById('saturdaySt').value, saturdayEn: document.getElementById('saturdayEn').value
+    };
+
+    var dealAvailabilityObject = { 
+      sundaySt: document.getElementById('sundayDealSt').value, sundayEn: document.getElementById('sundayDealEn').value,
+      mondaySt: document.getElementById('mondayDealSt').value, mondayEn: document.getElementById('mondayDealEn').value,
+      tuesdaySt: document.getElementById('tuesdayDealSt').value, tuesdayEn: document.getElementById('tuesdayDealEn').value,
+      wednesdaySt: document.getElementById('wednesdayDealSt').value, wednesdayEn: document.getElementById('wednesdayDealEn').value,
+      thursdaySt: document.getElementById('thursdayDealSt').value, thursdayEn: document.getElementById('thursdayDealEn').value,
+      fridaySt: document.getElementById('fridayDealSt').value, fridayEn: document.getElementById('fridayDealEn').value,
+      saturdaySt: document.getElementById('saturdayDealSt').value, saturdayEn: document.getElementById('saturdayDealEn').value
+    };
+
+    deal.set("title", document.getElementById('deal').value);
+    deal.set("description", document.getElementById('deal-description').value);
+    deal.set("availability", dealAvailabilityObject);
+
+    deal.save(null, {
+      success: function(deal) {
+        // Execute any logic that should take place after the object is saved.
+        var Restaurant = Parse.Object.extend("restaurants");
+        
+        var restaurantQuery = new Parse.Query(Restaurant);
+        restaurantQuery.equalTo("name", document.getElementById('name').value);
+        restaurantQuery.equalTo("streetAddress", document.getElementById('street-address').value)
+        restaurantQuery.find({
+          success: function(restaurants) {
+            if (restaurants.length == 0) {
+              // New restaurant.
+              var restaurant = new Restaurant();
+              restaurant.set("name", document.getElementById('name').value);
+              restaurant.set("description", document.getElementById('restaurant-description').value);
+              restaurant.set("phoneNumber", document.getElementById('phone-number').value);
+              restaurant.set("website", document.getElementById('website').value);
+              restaurant.set("streetNumber", document.getElementById('street-number').value);
+              restaurant.set("streetAddress", document.getElementById('street-address').value);
+              restaurant.set("city", document.getElementById('city').value);
+              restaurant.set("zipCode", document.getElementById('zip-code').value);
+              restaurant.set("state", document.getElementById('state').value)
+              var point = new Parse.GeoPoint({latitude: parseFloat(document.getElementById('latitude').value),
+                 longitude: parseFloat(document.getElementById('longitude').value)});
+              restaurant.set("location", point);
+              restaurant.set("availability", restaurantAvailabilityObject);
+              restaurant.set("deals",[{"__type":"Pointer","className":"deals","objectId":deal.id}]);
+              restaurant.set("picture", parseFile);
+              restaurant.save(null, {
+                success: function(restaurant) {
+                  alert("Succesfully created new restaurant and deal")
+                },
+                error: function(error) {
+                  alert("Failed to create restaurant, deal still created. You may need to delete this deal. Error code: " + error.message)
+                }
+              });
+            } else if (restaurants.length == 1) {
+              restaurants[0].add("deals",{"__type":"Pointer","className":"deals","objectId":deal.id});
+              restaurants[0].save({
+                success: function(restaurant) {
+                  alert("Succesfully created new deal and added to existing restaurant")
+                },
+                error: function(error) {
+                  alert("Failed to update existing restaurant, deal still created. You may need to delete this deal. Error code: " + error.message)
+                }
+              });
+            } else {
+              alert("Multiple restaurants with that name and address found");
+            }
+          },
+          error: function(error) {
+            alert("Failed to query the database for that restaurant. Error code: " + error.message)
+          }
+    });
+
+      },
+      error: function(deal, error) {
+        // Execute any logic that should take place if the save fails.
+        // error is a Parse.Error with an error code and message.
+        alert('Failed to create new deal object, with error code: ' + error.message);
+      }
+    });
+
+   return false;
+}
+
+var myForm = document.getElementById('my-form');
+if (myForm.attachEvent) {
+    myForm.attachEvent("submit", processForm);
+} else {
+    myForm.addEventListener("submit", processForm);
+}
+</script>
+
+<script type="text/javascript">
+var queryRole = new Parse.Query(Parse.Role);
+queryRole.equalTo('name', 'Administrator');
+queryRole.first({
+    success: function(result) { // Role Object
+        var role = result;
+        var adminRelation = new Parse.Relation(role, 'users');
+        var queryAdmins = adminRelation.query();
+        queryAdmins.equalTo('objectId', Parse.User.current().id);
+        queryAdmins.first({
+            success: function(result) {    // User Object
+                var user = result;
+                user ? console.log('USER : ', user) : console.log('User not Administrator!');
+            }
+        });
+    },
+    error: function(error) {}
+});
