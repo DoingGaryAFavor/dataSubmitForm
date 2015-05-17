@@ -10,36 +10,6 @@ connection.request('PUT', '/1/roles/TcF4HNVUpM', json.dumps({
              "className": "_User",
              "objectId": "FEmYz6cXSa"
             }
-           ,
-            {
-             "__type": "Pointer",
-             "className": "_User",
-             "objectId": "zHvUs1IQGt"
-            }
-           ,
-            {
-             "__type": "Pointer",
-             "className": "_User",
-             "objectId": "ThCfX4h107"
-            }
-           ,
-            {
-             "__type": "Pointer",
-             "className": "_User",
-             "objectId": "Wfo1EK1kNf"
-            }
-           ,
-           {
-             "__type": "Pointer",
-             "className": "_User",
-             "objectId": "XmV2No4PJ0"
-            }
-           ,
-           {
-             "__type": "Pointer",
-             "className": "_User",
-             "objectId": "ToB5DltYEO"
-            }
          ]
        }
      }), {
