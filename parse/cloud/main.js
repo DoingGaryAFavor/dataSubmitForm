@@ -52,8 +52,6 @@ var TokenStorage = Parse.Object.extend("TokenStorage");
  *   Parse User, TokenRequest, and TokenStorage objects.
  */
 var restrictedAcl = new Parse.ACL();
-restrictedAcl.setRoleWriteAccess("admin", true);
-restrictedAcl.setRoleReadAccess("admin", true);
 restrictedAcl.setPublicReadAccess(false);
 restrictedAcl.setPublicWriteAccess(false);
 
