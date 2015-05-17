@@ -5,17 +5,41 @@ connection.request('PUT', '/1/roles/TcF4HNVUpM', json.dumps({
        "users": {
          "__op": "AddRelation",
          "objects": [
+            {
+             "__type": "Pointer",
+             "className": "_User",
+             "objectId": "FEmYz6cXSa"
+            }
+           ,
+            {
+             "__type": "Pointer",
+             "className": "_User",
+             "objectId": "zHvUs1IQGt"
+            }
+           ,
+            {
+             "__type": "Pointer",
+             "className": "_User",
+             "objectId": "ThCfX4h107"
+            }
+           ,
+            {
+             "__type": "Pointer",
+             "className": "_User",
+             "objectId": "Wfo1EK1kNf"
+            }
+           ,
            {
              "__type": "Pointer",
              "className": "_User",
-             "objectId": "93EIHWgb1e"
-           }
-           #,
-           #{
-           #  "__type": "Pointer",
-           #  "className": "_User",
-           #  "objectId": "g7y9tkhB7O"
-           #}
+             "objectId": "XmV2No4PJ0"
+            }
+           ,
+           {
+             "__type": "Pointer",
+             "className": "_User",
+             "objectId": "ToB5DltYEO"
+            }
          ]
        }
      }), {
