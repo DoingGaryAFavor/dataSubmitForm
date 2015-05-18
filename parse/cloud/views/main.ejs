@@ -115,8 +115,11 @@
   	<input id="deal" type="text" name="Deal name" size = "70">
   	<br/><br/>
   Deal Description:
-  	<input id="deal-description" type="textarea" name="Deal Description" size = "70">
+  	<input id="deal-description" type="text" name="Deal Description" size = "70">
   	<br/><br/>
+  Deal Type:
+    <input id="deal-type" type="text" name="Deal Type" size="70">
+    <br/><br/>
   Deal Availability:
     <ul>
     <li>Sunday:
@@ -257,15 +260,19 @@ function processForm(e) {
       saturdaySt: document.getElementById('saturdayDealSt').value, saturdayEn: document.getElementById('saturdayDealEn').value
     };
 
+    var dealTagArray = [document.getElementById('deal-type').value];
+
     deal.set("title", document.getElementById('deal').value);
     deal.set("description", document.getElementById('deal-description').value);
     deal.set("availability", dealAvailabilityObject);
+    deal.set("tags", dealTagArray);
 
     deal.save(null, {
       success: function(deal) {
         // Execute any logic that should take place after the object is saved.
         var Restaurant = Parse.Object.extend("restaurants");
-        
+        var restaurantDescriptionArray = [document.getElementById('restaurant-description').value];
+
         var restaurantQuery = new Parse.Query(Restaurant);
         restaurantQuery.equalTo("name", document.getElementById('name').value);
         restaurantQuery.equalTo("streetAddress", document.getElementById('street-address').value)
@@ -275,7 +282,7 @@ function processForm(e) {
               // New restaurant.
               var restaurant = new Restaurant();
               restaurant.set("name", document.getElementById('name').value);
-              restaurant.set("description", document.getElementById('restaurant-description').value);
+              restaurant.set("description", restaurantDescriptionArray);
               restaurant.set("phoneNumber", document.getElementById('phone-number').value);
               restaurant.set("website", document.getElementById('website').value);
               restaurant.set("streetNumber", document.getElementById('street-number').value);
