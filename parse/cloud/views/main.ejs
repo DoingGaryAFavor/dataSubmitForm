@@ -172,6 +172,9 @@
     <br/><br/>
     </ul>
 
+    Restaurant and Deal submitted by:
+      <input id="submitted-by" type="text" placeholder="First name only" name="Restaurant and Deal Submission" size="70">
+
     <center>
 	  <input class = "bigbutton" type="submit" value="Submit">
     </center>
@@ -267,6 +270,8 @@ function processForm(e) {
     deal.set("description", document.getElementById('deal-description').value);
     deal.set("availability", dealAvailabilityObject);
     deal.set("tags", dealTagArraySplit);
+    deal.set("submittedBy", document.getElementById('submitted-by').value);
+
 
     deal.save(null, {
       success: function(deal) {
@@ -298,6 +303,7 @@ function processForm(e) {
               restaurant.set("availability", restaurantAvailabilityObject);
               restaurant.set("deals",[{"__type":"Pointer","className":"deals","objectId":deal.id}]);
               restaurant.set("picture", parseFile);
+              restaurant.set("submittedBy", document.getElementById('submitted-by').value);
               restaurant.save(null, {
                 success: function(restaurant) {
                   alert("Succesfully created new restaurant and deal")
