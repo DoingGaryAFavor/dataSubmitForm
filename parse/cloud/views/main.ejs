@@ -243,7 +243,6 @@ function processForm(e) {
     var deal = new Deal();
 
     var Restaurant = Parse.Object.extend("restaurants");
-    var restaurant = new Restaurant();
     var restaurantQuery = new Parse.Query(Restaurant);
 
     var restaurantAvailabilityObject = { 
@@ -278,7 +277,7 @@ function processForm(e) {
     var point = new Parse.GeoPoint({latitude: parseFloat(document.getElementById('latitude').value),
                  longitude: parseFloat(document.getElementById('longitude').value)});
     deal.set("location", point);
-    deal.set("restaurantId", restaurant);
+    // deal.set("restaurantId", restaurant);
 
     deal.save(null, {
       success: function(deal) {
@@ -292,6 +291,7 @@ function processForm(e) {
         restaurantQuery.find({
           success: function(restaurants) {
             if (restaurants.length == 0) {
+              var restaurant = new Restaurant();
               // New restaurant.
               restaurant.set("name", document.getElementById('name').value);
               restaurant.set("description", restaurantDescriptionArraySplit);
@@ -307,6 +307,11 @@ function processForm(e) {
               restaurant.set("picture", parseFile);
               restaurant.set("submittedBy", document.getElementById('submitted-by').value);
               restaurant.set("location", point);
+              deal.set("restaurantId", restaurant);
+              deal.save(null, {
+                success: function(deal){ },
+                error: function(deal){ }
+              });
               restaurant.save(null, {
                 success: function(restaurant) {
                   alert("Succesfully created new restaurant and deal")
@@ -317,6 +322,12 @@ function processForm(e) {
               });
             } else if (restaurants.length == 1) {
               restaurants[0].add("deals",{"__type":"Pointer","className":"deals","objectId":deal.id});
+              deal.set("restaurantId", restaurants[0]);
+              deal.save(null, {
+                success: function(deal){ },
+                error: function(deal){ }
+              });
+              var restaurantId = restaurants[0].id;
               restaurants[0].save({
                 success: function(restaurant) {
                   alert("Succesfully created new deal and added to existing restaurant")
@@ -341,7 +352,6 @@ function processForm(e) {
         alert('Failed to create new deal object, with error code: ' + error.message);
       }
     });
-
    return false;
 }
 
