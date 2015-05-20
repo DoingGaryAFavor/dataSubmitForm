@@ -112,10 +112,10 @@
     </ul>
     
   Deal:
-  	<input id="deal" type="text" name="Deal name" size = "70">
+  	<input id="deal" type="text" name="Deal name" size="70" maxlength="25">
   	<br/><br/>
   Deal Description:
-  	<input id="deal-description" type="text" name="Deal Description" size = "70">
+  	<input id="deal-description" type="text" name="Deal Description" size="70">
   	<br/><br/>
   Deal Type:
     <input id="deal-type" type="text" name="Deal Type" size="70">
@@ -174,7 +174,6 @@
 
     Restaurant and Deal submitted by:
       <input id="submitted-by" type="text" placeholder="First name only" name="Restaurant and Deal Submission" size="70">
-
     <center>
 	  <input class = "bigbutton" type="submit" value="Submit">
     </center>
@@ -243,6 +242,10 @@ function processForm(e) {
     var Deal = Parse.Object.extend("deals");
     var deal = new Deal();
 
+    var Restaurant = Parse.Object.extend("restaurants");
+    var restaurant = new Restaurant();
+    var restaurantQuery = new Parse.Query(Restaurant);
+
     var restaurantAvailabilityObject = { 
       sundaySt: document.getElementById('sundaySt').value, sundayEn: document.getElementById('sundayEn').value,
       mondaySt: document.getElementById('mondaySt').value, mondayEn: document.getElementById('mondayEn').value,
@@ -271,23 +274,25 @@ function processForm(e) {
     deal.set("availability", dealAvailabilityObject);
     deal.set("tags", dealTagArraySplit);
     deal.set("submittedBy", document.getElementById('submitted-by').value);
-
+    deal.set("picture", parseFile);
+    var point = new Parse.GeoPoint({latitude: parseFloat(document.getElementById('latitude').value),
+                 longitude: parseFloat(document.getElementById('longitude').value)});
+    deal.set("location", point);
+    deal.set("restaurantId", restaurant);
 
     deal.save(null, {
       success: function(deal) {
         // Execute any logic that should take place after the object is saved.
-        var Restaurant = Parse.Object.extend("restaurants");
+        
         var restaurantDescriptionArray = [document.getElementById('restaurant-description').value];
         var restaurantDescriptionArraySplit = restaurantDescriptionArray.toString().split(', ');
 
-        var restaurantQuery = new Parse.Query(Restaurant);
         restaurantQuery.equalTo("name", document.getElementById('name').value);
         restaurantQuery.equalTo("streetAddress", document.getElementById('street-address').value)
         restaurantQuery.find({
           success: function(restaurants) {
             if (restaurants.length == 0) {
               // New restaurant.
-              var restaurant = new Restaurant();
               restaurant.set("name", document.getElementById('name').value);
               restaurant.set("description", restaurantDescriptionArraySplit);
               restaurant.set("phoneNumber", document.getElementById('phone-number').value);
@@ -297,13 +302,11 @@ function processForm(e) {
               restaurant.set("city", document.getElementById('city').value);
               restaurant.set("zipCode", document.getElementById('zip-code').value);
               restaurant.set("state", document.getElementById('state').value)
-              var point = new Parse.GeoPoint({latitude: parseFloat(document.getElementById('latitude').value),
-                 longitude: parseFloat(document.getElementById('longitude').value)});
-              restaurant.set("location", point);
               restaurant.set("availability", restaurantAvailabilityObject);
               restaurant.set("deals",[{"__type":"Pointer","className":"deals","objectId":deal.id}]);
               restaurant.set("picture", parseFile);
               restaurant.set("submittedBy", document.getElementById('submitted-by').value);
+              restaurant.set("location", point);
               restaurant.save(null, {
                 success: function(restaurant) {
                   alert("Succesfully created new restaurant and deal")
