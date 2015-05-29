@@ -116,8 +116,10 @@
   	<input id="deal-description" type="text" name="Deal Description" size="70">
   	<br/><br/>
   Deal Type:
-    <input id="deal-type" type="text" name="Deal Type" size="70">
-    <br/><br/>
+    <input id="deal-type" type="checkbox" name="dealtype" value="Food">Food
+    <input id="deal-type1" type="checkbox" name="dealtype" value="Drink">Drink
+    <input id="deal-type2" type="checkbox" name="dealtype" value="Favorite">Favorite 
+    <br/>
   Deal Availability:
     <ul>
     <li>Sunday:
@@ -254,8 +256,16 @@ function processForm(e) {
       saturdaySt: document.getElementById('saturdaySt').value, saturdayEn: document.getElementById('saturdayEn').value
     };
 
-    var dealTagArray = document.getElementById('deal-type').value;
-    var dealTagArrayLowerCase = dealTagArray.toString().toLowerCase();
+    var checkboxes = document.getElementsByName('dealtype');
+    var checkboxesChecked = [];
+
+    for (var i=0; i<checkboxes.length; i++) {
+       if (checkboxes[i].checked) {
+          checkboxesChecked.push(checkboxes[i].value);
+       }
+    }
+
+    var dealTagArrayLowerCase = checkboxesChecked.toString().toLowerCase();
     var dealTagArraySplit = dealTagArrayLowerCase.toString().split(",");
     var dealTagArrayTrim = dealTagArraySplit.map(Function.prototype.call, String.prototype.trim);
 
