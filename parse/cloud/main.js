@@ -31,8 +31,8 @@ var app = express();
 /**
  * GitHub specific details, including application id and secret
  */
-var githubClientId = 'aebe7e17eff0a4524b37';
-var githubClientSecret = 'f9358d4509f5dd65e113458e4ed6ee2d6e1d27c7';
+var githubClientId = '184f505d6bd27c4c52c9';
+var githubClientSecret = '45052c86e58d22e7fbcf90d39d443cb98a514461';
 
 var githubRedirectEndpoint = 'https://github.com/login/oauth/authorize?';
 var githubValidateEndpoint = 'https://github.com/login/oauth/access_token';

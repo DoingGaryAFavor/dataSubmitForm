@@ -56,8 +56,6 @@
 
   Restaurant Picture:
     <input id="picture" type="file" name="Picture">
-  Picture Name:
-    <input id="picture-name" type="text" placeholder="Please include filetype" name="Picture Name">
     <br/><br/>
   Restaurant Availability:
     <ul>
@@ -186,7 +184,7 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
 <script type="text/javascript">
-Parse.initialize("aOa7pfDy6GLtckl4cYBEMCnkBW9NyDLZ7ta4FVoI", "jFHEVpzYS5rVlEPJha3N9YK6KP5ifHHy71roi7pl");
+Parse.initialize("2TR1bOpjpFL8Wm7a7TXcbuoFCyJRB0VdSOXnf8tB", "qsHJYXDy2w11zsB7fJgJfTGW72vuXPfXe0jgGgAT");
 if (!Parse.User.current()) {
   window.location.href='/';
 } else {
@@ -234,9 +232,10 @@ function processForm(e) {
     var fileUpload = document.getElementById('picture');
     if (fileUpload.files.length > 0) {
       var file = fileUpload.files[0];
-      var name = document.getElementById('picture-name').value;
+      var name = document.getElementById('picture').value;
+      var filename = name.replace(/^.*[\\\/]/, '');
 
-      var parseFile = new Parse.File(name, file);
+      var parseFile = new Parse.File(filename, file);
     }
 
     var Deal = Parse.Object.extend("deals");
@@ -255,30 +254,35 @@ function processForm(e) {
       saturdaySt: document.getElementById('saturdaySt').value, saturdayEn: document.getElementById('saturdayEn').value
     };
 
-    var dealAvailabilityObject = { 
-      sundaySt: document.getElementById('sundayDealSt').value, sundayEn: document.getElementById('sundayDealEn').value,
-      mondaySt: document.getElementById('mondayDealSt').value, mondayEn: document.getElementById('mondayDealEn').value,
-      tuesdaySt: document.getElementById('tuesdayDealSt').value, tuesdayEn: document.getElementById('tuesdayDealEn').value,
-      wednesdaySt: document.getElementById('wednesdayDealSt').value, wednesdayEn: document.getElementById('wednesdayDealEn').value,
-      thursdaySt: document.getElementById('thursdayDealSt').value, thursdayEn: document.getElementById('thursdayDealEn').value,
-      fridaySt: document.getElementById('fridayDealSt').value, fridayEn: document.getElementById('fridayDealEn').value,
-      saturdaySt: document.getElementById('saturdayDealSt').value, saturdayEn: document.getElementById('saturdayDealEn').value
-    };
-
     var dealTagArray = document.getElementById('deal-type').value;
-    var dealTagArraySplit = dealTagArray.toString().split(', ');
+    var dealTagArrayLowerCase = dealTagArray.toString().toLowerCase();
+    var dealTagArraySplit = dealTagArrayLowerCase.toString().split(",");
+    var dealTagArrayTrim = dealTagArraySplit.map(Function.prototype.call, String.prototype.trim);
 
     deal.set("title", document.getElementById('deal').value);
     deal.set("description", document.getElementById('deal-description').value);
-    deal.set("availability", dealAvailabilityObject);
-    deal.set("tags", dealTagArraySplit);
+    deal.set("tags", dealTagArrayTrim);
     deal.set("submittedBy", document.getElementById('submitted-by').value);
-    deal.set("picture", parseFile);
+    deal.set("downVotes", 0);
+    deal.set("upVotes", 0);
+    deal.set("flags", 0);
+    deal.set("sundaySt", parseInt(document.getElementById('sundayDealSt').value));
+    deal.set("sundayEn", parseInt(document.getElementById('sundayDealEn').value));
+    deal.set("mondaySt", parseInt(document.getElementById('mondayDealSt').value));
+    deal.set("mondayEn", parseInt(document.getElementById('mondayDealEn').value));
+    deal.set("tuesdaySt", parseInt(document.getElementById('tuesdayDealSt').value));
+    deal.set("tuesdayEn", parseInt(document.getElementById('tuesdayDealEn').value));
+    deal.set("wednesdaySt", parseInt(document.getElementById('wednesdayDealSt').value));
+    deal.set("wednesdayEn", parseInt(document.getElementById('wednesdayDealEn').value));
+    deal.set("thursdaySt", parseInt(document.getElementById('thursdayDealSt').value));
+    deal.set("thursdayEn", parseInt(document.getElementById('thursdayDealEn').value));
+    deal.set("fridaySt", parseInt(document.getElementById('fridayDealSt').value));
+    deal.set("fridayEn", parseInt(document.getElementById('fridayDealEn').value));
+    deal.set("saturdaySt", parseInt(document.getElementById('saturdayDealSt').value));
+    deal.set("saturdayEn", parseInt(document.getElementById('saturdayDealEn').value));
     var point = new Parse.GeoPoint({latitude: parseFloat(document.getElementById('latitude').value),
                  longitude: parseFloat(document.getElementById('longitude').value)});
-    deal.set("location", point);
-    // deal.set("restaurantId", restaurant);
-
+ 
     deal.save(null, {
       success: function(deal) {
         // Execute any logic that should take place after the object is saved.
@@ -303,7 +307,6 @@ function processForm(e) {
               restaurant.set("zipCode", document.getElementById('zip-code').value);
               restaurant.set("state", document.getElementById('state').value)
               restaurant.set("availability", restaurantAvailabilityObject);
-              restaurant.set("deals",[{"__type":"Pointer","className":"deals","objectId":deal.id}]);
               restaurant.set("picture", parseFile);
               restaurant.set("submittedBy", document.getElementById('submitted-by').value);
               restaurant.set("location", point);
@@ -321,7 +324,6 @@ function processForm(e) {
                 }
               });
             } else if (restaurants.length == 1) {
-              restaurants[0].add("deals",{"__type":"Pointer","className":"deals","objectId":deal.id});
               deal.set("restaurantId", restaurants[0]);
               deal.save(null, {
                 success: function(deal){ },
@@ -330,7 +332,7 @@ function processForm(e) {
               var restaurantId = restaurants[0].id;
               restaurants[0].save({
                 success: function(restaurant) {
-                  alert("Succesfully created new deal and added to existing restaurant")
+                  alert("Succesfully created new deal and added to existing restaurant. WARNING: DEAL COULD BE DUPLICATE, PLEASE VERIFY IN DATABASE!")
                 },
                 error: function(error) {
                   alert("Failed to update existing restaurant, deal still created. You may need to delete this deal. Error code: " + error.message)
