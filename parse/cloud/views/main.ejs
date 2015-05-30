@@ -6,7 +6,7 @@
 
 <body>
   <center>
-  	<h1>Deal</h1>
+   <h1>Deal</h1>
     <hr />
     <hr />
   </center>
@@ -110,11 +110,11 @@
     </ul>
     
   Deal:
-  	<input id="deal" type="text" name="Deal name" size="70" maxlength="25">
-  	<br/><br/>
+   <input id="deal" type="text" name="Deal name" size="70" maxlength="25">
+   <br/><br/>
   Deal Description:
-  	<input id="deal-description" type="text" name="Deal Description" size="70">
-  	<br/><br/>
+   <input id="deal-description" type="text" name="Deal Description" size="70">
+   <br/><br/>
   Deal Type:
     <input id="deal-type" type="checkbox" name="dealtype" value="Food">Food
     <input id="deal-type1" type="checkbox" name="dealtype" value="Drink">Drink
@@ -175,7 +175,7 @@
     Restaurant and Deal submitted by:
       <input id="submitted-by" type="text" placeholder="First name only" name="Restaurant and Deal Submission" size="70">
     <center>
-	  <input class = "bigbutton" type="submit" value="Submit">
+     <input class = "bigbutton" type="submit" value="Submit">
     </center>
   </font>
   </form>
@@ -275,6 +275,7 @@ function processForm(e) {
     deal.set("submittedBy", document.getElementById('submitted-by').value);
     deal.set("downVotes", 0);
     deal.set("upVotes", 0);
+    deal.set("rating", 0);
     deal.set("flags", 0);
     deal.set("sundaySt", parseInt(document.getElementById('sundayDealSt').value));
     deal.set("sundayEn", parseInt(document.getElementById('sundayDealEn').value));
