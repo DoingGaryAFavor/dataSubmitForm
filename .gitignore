@@ -1,4 +1,9 @@
 # Script
 *.py
 
-# Header, Global JSON
+# Header
+head.ejs
+
+# Config JSON
+global.json
+
