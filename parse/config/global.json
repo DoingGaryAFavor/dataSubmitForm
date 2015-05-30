@@ -1,0 +1,14 @@
+{
+  "global": {
+    "parseVersion": "1.4.2"
+  },
+  "applications": {
+    "_default": {
+      "link": "burrd"
+    },
+    "burrd": {
+      "applicationId": "2TR1bOpjpFL8Wm7a7TXcbuoFCyJRB0VdSOXnf8tB",
+      "masterKey": "909g3Cymns0Saxm5ehaJlYPFdBn0w6uBASXAoeUP"
+    }
+  }
+}
