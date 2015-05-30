@@ -327,7 +327,7 @@ var newGitHubUser = function(accessToken, githubData) {
   });
 }
 
-Parse.Cloud.afterSave("UpVote", function(request, response) {
+Parse.Cloud.define("UpVote", function(request, response) {
   var query = new Parse.Query(Parse.Object.extend("deals"));
   query.get(request.object.get("upVotes"), {
     success: function(deal) {
@@ -342,7 +342,7 @@ Parse.Cloud.afterSave("UpVote", function(request, response) {
   });
 });
 
-Parse.Cloud.afterSave("DownVote", function(request, response) {
+Parse.Cloud.define("DownVote", function(request, response) {
   var query = new Parse.Query(Parse.Object.extend("deals"));
   query.get(request.object.get("downVotes"), {
     success: function(deal) {
