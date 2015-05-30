@@ -31,8 +31,8 @@ var app = express();
 /**
  * GitHub specific details, including application id and secret
  */
-var githubClientId = '184f505d6bd27c4c52c9';
-var githubClientSecret = '45052c86e58d22e7fbcf90d39d443cb98a514461';
+var githubClientId = 'aebe7e17eff0a4524b37';
+var githubClientSecret = 'f9358d4509f5dd65e113458e4ed6ee2d6e1d27c7';
 
 var githubRedirectEndpoint = 'https://github.com/login/oauth/authorize?';
 var githubValidateEndpoint = 'https://github.com/login/oauth/access_token';
@@ -52,14 +52,13 @@ var TokenStorage = Parse.Object.extend("TokenStorage");
  *   Parse User, TokenRequest, and TokenStorage objects.
  */
 var restrictedAcl = new Parse.ACL();
-restrictedAcl.setRoleWriteAccess("admin", true);
-restrictedAcl.setRoleReadAccess("admin", true);
-restrictedAcl.setPublicReadAccess(true);
-restrictedAcl.setPublicWriteAccess(true);
+restrictedAcl.setPublicReadAccess(false);
+restrictedAcl.setPublicWriteAccess(false);
 
 /**
  * Global app configuration section
  */
+
 app.set('views', 'cloud/views');  // Specify the folder to find templates
 app.set('view engine', 'ejs');    // Set the template engine
 app.use(express.bodyParser());    // Middleware for reading request body
@@ -327,3 +326,38 @@ var newGitHubUser = function(accessToken, githubData) {
     return upsertGitHubUser(accessToken, githubData);
   });
 }
+
+Parse.Cloud.afterSave("UpVote", function(request, response) {
+  var query = new Parse.Query(Parse.Object.extend("deals"));
+  query.get(request.object.get("upVotes"), {
+    success: function(deal) {
+      deal.increment("upVotes");
+      request.object.set("rating", request.object.get("upVotes") - request.object.get("downVotes"));
+      deal.save();
+      alert("Deal up voted!");
+    },
+    error: function(error) {
+      console.error("Got an error " + error.code + " : " + error.message);
+    }
+  });
+});
+
+Parse.Cloud.afterSave("DownVote", function(request, response) {
+  var query = new Parse.Query(Parse.Object.extend("deals"));
+  query.get(request.object.get("downVotes"), {
+    success: function(deal) {
+      deal.increment("downVotes");
+      if (request.object.get("downVotes") > request.object.get("upVotes")) {
+        request.object.set("flags", 1);
+        request.object.set("rating", request.object.get("upVotes") - request.object.get("downVotes"));
+      } else {
+        request.object.set("rating", request.object.get("upVotes") - request.object.get("downVotes"));
+      }
+      deal.save();
+      alert("Deal down voted!");
+    },
+    error: function(error) {
+      console.error("Got an error " + error.code + " : " + error.message);
+    }
+  });
+});

@@ -1,12 +1,11 @@
-<style src="index.css" filetype="text/css"></style>
-
 <head>
+<link rel="stylesheet" type="text/css" href="../../public/style.css" >
 <title>Deal Entry Form</title>
 </head>
 
 <body>
   <center>
-   <h1>Deal</h1>
+  	<h1>Deal</h1>
     <hr />
     <hr />
   </center>
@@ -110,11 +109,11 @@
     </ul>
     
   Deal:
-   <input id="deal" type="text" name="Deal name" size="70" maxlength="25">
-   <br/><br/>
+  	<input id="deal" type="text" name="Deal name" size="70" maxlength="25">
+  	<br/><br/>
   Deal Description:
-   <input id="deal-description" type="text" name="Deal Description" size="70">
-   <br/><br/>
+  	<input id="deal-description" type="text" name="Deal Description" size="70">
+  	<br/><br/>
   Deal Type:
     <input id="deal-type" type="checkbox" name="dealtype" value="Food">Food
     <input id="deal-type1" type="checkbox" name="dealtype" value="Drink">Drink
@@ -175,7 +174,7 @@
     Restaurant and Deal submitted by:
       <input id="submitted-by" type="text" placeholder="First name only" name="Restaurant and Deal Submission" size="70">
     <center>
-     <input class = "bigbutton" type="submit" value="Submit">
+	  <input class = "bigbutton" type="submit" value="Submit">
     </center>
   </font>
   </form>
@@ -186,7 +185,7 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
 <script type="text/javascript">
-Parse.initialize("2TR1bOpjpFL8Wm7a7TXcbuoFCyJRB0VdSOXnf8tB", "qsHJYXDy2w11zsB7fJgJfTGW72vuXPfXe0jgGgAT");
+Parse.initialize("aOa7pfDy6GLtckl4cYBEMCnkBW9NyDLZ7ta4FVoI", "jFHEVpzYS5rVlEPJha3N9YK6KP5ifHHy71roi7pl");
 if (!Parse.User.current()) {
   window.location.href='/';
 } else {
@@ -227,6 +226,54 @@ function initialize() {
      });
 }
 google.maps.event.addDomListener(window, 'load', initialize); 
+
+
+window.uploadPhotos = function(url){
+    // Read in file
+    var file = event.target.files[0];
+
+    // Ensure it's an image
+    if(file.type.match(/image.*/)) {
+        console.log('An image has been loaded');
+
+        // Load the image
+        var reader = new FileReader();
+        reader.onload = function (readerEvent) {
+            var image = new Image();
+            image.onload = function (imageEvent) {
+
+                // Resize the image
+                var canvas = document.createElement('canvas'),
+                    max_size = 544,
+                    width = image.width,
+                    height = image.height;
+                if (width > height) {
+                    if (width > max_size) {
+                        height *= max_size / width;
+                        width = max_size;
+                    }
+                } else {
+                    if (height > max_size) {
+                        width *= max_size / width;
+                        height = max_size;
+                    }
+                }
+                canvas.width = width;
+                canvas.height = height;
+                canvas.getContext('2d').drawImage(image, 0, 0, width, height);
+                var dataUrl = canvas.toDataURL('image/jpeg');
+                var resizedImage = dataURLToBlob(dataUrl);
+                $.event.trigger({
+                    type: "imageResized",
+                    blob: resizedImage,
+                    url: url
+                });
+            }
+            image.src = readerEvent.target.result;
+        }
+        reader.readAsDataURL(file);
+    }
+};
 
 function processForm(e) {
     if (e.preventDefault) e.preventDefault();
@@ -275,7 +322,6 @@ function processForm(e) {
     deal.set("submittedBy", document.getElementById('submitted-by').value);
     deal.set("downVotes", 0);
     deal.set("upVotes", 0);
-    deal.set("rating", 0);
     deal.set("flags", 0);
     deal.set("sundaySt", parseInt(document.getElementById('sundayDealSt').value));
     deal.set("sundayEn", parseInt(document.getElementById('sundayDealEn').value));
@@ -293,7 +339,7 @@ function processForm(e) {
     deal.set("saturdayEn", parseInt(document.getElementById('saturdayDealEn').value));
     var point = new Parse.GeoPoint({latitude: parseFloat(document.getElementById('latitude').value),
                  longitude: parseFloat(document.getElementById('longitude').value)});
- 
+
     deal.save(null, {
       success: function(deal) {
         // Execute any logic that should take place after the object is saved.
