@@ -1,2 +1,8 @@
 # Script
 *.py
+
+# Header
+/parse/cloud/views/head.ejs
+
+# Global JSON
+/parse/config/global.json
