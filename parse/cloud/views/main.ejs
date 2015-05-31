@@ -1,5 +1,4 @@
 <head>
-<link rel="stylesheet" type="text/css" href="../../public/style.css" >
 <title>Deal Entry Form</title>
 </head>
 
@@ -186,13 +185,12 @@
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
+<script type="text/javascript">
 // appliction id, javascript id
 Parse.initialize(
     "2TR1bOpjpFL8Wm7a7TXcbuoFCyJRB0VdSOXnf8tB",
     "qsHJYXDy2w11zsB7fJgJfTGW72vuXPfXe0jgGgAT"
 );
-
-<script type="text/javascript">
 // application id, javascript id
 if (!Parse.User.current()) {
   window.location.href='/';
@@ -328,10 +326,13 @@ function processForm(e) {
     var customDealTagArraySplit = customDealTagArray.toString().toLowerCase().split(",");
     var customDealTagArrayTrim = customDealTagArraySplit.map(Function.prototype.call, String.prototype.trim);
 
-    var dealTagArray = customDealTagArrayTrim + ',' + dealTagArrayTrim;
-    var concatDealTagArray = dealTagArray.toString().split(",");
-    var concatDealTagArrayTrim = concatDealTagArray.map(Function.prototype.call, String.prototype.trim);
-
+    if (customDealTagArray == "") {
+      var concatDealTagArrayTrim = dealTagArrayTrim;
+    } else {
+      var dealTagArray = customDealTagArrayTrim + ',' + dealTagArrayTrim;
+      var concatDealTagArray = dealTagArray.toString().split(",");
+      var concatDealTagArrayTrim = concatDealTagArray.map(Function.prototype.call, String.prototype.trim);
+    }
 
     deal.set("title", document.getElementById('deal').value);
     deal.set("description", document.getElementById('deal-description').value);
