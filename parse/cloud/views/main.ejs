@@ -14,7 +14,7 @@
   Google Maps Search: 
     <input id="searchTextField" type="text" size="50" placeholder="Enter a restaurant" autocomplete="on" runat="server" />
     <br/><br/>
-  Restaurant:
+  Restaurant Name:
     <input type="text" id="name" name="name" size="70"/>
     <br/><br/>
   Restaurant Description:
@@ -185,6 +185,12 @@
 <script src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+// appliction id, javascript id
+Parse.initialize(
+    "2TR1bOpjpFL8Wm7a7TXcbuoFCyJRB0VdSOXnf8tB",
+    "qsHJYXDy2w11zsB7fJgJfTGW72vuXPfXe0jgGgAT"
+);
 
 <script type="text/javascript">
 // application id, javascript id
