@@ -2,8 +2,8 @@
 *.py
 
 # Header
-head.ejs
+/parse/cloud/views/head.ejs
 
 # Config JSON
-global.json
+/parse/config/global.json
 
