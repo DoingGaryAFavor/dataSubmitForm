@@ -5,5 +5,5 @@
 /parse/cloud/views/head.ejs
 
 # Config JSON
-/parse/config/global.json
+# /parse/config/global.json
 
