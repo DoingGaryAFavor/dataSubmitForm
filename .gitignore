@@ -2,9 +2,9 @@
 *.py
 
 # Header
-# /parse/cloud/views/head.ejs
+/parse/cloud/views/head.ejs
 
-# Config JSON
-# /parse/config/global.json
+# Global JSON
+/parse/config/global.json
 
 *~
