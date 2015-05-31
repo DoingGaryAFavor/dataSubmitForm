@@ -29,8 +29,8 @@ var Buffer = require('buffer').Buffer;
 var app = express();
 
 /**
- * GitHub specific details, including application id and secret
- */
+* GitHub specific details, including application id and secret
+*/
 var githubClientId = '184f505d6bd27c4c52c9';
 var githubClientSecret = '45052c86e58d22e7fbcf90d39d443cb98a514461';
 
