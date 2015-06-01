@@ -328,36 +328,33 @@ var newGitHubUser = function(accessToken, githubData) {
 }
 
 Parse.Cloud.define("UpVote", function(request, response) {
+  Parse.Cloud.useMasterKey();
   var query = new Parse.Query(Parse.Object.extend("deals"));
-  query.get(request.object.get("upVotes"), {
-    success: function(deal) {
+  // query.get(request.object.get("upVotes"), {
+  query.equalTo("objectId", "cFw8vS7D2m");
+  query.get().then(function(deal) {
       deal.increment("upVotes");
-      request.object.set("rating", request.object.get("upVotes") - request.object.get("downVotes"));
+      deal.set("rating", (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes")))));
       deal.save();
-      alert("Deal up voted!");
-    },
-    error: function(error) {
-      console.error("Got an error " + error.code + " : " + error.message);
-    }
-  });
+      response.success("Deal up voted with new up vote value of: " + deal.get("upVotes")
+                      + " and rating of: " + deal.get("rating") + "%");
+    }, function(error) {
+      response.error("Got an error " + error.code + " : " + error.message + ". Deal not saved!");
+    });
 });
 
 Parse.Cloud.define("DownVote", function(request, response) {
+  Parse.Cloud.useMasterKey();
   var query = new Parse.Query(Parse.Object.extend("deals"));
-  query.get(request.object.get("downVotes"), {
-    success: function(deal) {
+  // query.get(request.object.get("upVotes"), {
+  query.equalTo("objectId", "cFw8vS7D2m");
+  query.get().then(function(deal) {
       deal.increment("downVotes");
-      if (request.object.get("downVotes") > request.object.get("upVotes")) {
-        request.object.set("flags", 1);
-        request.object.set("rating", request.object.get("upVotes") - request.object.get("downVotes"));
-      } else {
-        request.object.set("rating", request.object.get("upVotes") - request.object.get("downVotes"));
-      }
+      deal.set("rating", (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes")))));
       deal.save();
-      alert("Deal down voted!");
-    },
-    error: function(error) {
-      console.error("Got an error " + error.code + " : " + error.message);
-    }
-  });
+      response.success("Deal down voted with new down vote value of: " + deal.get("downVotes")
+                      + " and rating of: " + deal.get("rating") + "%");
+    }, function(error) {
+      response.error("Got an error " + error.code + " : " + error.message + ". Deal not saved!");
+    });
 });
