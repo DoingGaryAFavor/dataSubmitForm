@@ -331,7 +331,7 @@ Parse.Cloud.define("UpVote", function(request, response) {
   Parse.Cloud.useMasterKey();
   var query = new Parse.Query(Parse.Object.extend("deals"));
   // query.get(request.object.get("upVotes"), {
-  query.equalTo("objectId", "cFw8vS7D2m");
+  query.equalTo("objectId", "bAOkX12ykr");
   query.get().then(function(deal) {
       deal.increment("upVotes");
       deal.set("rating", (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes")))));
