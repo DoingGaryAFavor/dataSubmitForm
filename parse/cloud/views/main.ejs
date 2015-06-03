@@ -1,5 +1,4 @@
 <head>
-<link rel="stylesheet" type="text/css" href="../../public/style.css" >
 <title>Deal Entry Form</title>
 </head>
 
@@ -14,7 +13,7 @@
   Google Maps Search: 
     <input id="searchTextField" type="text" size="50" placeholder="Enter a restaurant" autocomplete="on" runat="server" />
     <br/><br/>
-  Restaurant:
+  Restaurant Name:
     <input type="text" id="name" name="name" size="70"/>
     <br/><br/>
   Restaurant Description:
@@ -187,7 +186,12 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
 <script type="text/javascript">
-Parse.initialize("aOa7pfDy6GLtckl4cYBEMCnkBW9NyDLZ7ta4FVoI", "jFHEVpzYS5rVlEPJha3N9YK6KP5ifHHy71roi7pl");
+// appliction id, javascript id
+Parse.initialize(
+    "2TR1bOpjpFL8Wm7a7TXcbuoFCyJRB0VdSOXnf8tB",
+    "qsHJYXDy2w11zsB7fJgJfTGW72vuXPfXe0jgGgAT"
+);
+
 if (!Parse.User.current()) {
   window.location.href='/';
 } else {
@@ -206,9 +210,7 @@ if (!Parse.User.current()) {
   console.log(error);
 });
 }
-</script>
 
-<script type="text/javascript">
 function initialize() {
      var input = document.getElementById('searchTextField');
      var autocomplete = new google.maps.places.Autocomplete(input);
@@ -229,53 +231,10 @@ function initialize() {
 }
 google.maps.event.addDomListener(window, 'load', initialize); 
 
-
-window.uploadPhotos = function(url){
-    // Read in file
-    var file = event.target.files[0];
-
-    // Ensure it's an image
-    if(file.type.match(/image.*/)) {
-        console.log('An image has been loaded');
-
-        // Load the image
-        var reader = new FileReader();
-        reader.onload = function (readerEvent) {
-            var image = new Image();
-            image.onload = function (imageEvent) {
-
-                // Resize the image
-                var canvas = document.createElement('canvas'),
-                    max_size = 544,
-                    width = image.width,
-                    height = image.height;
-                if (width > height) {
-                    if (width > max_size) {
-                        height *= max_size / width;
-                        width = max_size;
-                    }
-                } else {
-                    if (height > max_size) {
-                        width *= max_size / width;
-                        height = max_size;
-                    }
-                }
-                canvas.width = width;
-                canvas.height = height;
-                canvas.getContext('2d').drawImage(image, 0, 0, width, height);
-                var dataUrl = canvas.toDataURL('image/jpeg');
-                var resizedImage = dataURLToBlob(dataUrl);
-                $.event.trigger({
-                    type: "imageResized",
-                    blob: resizedImage,
-                    url: url
-                });
-            }
-            image.src = readerEvent.target.result;
-        }
-        reader.readAsDataURL(file);
-    }
-};
+function toTitleCase(str)
+{
+    return str.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();});
+}
 
 function processForm(e) {
     if (e.preventDefault) e.preventDefault();
@@ -322,17 +281,23 @@ function processForm(e) {
     var customDealTagArraySplit = customDealTagArray.toString().toLowerCase().split(",");
     var customDealTagArrayTrim = customDealTagArraySplit.map(Function.prototype.call, String.prototype.trim);
 
-    var dealTagArray = customDealTagArrayTrim + ',' + dealTagArrayTrim;
-    var concatDealTagArray = dealTagArray.toString().split(",");
-    var concatDealTagArrayTrim = concatDealTagArray.map(Function.prototype.call, String.prototype.trim);
+    if (customDealTagArray == "") {
+      var concatDealTagArrayTrim = dealTagArrayTrim;
+    } else {
+      var dealTagArray = customDealTagArrayTrim + ',' + dealTagArrayTrim;
+      var concatDealTagArray = dealTagArray.toString().split(",");
+      var concatDealTagArrayTrim = concatDealTagArray.map(Function.prototype.call, String.prototype.trim);
+    }
 
-
-    deal.set("title", document.getElementById('deal').value);
-    deal.set("description", document.getElementById('deal-description').value);
+    var dealTitle = toTitleCase(document.getElementById('deal').value.toString());
+    deal.set("title", dealTitle);
+    var dealDescription = document.getElementById('deal-description').value.toLowerCase();
+    deal.set("description", dealDescription);
     deal.set("tags", concatDealTagArrayTrim);
     deal.set("submittedBy", document.getElementById('submitted-by').value);
     deal.set("downVotes", 0);
     deal.set("upVotes", 0);
+    deal.set("rating", 0);
     deal.set("flags", 0);
     deal.set("sundaySt", parseInt(document.getElementById('sundayDealSt').value));
     deal.set("sundayEn", parseInt(document.getElementById('sundayDealEn').value));
@@ -433,21 +398,3 @@ if (myForm.attachEvent) {
 }
 </script>
 
-<script type="text/javascript">
-var queryRole = new Parse.Query(Parse.Role);
-queryRole.equalTo('name', 'Administrator');
-queryRole.first({
-    success: function(result) { // Role Object
-        var role = result;
-        var adminRelation = new Parse.Relation(role, 'users');
-        var queryAdmins = adminRelation.query();
-        queryAdmins.equalTo('objectId', Parse.User.current().id);
-        queryAdmins.first({
-            success: function(result) {    // User Object
-                var user = result;
-                user ? console.log('USER : ', user) : console.log('User not Administrator!');
-            }
-        });
-    },
-    error: function(error) {}
-});
