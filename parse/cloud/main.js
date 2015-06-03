@@ -334,7 +334,8 @@ Parse.Cloud.define("UpVote", function(request, response) {
   query.equalTo("objectId", "bAOkX12ykr");
   query.get().then(function(deal) {
       deal.increment("upVotes");
-      deal.set("rating", (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes")))));
+      var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
+      deal.set("rating", ratingCalculation);
       deal.save();
       response.success("Deal up voted with new up vote value of: " + deal.get("upVotes")
                       + " and rating of: " + deal.get("rating") + "%");
@@ -350,7 +351,8 @@ Parse.Cloud.define("DownVote", function(request, response) {
   query.equalTo("objectId", "cFw8vS7D2m");
   query.get().then(function(deal) {
       deal.increment("downVotes");
-      deal.set("rating", (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes")))));
+      var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
+      deal.set("rating", ratingCalculation);
       deal.save();
       response.success("Deal down voted with new down vote value of: " + deal.get("downVotes")
                       + " and rating of: " + deal.get("rating") + "%");
@@ -533,6 +535,33 @@ Parse.Cloud.define("assignDealTags", function(request, response) {
   }).then(function() {
     // Every deal was updated
     response.success("Finished assigning featured tags to deals");
+  }, function(error) {
+    response.error("Got an error " + error.code + " : " + error.message + ".");
+  });
+});
+
+Parse.Cloud.define("updateRatings", function(request, response) {
+  Parse.Cloud.useMasterKey();
+  var query = new Parse.Query(Parse.Object.extend("deals"));
+  query.find().then(function(deal) {
+      for (var i = 0; i < deal.length; i++) {
+        var ratingCalculation = (100 * (deal[i].get("upVotes") / (deal[i].get("upVotes") + deal[i].get("downVotes"))));
+        deal[i].set("rating", ratingCalculation);
+        deal[i].save();
+      }
+      // use promise to extend the time response.success is called
+      var promise = Parse.Promise.as();
+      _.each(deal, function(result) {
+        // For each item, extend the promise with a function to save it
+        promise = promise.then(function() {
+          // Return a promise that will be resolved when the saves are finished
+          return result.save();
+        });
+      });
+      return promise;
+  }).then(function() {
+    // Every deal was updated
+    response.success("Finished updating ratings");
   }, function(error) {
     response.error("Got an error " + error.code + " : " + error.message + ".");
   });
