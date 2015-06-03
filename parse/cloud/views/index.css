@@ -1,8 +1,9 @@
 .restInfo{
 	width:700px;
 	float: center;
-
-
+position: relative;
+    margin-left: auto;
+    margin-right: auto;
 
 
   }
