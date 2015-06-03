@@ -358,3 +358,182 @@ Parse.Cloud.define("DownVote", function(request, response) {
       response.error("Got an error " + error.code + " : " + error.message + ". Deal not saved!");
     });
 });
+
+Parse.Cloud.define("zeroUpVotes", function(request, response) {
+  Parse.Cloud.useMasterKey();
+  var query = new Parse.Query(Parse.Object.extend("deals"));
+  query.greaterThan("upVotes", 0);
+  query.find().then(function(deal) {
+      for (var i = 0; i < deal.length; i++) {
+        console.log("Inside for loop");
+        console.log("Deal number " + i + " with " + deal[i].get("upVotes") + " up votes");
+        deal[i].set("upVotes", 0);
+        deal[i].save();
+        console.log("After deal save, deal up vote is now: " + deal[i].get("upVotes"));
+      }
+      // use promise to extend the time response.success is called
+      var promise = Parse.Promise.as();
+      _.each(deal, function(result) {
+        // For each item, extend the promise with a function to save it.
+        promise = promise.then(function() {
+          // Return a promise that will be resolved when the saves are finished.
+          return result.save();
+        });
+      });
+      return promise;
+  }).then(function() {
+    // Every deal was updated
+    response.success("Finished setting all up vote values to zero");;
+  }, function(error) {
+    response.error("Got an error " + error.code + " : " + error.message + ".");
+  });
+});
+
+Parse.Cloud.define("setUpVotes", function(request, response) {
+  Parse.Cloud.useMasterKey();
+  Parse.Config.get().then(function(config) {
+    console.log("We got the config values");
+    var ceiling = config.get("upVoteCeiling");
+    var query = new Parse.Query(Parse.Object.extend("deals"));
+    query.equalTo("upVotes", 0);
+    query.find().then(function(deal) {
+        for (var i = 0; i < deal.length; i++) {
+          deal[i].set("upVotes", Math.floor((Math.random() * ceiling) + 1));
+          deal[i].save(); 
+        }
+        // use promise to extend the time response.success is called
+        var promise = Parse.Promise.as();
+        _.each(deal, function(result) {
+          // For each item, extend the promise with a function to save it
+          promise = promise.then(function() {
+            // Return a promise that will be resolved when the saves are finished
+            return result.save();
+          });
+        });
+        return promise;
+    }).then(function() {
+      // Every deal was updated
+      response.success("Finished updating all up vote values");
+    }, function(error) {
+      response.error("Got an error " + error.code + " : " + error.message + ".");
+    });
+  });
+});
+  
+Parse.Cloud.define("zeroDownVotes", function(request, response) {
+  Parse.Cloud.useMasterKey();
+  var query = new Parse.Query(Parse.Object.extend("deals"));
+  query.greaterThan("downVotes", 0);
+  query.find().then(function(deal) {
+      for (var i = 0; i < deal.length; i++) {
+        console.log("Inside for loop");
+        console.log("Deal number " + i + " with " + deal[i].get("downVotes") + " down votes");
+        deal[i].set("downVotes", 0);
+        deal[i].save();
+        console.log("After deal save, deal down vote is now: " + deal[i].get("downVotes"));
+      }
+      // use promise to extend the time response.success is called
+      var promise = Parse.Promise.as();
+      _.each(deal, function(result) {
+        // For each item, extend the promise with a function to save it
+        promise = promise.then(function() {
+          // Return a promise that will be resolved when the saves are finished
+          return result.save();
+        });
+      });
+      return promise;
+  }).then(function() {
+  // Every deal was updated
+    response.success("Finished setting all down vote values to zero");
+  }, function(error) {
+    response.error("Got an error " + error.code + " : " + error.message + ".");
+  });
+});
+
+Parse.Cloud.define("setDownVotes", function(request, response) {
+  Parse.Cloud.useMasterKey();
+  Parse.Config.get().then(function(config) {
+    console.log("We got the config values");
+    var ceiling = config.get("downVoteCeiling");
+    var query = new Parse.Query(Parse.Object.extend("deals"));
+    query.equalTo("downVotes", 0);
+    query.find().then(function(deal) {
+        for (var i = 0; i < deal.length; i++) {
+          deal[i].set("downVotes", Math.floor((Math.random() * ceiling) + 1));
+          deal[i].save(); 
+        }
+        // use promise to extend the time response.success is called
+        var promise = Parse.Promise.as();
+        _.each(deal, function(result) {
+          // For each item, extend the promise with a function to save it
+          promise = promise.then(function() {
+            // Return a promise that will be resolved when the saves are finished
+            return result.save();
+          });
+        });
+        return promise;
+    }).then(function() {
+      // Every deal was updated
+      response.success("Finished updating all down vote values");
+    }, function(error) {
+      response.error("Got an error " + error.code + " : " + error.message + ".");
+    });
+  });
+});
+
+Parse.Cloud.define("eraseDealTags", function(request, response) {
+  Parse.Cloud.useMasterKey();
+  var query = new Parse.Query(Parse.Object.extend("deals"));
+  query.notEqualTo("tags", []);
+  query.find().then(function(deal) {
+      for (var i = 0; i < deal.length; i++) {
+        console.log("Inside if function");
+        deal[i].set("tags", []);
+        deal[i].save();
+      }
+      // use promise to extend the time response.success is called
+      var promise = Parse.Promise.as();
+      _.each(deal, function(result) {
+        // For each item, extend the promise with a function to save it
+        promise = promise.then(function() {
+          // Return a promise that will be resolved when the saves are finished
+          return result.save();
+        });
+      });
+      return promise;
+  }).then(function() {
+    // Every deal was updated
+    response.success("Finished deleting all deal tag values");
+  }, function(error) {
+    response.error("Got an error " + error.code + " : " + error.message + ".");
+  });
+});
+
+Parse.Cloud.define("assignDealTags", function(request, response) {
+  Parse.Cloud.useMasterKey();
+  var query = new Parse.Query(Parse.Object.extend("deals"));
+  query.greaterThan("upVotes", 300);
+  query.notEqualTo("tags", "featured");
+  query.find().then(function(deal) {
+      for (var i = 0; i < deal.length; i++) {
+        console.log("Inside if function");
+        deal[i].addUnique("tags", "featured");
+        deal[i].save();
+      }
+      // use promise to extend the time response.success is called
+      var promise = Parse.Promise.as();
+      _.each(deal, function(result) {
+        // For each item, extend the promise with a function to save it
+        promise = promise.then(function() {
+          // Return a promise that will be resolved when the saves are finished
+          return result.save();
+        });
+      });
+      return promise;
+  }).then(function() {
+    // Every deal was updated
+    response.success("Finished assigning featured tags to deals");
+  }, function(error) {
+    response.error("Got an error " + error.code + " : " + error.message + ".");
+  });
+});
