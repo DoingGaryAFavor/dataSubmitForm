@@ -1,10 +1,14 @@
 .restInfo{
-  width:700px;
-  float: center;
+	width:700px;
+	float: center;
 }
 
 .restInfo input{
-  width :100%;
+	width: 100%;
+}
+
+.restInfo input[type="checkbox"]{
+  width: 2%;
 }
    
 .deals{
@@ -15,37 +19,36 @@
 }
 
 input[type="submit"]{
-  background: #663399 ;
-  color: #FFC107;
+  background: #6B0C2F ;
+  color: white;
 }
 
 input[type="file"]{
-  background: #FFC107;
-  color: #663399;
+  background: white;
+  color: #6B0C2F;
 }
 
 input[type="file"]::-webkit-file-upload-button{
-  background:#663399;
-  color:#FFC107;
+  background:#6B0C2F;
+  color:white;
 }
 
 body{
-  background-color: #FFC107;
+  background-color: white;
   font-family: "verdana";
-  font-size: 12pt;    
-  color: #663399;
+  font-size: 14pt;    
+  color: #6B0C2F;
 }
 
 h1{
-  color: #663399;
+	color: #6B0C2F;
   font-size:20pt;
-  width: 500px;
+	width: 500px;
 }
 
 input{
-  color: #663399;   
-  border: 1px solid #663399;
-
+  color: #6B0C2F;   
+	border: 1px solid #6B0C2F;
 }
 
 .container {
@@ -55,12 +58,8 @@ input{
   margin-right: auto ;
 }
 
-.container input{
-  
-}
-
 .left{
-  position: relative;
+    position: relative;
 }
 
 .bigbutton{
@@ -69,8 +68,4 @@ input{
 
 .timeButton{
     width: 60px;
-}
-
-.latitude{
-    cityLat: ;
 }

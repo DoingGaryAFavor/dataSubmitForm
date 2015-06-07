@@ -1,49 +1,53 @@
+<!DOCTYPE html>
+<html>
 <head>
-<title>Deal Entry Form</title>
+  <link rel="stylesheet" type="text/css" href="index.css">
+  <title>Deal Entry Form</title>
 </head>
 
 <body>
   <center>
-  	<h1>Deal</h1>
-    <hr />
-    <hr />
+  	<h1>Restaurant and Deals</h1>
   </center>
-  <form id="my-form" class = "left"><font size="5">
+  <form id="my-form" class = "left">
+  <div class = "whole">
+  <div class = "container" >
+  <div class="restInfo">
   </br>
   Google Maps Search: 
-    <input id="searchTextField" type="text" size="50" placeholder="Enter a restaurant" autocomplete="on" runat="server" />
+    <input id="searchTextField" type="text" placeholder = "Search for Business" onfocus="if(this.value==this.defaultValue)this.value='';" autocomplete="on" runat="server" />
     <br/><br/>
   Restaurant Name:
-    <input type="text" id="name" name="name" size="70"/>
+    <input type="text" id="name" name="name"/>
     <br/><br/>
   Restaurant Description:
-    <input id="restaurant-description" type="textarea" name="Restaurant Description" size = "70">
+    <input id="restaurant-description" type="textarea" name="Restaurant Description">
     <br/><br/>
   Website:
-    <input id="website" type="text" name="Website" size = "70">
+    <input id="website" type="text" name="Website">
     <br/><br/>
   Phone Number:
-    <input id="phone-number" type="tel" name="Phone Number" size = "70">
+    <input id="phone-number" type="tel" name="Phone Number">
     <br/><br/>
   Formatted Address:
-    <input id="formatted-address" type="text" name="Formatted Address" size = "70">
+    <input id="formatted-address" type="text" name="Formatted Address">
     <br/><br/>
     <sub> Please validate all location fields! </sub>
     <br/><br/>
   Street Number:
-    <input id="street-number" type="text" name="Street Number" size = "70">
+    <input id="street-number" type="text" name="Street Number">
     <br/><br/>
   Street Address:
-    <input id="street-address" type="text" name="Street Address" size = "70">
+    <input id="street-address" type="text" name="Street Address">
     <br/><br/>
   City:
-    <input id="city" type="text" name="City" size = "70">
+    <input id="city" type="text" name="City">
     <br/><br/>
   State:
-    <input id="state" type="text" name="City" size = "70">
+    <input id="state" type="text" name="City">
     <br/><br/>
   Zip Code:
-    <input id="zip-code" type="text" name="Zip Code" size = "70">
+    <input id="zip-code" type="text" name="Zip Code">
     <br/><br/>
   Latitude:
     <input id="latitude" type="text" name="Latitude">
@@ -56,124 +60,109 @@
     <input id="picture" type="file" name="Picture">
     <br/><br/>
   Restaurant Availability:
-    <ul>
-    <li>Sunday:
-    <input id="sundaySt" type="text" name="Sunday Open" placeholder="Please use 24 hour time" size="20">
+    <br/><br/>
+    Sunday:
+    <input id="sundaySt" type="text" name="Sunday Open" placeholder="Please use 24 hour time">
     To:
-    <input id="sundayEn" type="text" name="Sunday Close" placeholder="For example: 0900" size="20">
-    </li>
+    <input id="sundayEn" type="text" name="Sunday Close" placeholder="For example: 0900">
     <br/><br/>
     
-    <li>Monday:
-    <input id="mondaySt" type="text" name="Monday Open" placeholder="Please use 24 hour time" size="20">
+    Monday:
+    <input id="mondaySt" type="text" name="Monday Open" placeholder="Please use 24 hour time">
     To:
-    <input id="mondayEn" type="text" name="Monday Close" placeholder="For example: 0900" size="20">
-    </li>
+    <input id="mondayEn" type="text" name="Monday Close" placeholder="For example: 0900">
     <br/><br/>
     
-    <li>Tuesday:
-    <input id="tuesdaySt" type="text" name="Tuesday Open" placeholder="Please use 24 hour time" size="20">
+    Tuesday:
+    <input id="tuesdaySt" type="text" name="Tuesday Open" placeholder="Please use 24 hour time">
     To:
-    <input id="tuesdayEn" type="text" name="Tuesday Close" placeholder="For example: 0900" size="20">
-    </li>
+    <input id="tuesdayEn" type="text" name="Tuesday Close" placeholder="For example: 0900">
     <br/><br/>
     
-    <li>Wednesday:
-    <input id="wednesdaySt" type="text" name="Wednesday Open" placeholder="Please use 24 hour time" size="20">
+    Wednesday:
+    <input id="wednesdaySt" type="text" name="Wednesday Open" placeholder="Please use 24 hour time">
     To:
-    <input id="wednesdayEn" type="text" name="Wednesday Close" placeholder="For example: 0900" size="20">
-    </li>
+    <input id="wednesdayEn" type="text" name="Wednesday Close" placeholder="For example: 0900">
     <br/><br/>
     
-    <li>Thursday:
-    <input id="thursdaySt" type="text" name="Thursday Open" placeholder="Please use 24 hour time" size="20">
+    Thursday:
+    <input id="thursdaySt" type="text" name="Thursday Open" placeholder="Please use 24 hour time">
     To:
-    <input id="thursdayEn" type="text" name="Thursday Close" placeholder="For example: 0900" size="20">
-    </li>
+    <input id="thursdayEn" type="text" name="Thursday Close" placeholder="For example: 0900">
     <br/><br/>
 
-    <li>Friday:
-    <input id="fridaySt" type="text" name="Friday Open" placeholder="Please use 24 hour time" size="20">
+    Friday:
+    <input id="fridaySt" type="text" name="Friday Open" placeholder="Please use 24 hour time">
     To:
-    <input id="fridayEn" type="text" name="Friday Close" placeholder="For example: 0900" size="20">
-    </li>
+    <input id="fridayEn" type="text" name="Friday Close" placeholder="For example: 0900">
     <br/><br/>
 
-    <li>Saturday:
-    <input id="saturdaySt" type="text" name="Saturday Open" placeholder="Please use 24 hour time" size="20">
+    Saturday:
+    <input id="saturdaySt" type="text" name="Saturday Open" placeholder="Please use 24 hour time">
     To:
-    <input id="saturdayEn" type="text" name="Saturday Close" placeholder="For example: 0900" size="20">
-    </li>
+    <input id="saturdayEn" type="text" name="Saturday Close" placeholder="For example: 0900">
     <br/><br/>
-    </ul>
     
   Deal:
-  	<input id="deal" type="text" name="Deal name" size="70" maxlength="25">
+  	<input id="deal" type="text" name="Deal name" maxlength="25">
   	<br/><br/>
   Deal Description:
-  	<input id="deal-description" type="text" name="Deal Description" size="70">
+  	<input id="deal-description" type="text" name="Deal Description">
   	<br/><br/>
   Deal Type:
     <input id="deal-type" type="checkbox" name="dealtype" value="Food">Food
     <input id="deal-type1" type="checkbox" name="dealtype" value="Drink">Drink
     <input id="deal-type2" type="checkbox" name="dealtype" value="Featured">Featured 
     <br/>
-    <input id="deal-type3" type="text" name="customdeal" placeholder="Other deal tag e.g. Seafood" size="70">
+    <input id="deal-type3" type="text" name="customdeal" placeholder="Other deal tag e.g. Seafood">
     <br/><br/>
   Deal Availability:
-    <ul>
-    <li>Sunday:
-    <input id="sundayDealSt" type="text" name="Sunday Deal Start" placeholder="Please use 24 hour time" size="20">
+    <br/><br/>
+    Sunday:
+    <input id="sundayDealSt" type="text" name="Sunday Deal Start" placeholder="Please use 24 hour time">
     To:
-    <input id="sundayDealEn" type="text" name="Sunday Deal End" placeholder="For example: 0900" size="20">
-    </li>
+    <input id="sundayDealEn" type="text" name="Sunday Deal End" placeholder="For example: 0900">
     <br/><br/>
     
-    <li>Monday:
-    <input id="mondayDealSt" type="text" name="Monday Deal Start" placeholder="Please use 24 hour time" size="20">
+    Monday:
+    <input id="mondayDealSt" type="text" name="Monday Deal Start" placeholder="Please use 24 hour time">
     To:
-    <input id="mondayDealEn" type="text" name="Monday Deal End" placeholder="For example: 0900" size="20">
-    </li>
+    <input id="mondayDealEn" type="text" name="Monday Deal End" placeholder="For example: 0900">
     <br/><br/>
     
-    <li>Tuesday:
-    <input id="tuesdayDealSt" type="text" name="Tuesday Deal Start" placeholder="Please use 24 hour time" size="20">
+    Tuesday:
+    <input id="tuesdayDealSt" type="text" name="Tuesday Deal Start" placeholder="Please use 24 hour time">
     To:
-    <input id="tuesdayDealEn" type="text" name="Tuesday Deal End" placeholder="For example: 0900" size="20">
-    </li>
+    <input id="tuesdayDealEn" type="text" name="Tuesday Deal End" placeholder="For example: 0900">
     <br/><br/>
     
-    <li>Wednesday:
-    <input id="wednesdayDealSt" type="text" name="Wednesday Deal Start" placeholder="Please use 24 hour time" size="20">
+    Wednesday:
+    <input id="wednesdayDealSt" type="text" name="Wednesday Deal Start" placeholder="Please use 24 hour time">
     To:
-    <input id="wednesdayDealEn" type="text" name="Wednesday Deal End" placeholder="For example: 0900" size="20">
-    </li>
+    <input id="wednesdayDealEn" type="text" name="Wednesday Deal End" placeholder="For example: 0900">
     <br/><br/>
     
-    <li>Thursday:
-    <input id="thursdayDealSt" type="text" name="Thursday Deal Start" placeholder="Please use 24 hour time" size="20">
+    Thursday:
+    <input id="thursdayDealSt" type="text" name="Thursday Deal Start" placeholder="Please use 24 hour time">
     To:
-    <input id="thursdayDealEn" type="text" name="Thursday Deal End" placeholder="For example: 0900" size="20">
-    </li>
+    <input id="thursdayDealEn" type="text" name="Thursday Deal End" placeholder="For example: 0900">
     <br/><br/>
 
-    <li>Friday:
-    <input id="fridayDealSt" type="text" name="Friday Deal Start" placeholder="Please use 24 hour time" size="20">
+    Friday:
+    <input id="fridayDealSt" type="text" name="Friday Deal Start" placeholder="Please use 24 hour time">
     To:
-    <input id="fridayDealEn" type="text" name="Friday Deal End" placeholder="For example: 0900" size="20">
-    </li>
+    <input id="fridayDealEn" type="text" name="Friday Deal End" placeholder="For example: 0900">
     <br/><br/>
 
-    <li>Saturday:
-    <input id="saturdayDealSt" type="text" name="Saturday Deal Start" placeholder="Please use 24 hour time" size="20">
+    Saturday:
+    <input id="saturdayDealSt" type="text" name="Saturday Deal Start" placeholder="Please use 24 hour time">
     To:
-    <input id="saturdayDealEn" type="text" name="Saturday Deal End" placeholder="For example: 0900" size="20">
-    </li>
+    <input id="saturdayDealEn" type="text" name="Saturday Deal End" placeholder="For example: 0900">
     <br/><br/>
     </ul>
 
     Restaurant and Deal submitted by:
-      <input id="submitted-by" type="text" placeholder="First name only" name="Restaurant and Deal Submission" size="70">
+      <input id="submitted-by" type="text" name="Restaurant and Deal Submission">
     <center>
 	  <input class = "bigbutton" type="submit" value="Submit">
     </center>
