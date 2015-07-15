@@ -94,6 +94,20 @@ input {
   position: relative;
 }
 
-.bigbutton {
+.submittedBy {
+  margin-bottom: 20px;
+}
+
+.submitbutton {
+  background-color: #ed8223;
+  color: #fff;
+  font-family: 'Helvetica Neue',sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  border-radius: 20px;
+
+  border: 0;
+  text-shadow: #C17C3A 0 -1px 0;
   width: 100%;
+  height: 32px
 }
