@@ -14,6 +14,16 @@
   margin-bottom: 20px;
 }
 
+.restaurantType {
+  margin-bottom: 20px;
+}
+
+.restaurantType .restaurantTypeTitle {
+  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
+  font-size: 16pt;
+  margin-bottom: 20px;
+}
+
 .restaurant .sub {
   font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
   font-size: 16pt;  
@@ -105,7 +115,6 @@ input {
   font-size: 18px;
   line-height: 30px;
   border-radius: 20px;
-
   border: 0;
   text-shadow: #C17C3A 0 -1px 0;
   width: 100%;

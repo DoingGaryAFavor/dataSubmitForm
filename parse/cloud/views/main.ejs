@@ -51,9 +51,22 @@
           <input id = "restaurantLatitude" type = "text">
         Longitude:
           <input id = "restaurantLongitude" type = "text">
+      </div>
+      <div class = "restaurantType">
+        <div class = "restaurantTypeTitle">
+          <center>
+            Restaurant Type
+          </center>
+        </div>
+        <center>
+          Alcohol<input id = "restaurantType" type = "checkbox" name = "restauranttype" value = "Alcohol">
+          Wheelchair Accessible<input id = "restaurantType1" type = "checkbox" name = "restauranttype" value = "Wheelchair Accessible">
+        </center>
+      </div>
+      <div class = "restaurant">
         <div class = "restaurantAvailability">
           <center>
-            Restaurant Availability:
+            Restaurant Availability
           </center>
         </div>
           Sunday:
@@ -105,22 +118,22 @@
       <div class = "dealType">
         <div class = "dealTypeTitle">
           <center>
-            Deal Type:
+            Deal Type
           </center>
         </div>
         <center>
-          Food<input id = "deal-type" type = "checkbox" name = "dealtype" value = "Food">
-          Drink<input id = "deal-type1" type = "checkbox" name = "dealtype" value = "Drink">
-          Featured<input id = "deal-type2" type = "checkbox" name = "dealtype" value = "Featured"> 
-          Vegetarian<input id = "deal-type3" type = "checkbox" name = "dealtype" value = "Vegetarian">
-          Vegan<input id = "deal-type4" type = "checkbox" name = "dealtype" value = "Vegan">
-          Gluten Free<input id = "deal-type5" type = "checkbox" name = "dealtype" value = "GlutenFree">
+          Food<input id = "dealType" type = "checkbox" name = "dealtype" value = "Food">
+          Drink<input id = "dealType1" type = "checkbox" name = "dealtype" value = "Drink">
+          Featured<input id = "dealType2" type = "checkbox" name = "dealtype" value = "Featured"> 
+          Vegetarian<input id = "dealType3" type = "checkbox" name = "dealtype" value = "Vegetarian">
+          Vegan<input id = "dealType4" type = "checkbox" name = "dealtype" value = "Vegan">
+          Gluten Free<input id = "dealType5" type = "checkbox" name = "dealtype" value = "GlutenFree">
         </center>
       </div>
       <div class = "deal">
         <div class = "dealAvailability">
           <center>
-            Deal Availability:
+            Deal Availability
           </center>
         </div>
         Sunday:
@@ -261,7 +274,7 @@ function processForm(e) {
     var dealTagArraySplit = dealTagArrayLowerCase.toString().split(",");
     var dealTagArrayTrim = dealTagArraySplit.map(Function.prototype.call, String.prototype.trim);
 
-    var customDealTagArray = document.getElementById('deal-type3').value;
+    var customDealTagArray = document.getElementById('dealType3').value;
     var customDealTagArraySplit = customDealTagArray.toString().toLowerCase().split(",");
     var customDealTagArrayTrim = customDealTagArraySplit.map(Function.prototype.call, String.prototype.trim);
 
