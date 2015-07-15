@@ -1,95 +1,99 @@
-.restInfo{
+.restaurant {
 	width:700px;
 	float: center;
+}
+.restaurant .restaurantTitle {
+  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
+  font-size: 16pt;
+  margin-bottom: 20px;
+}
 
+.restaurant .restaurantAvailability {
+  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
+  font-size: 16pt;
+  margin-bottom: 20px;
+}
 
+.restaurant .sub {
+  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
+  font-size: 16pt;  
+  margin-bottom: 20px;
+}
 
-
-  }
-.restInfo input{
+.restaurant input {
 	width :100%;
-
+  margin-bottom: 20px;
 }
-   
-.deals{
 
-width: 700px;
-float: center;
+.deal {
+  width: 700px;
+  float: center;
   margin-left: auto ;
   margin-right: auto ;
-        }
-
-
-input[type="submit"]{
-  background: #663399 ;
-  color: orange;
 }
 
-::-webkit-input-placeholder{color:while}
-::-moz-placeholder{color:#663399}
-:-ms-input-placeholder{color:#663399}
-input:-moz-placeholder{color:#663399}
-
-input[type="file"]{
-background: orange;
-color: #663399;
+.deal .dealTitle {
+  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
+  font-size: 16pt;
+  margin-bottom: 20px;
 }
 
-input[type="file"]::-webkit-file-upload-button{
-background:#663399;
-color:orange;
+.deal .dealAvailability {
+  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
+  font-size: 16pt;
+  width-bottom: 20px;
 }
-body{
-	
-    background-color: orange;
-    font-family: "verdana";
-font-size: 12pt;    
-color: #663399;
+
+.deal input{
+  width: 100%;
+  margin-bottom: 20px;
 }
-h1{
-	color: #663399;
-        font-size:20pt;
+
+.dealType {
+  margin-bottom: 20px;
+}
+
+.dealType .dealTypeTitle {
+  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
+  font-size: 16pt;
+  margin-bottom: 20px;
+}
+
+.miscInfo input {
+  width: 100%;
+}
+
+.form {
+  width: 100%;
+}
+
+body {	
+  background-color: white;
+  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
+  font-size: 12pt;    
+}
+
+h1 {
+  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
+  font-size:20pt;
 	width: 500px;
-/* make it glow! */
-    -webkit-box-shadow: 0px 0px 4px #333;
-       -moz-box-shadow: 0px 0px 4px #333;
-            box-shadow: 0px 0px 4px #333;
 }
 
-input{
-color: #663399;   
-	border: 1px solid #663399;
-   /* round the corners */
-    -webkit-border-radius: 4px;
-       -moz-border-radius: 4px;
-            border-radius: 4px;
-
-
-    /* make it glow! */
-    -webkit-box-shadow: 0px 0px 4px #663399;
-       -moz-box-shadow: 0px 0px 4px #663399;
-            box-shadow: 0px 0px 4px #663399; /* some variation of blue for the shadow */
+input {   
+	border: 1px solid;
 }
 
-.container {
-width: 700px;
-float: center;
+.form {
+  width: 700px;
+  float: center;
   margin-left: auto ;
   margin-right: auto ;
 }
- .container input{
-	
-}
-.left{
-    position: relative;
 
+.left {
+  position: relative;
 }
-.bigbutton{
-    width: 100px;
-}
-.timeButton{
-    width: 60px;
-}
-.latitude{
-    cityLat: ;
+
+.bigbutton {
+  width: 100%;
 }

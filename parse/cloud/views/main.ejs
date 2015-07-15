@@ -1,195 +1,174 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <link rel="stylesheet" type="text/css" href="index.css">
+  <link rel = "stylesheet" type = "text/css" href = "index.css">
   <title>Deal Entry Form</title>
 </head>
 
 <body>
-
-  <center>
-  	<h1>Restaurants and Deals</h1>
- </center>
-  <form id="my-form" class = "left">
-<div class = "whole">
-  <div class = "container" >
-	  <div class="restInfo">
-	
-	  </br>
-    Google Maps Search: 
-    <input id="searchTextField" type="text" size="50" placeholder="Enter a restaurant" autocomplete="on" runat="server" />
-    <br/><br/>
-  Restaurant Name:
-    <input type="text" id="name" name="name" size="70"/>
-    <br/><br/>
-  Restaurant Description:
-    <input id="restaurant-description" type="textarea" name="Restaurant Description" size = "70">
-    <br/><br/>
-  Website:
-    <input id="website" type="text" name="Website" size = "70">
-    <br/><br/>
-  Phone Number:
-    <input id="phone-number" type="tel" name="Phone Number" size = "70">
-    <br/><br/>
-  Formatted Address:
-    <input id="formatted-address" type="text" name="Formatted Address" size = "70">
-    <br/><br/>
-    </div>
-    <sub> Please validate all location fields! </sub>
-    <br/><br/>
-  Street Number:
-    <input id="street-number" type="text" name="Street Number" size = "5">
-    
-  Street Address:
-    <input id="street-address" type="text" name="Street Address" size = "30">
-    <br/><br/>
-  City:
-    <input id="city" type="text" name="City" size = "15">
-    
-  State:
-    <input id="state" type="text" name="City" size = "15">
- 
-  Zip Code:
-    <input id="zip-code" type="text" name="Zip Code" size = "5">
-    <br/><br/>
-  Latitude:
-    <input id="latitude" type="text" name="Latitude">
-
-  Longitude:
-    <input id="longitude" type="text" name="Longitude">
-    <br/><br/>
-</div>
-<div class="deals">
-  Restaurant Availability:
-    <ul>
-    <li>Sunday:
-    <input id="sundaySt" type="text" name="Sunday Open" placeholder="15:00" size="10">
-    To:
-    <input id="sundayEn" type="text" name="Sunday Close" placeholder="18:00" size="10">
-    </li>
-    <br/><br/>
-    
-    <li>Monday:
-    <input id="mondaySt" type="text" name="Monday Open" placeholder="15:00" size="10">
-    To:
-    <input id="mondayEn" type="text" name="Monday Close" placeholder="18:00" size="10">
-    </li>
-    <br/><br/>
-    
-    <li>Tuesday:
-    <input id="tuesdaySt" type="text" name="Tuesday Open" placeholder="15:00" size="10">
-    To:
-    <input id="tuesdayEn" type="text" name="Tuesday Close" placeholder="18:00" size="10">
-    </li>
-    <br/><br/>
-    
-    <li>Wednesday:
-    <input id="wednesdaySt" type="text" name="Wednesday Open" placeholder="15:00" size="10">
-    To:
-    <input id="wednesdayEn" type="text" name="Wednesday Close" placeholder="18:00" size="10">
-    </li>
-    <br/><br/>
-    
-    <li>Thursday:
-    <input id="thursdaySt" type="text" name="Thursday Open" placeholder="15:00" size="10">
-    To:
-    <input id="thursdayEn" type="text" name="Thursday Close" placeholder="18:00" size="10">
-    </li>
-    <br/><br/>
-
-    <li>Friday:
-    <input id="fridaySt" type="text" name="Friday Open" placeholder="15:00" size="10">
-    To:
-    <input id="fridayEn" type="text" name="Friday Close" placeholder="18:00" size="10">
-    </li>
-    <br/><br/>
-
-    <li>Saturday:
-    <input id="saturdaySt" type="text" name="Saturday Open" placeholder="15:00" size="10">
-    To:
-    <input id="saturdayEn" type="text" name="Saturday Close" placeholder="18:00" size="10">
-    </li>
-    <br/><br/>
-    </ul>
-    
-  Deal:
-  	<input id="deal" type="text" name="Deal name" size = "30">
-  	<br/><br/>
-  Deal Description:
-  	<input id="deal-description" type="textarea" name="Deal Description" size = "66">
-  	<br/><br/>
-  Deal Availability:
-    <ul>
-    <li>Sunday:
-    <input id="sundayDealSt" type="text" name="Sunday Deal Start" placeholder="15:00" size="10">
-    To:
-    <input id="sundayDealEn" type="text" name="Sunday Deal End" placeholder="18:00" size="10">
-    </li>
-    <br/><br/>
-    
-    <li>Monday:
-    <input id="mondayDealSt" type="text" name="Monday Deal Start" placeholder="15:00" size="10">
-    To:
-    <input id="mondayDealEn" type="text" name="Monday Deal End" placeholder="18:00" size="10">
-    </li>
-    <br/><br/>
-    
-    <li>Tuesday:
-    <input id="tuesdayDealSt" type="text" name="Tuesday Deal Start" placeholder="15:00" size="10">
-    To:
-    <input id="tuesdayDealEn" type="text" name="Tuesday Deal End" placeholder="18:00" size="10">
-    </li>
-    <br/><br/>
-    
-    <li>Wednesday:
-    <input id="wednesdayDealSt" type="text" name="Wednesday Deal Start" placeholder="15:00" size="10">
-    To:
-    <input id="wednesdayDealEn" type="text" name="Wednesday Deal End" placeholder="18:00" size="10">
-    </li>
-    <br/><br/>
-    
-    <li>Thursday:
-    <input id="thursdayDealSt" type="text" name="Thursday Deal Start" placeholder="15:00" size="10">
-    To:
-    <input id="thursdayDealEn" type="text" name="Thursday Deal End" placeholder="18:00" size="10">
-    </li>
-    <br/><br/>
-
-    <li>Friday:
-    <input id="fridayDealSt" type="text" name="Friday Deal Start" placeholder="15:00" size="10">
-    To:
-    <input id="fridayDealEn" type="text" name="Friday Deal End" placeholder="18:00" size="10">
-    </li>
-    <br/><br/>
-
-    <li>Saturday:
-    <input id="saturdayDealSt" type="text" name="Saturday Deal Start" placeholder="15:00" size="10">
-    To:
-    <input id="saturdayDealEn" type="text" name="Saturday Deal End" placeholder="18:00" size="10">
-    </li>
-    <br/><br/>
-    </ul>
-Restaurant and Deal submitted by:
-      <input id="submitted-by" type="text" placeholder="First name only" name="Restaurant and Deal Submission" size="20">
-    <br/><br/>
-	<center>
-	  <input class = "bigbutton" type="submit" value="Submit">
+  <div class = "header">
+    <center>
+      <img src = "https://lh3.googleusercontent.com/vT1y-k8taMANJW1-yE4K9sG-DKnFogDqzFqQlCw4P_E=s144-no">
+    	<h1>Restaurants and Deals</h1>
     </center>
-<br/><br/>
-  </font>
-</div>
-
-</div>
+  </div>
+  <form id = "my-form" class = "left">
+    <div class = "form">
+      <div class = "restaurant">
+        <div class = "restaurantTitle">
+          <center>
+            Restaurant Information
+          </center>
+        </div>
+        Google Maps Search: 
+          <input id = "searchTextField" type = "text" placeholder = "Enter a restaurant" autocomplete = "on" runat = "server" />
+        Restaurant Name:
+          <input id = "restaurantName" type = "text">
+        Restaurant Description:
+          <input id = "restaurantDescription" type = "text">
+        Website:
+          <input id = "restaurantWebsite" type = "text">
+        Phone Number:
+          <input id = "restaurantPhoneNumber" type = "text">
+        Formatted Address:
+          <input id = "restaurantAddress" type = "text">
+        <div class = "sub">
+          <center>
+            Please validate all location fields!
+          </center>
+        </div>
+        Street Number:
+          <input id = "restaurantStreetNumber" type = "text">
+        Street Address:
+          <input id = "restaurantStreetAddress" type = "text">
+        City:
+          <input id = "restaurantCity" type = "text">
+        State:
+          <input id = "restaurantState" type = "text">
+        Zip Code:
+          <input id = "restaurantZipCode" type = "text">
+        Latitude:
+          <input id = "restaurantLatitude" type = "text">
+        Longitude:
+          <input id = "restaurantLongitude" type = "text">
+        <div class = "restaurantAvailability">
+          <center>
+            Restaurant Availability:
+          </center>
+        </div>
+          Sunday:
+            <input id = "sundaySt" type = "text" placeholder = "15:00">
+          To:
+            <input id = "sundayEn" type = "text" placeholder = "18:00">
+        
+          Monday:
+            <input id = "mondaySt" type = "text" placeholder = "15:00">
+          To:
+            <input id = "mondayEn" type = "text" placeholder = "18:00">
+         
+          Tuesday:
+            <input id = "tuesdaySt" type = "text" placeholder = "15:00">
+          To:
+            <input id = "tuesdayEn" type = "text" placeholder = "18:00">
+        
+          Wednesday:
+            <input id = "wednesdaySt" type = "text" placeholder = "15:00">
+          To:
+            <input id = "wednesdayEn" type = "text" placeholder = "18:00">
+        
+          Thursday:
+            <input id = "thursdaySt" type = "text" placeholder = "15:00">
+          To:
+            <input id = "thursdayEn" type = "text" placeholder = "18:00">
+         
+          Friday:
+            <input id = "fridaySt" type = "text" placeholder = "15:00">
+          To:
+            <input id = "fridayEn" type = "text" placeholder = "18:00">
+          
+          Saturday:
+            <input id = "saturdaySt" type = "text" placeholder = "15:00">
+          To:
+            <input id = "saturdayEn" type = "text" placeholder = "18:00">
+      </div>
+      <div class = "deal">
+        <div class = "dealTitle">
+          <center>
+            Deal Information
+          </center>
+        </div>    
+        Deal:
+        	<input id = "deal" type = "text">
+        Deal Description:
+        	<input id = "dealDescription" type = "text">
+      </div>
+      <div class = "dealType">
+        <div class = "dealTypeTitle">
+          <center>
+            Deal Type:
+          </center>
+        </div>
+        <center>
+          Food<input id = "deal-type" type = "checkbox" name = "dealtype" value = "Food">
+          Drink<input id = "deal-type1" type = "checkbox" name = "dealtype" value = "Drink">
+          Featured<input id = "deal-type2" type = "checkbox" name = "dealtype" value = "Featured"> 
+          Vegetarian<input id = "deal-type3" type = "checkbox" name = "dealtype" value = "Vegetarian">
+          Vegan<input id = "deal-type4" type = "checkbox" name = "dealtype" value = "Vegan">
+          Gluten Free<input id = "deal-type5" type = "checkbox" name = "dealtype" value = "GlutenFree">
+        </center>
+      </div>
+      <div class = "deal">
+        <div class = "dealAvailability">
+          <center>
+            Deal Availability:
+          </center>
+        </div>
+        Sunday:
+          <input id = "sundayDealSt" type = "text" placeholder = "15:00">
+        To:
+          <input id = "sundayDealEn" type = "text" placeholder = "18:00">
+        Monday:
+          <input id = "mondayDealSt" type = "text" placeholder = "15:00">
+        To:
+          <input id = "mondayDealEn" type = "text" placeholder = "18:00">
+        Tuesday:
+          <input id = "tuesdayDealSt" type = "text" placeholder = "15:00">
+        To:
+          <input id = "tuesdayDealEn" type = "text" placeholder = "18:00">
+        Wednesday:
+          <input id = "wednesdayDealSt" type = "text" placeholder = "15:00">
+        To:
+          <input id = "wednesdayDealEn" type = "text" placeholder = "18:00">
+        Thursday:
+          <input id = "thursdayDealSt" type = "text" placeholder = "15:00">
+        To:
+          <input id = "thursdayDealEn" type = "text" placeholder = "18:00">
+        Friday:
+          <input id = "fridayDealSt" type = "text" placeholder = "15:00">
+        To:
+          <input id = "fridayDealEn" type = "text" placeholder = "18:00">
+        Saturday:
+          <input id = "saturdayDealSt" type = "text" placeholder = "15:00">
+        To:
+          <input id = "saturdayDealEn" type = "text" placeholder = "18:00">
+      </div>
+      <div class = "miscInfo">
+        Restaurant and Deal Submitted By:
+          <input id = "submittedBy" type = "text" placeholder = "First name only">
+        <center>
+          <input class = "bigbutton" type = "submit" value = "Submit">
+        </center>
+      </div>
+    </div>
   </form>
-
 </body>
 
-<script src="https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
-<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script src = "https://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+<script type = "text/javascript" src = "https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places"></script>
+<script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 </html>
 
-<script type="text/javascript">
+<script type = "text/javascript">
 // appliction id, javascript id
 Parse.initialize(
     "2TR1bOpjpFL8Wm7a7TXcbuoFCyJRB0VdSOXnf8tB",
@@ -197,7 +176,7 @@ Parse.initialize(
 );
 
 if (!Parse.User.current()) {
-  window.location.href='/';
+  window.location.href = '/';
 } else {
   Parse.Cloud.run('getGitHubData', {}).then(function(response) {
       $('#name').text(response.name);
@@ -220,17 +199,17 @@ function initialize() {
      var autocomplete = new google.maps.places.Autocomplete(input);
      google.maps.event.addListener(autocomplete, 'place_changed', function () {
        var place = autocomplete.getPlace();
-       document.getElementById('name').value = place.name;
-       document.getElementById('latitude').value = place.geometry.location.lat();
-       document.getElementById('longitude').value = place.geometry.location.lng();
-       document.getElementById('website').value = place.website;
-       document.getElementById('phone-number').value = place.formatted_phone_number;
-       document.getElementById('formatted-address').value = place.formatted_address;
-       document.getElementById('street-number').value = place.address_components[0].long_name;
-       document.getElementById('street-address').value = place.address_components[1].long_name;
-       document.getElementById('city').value = place.address_components[2].long_name;
-       document.getElementById('state').value = place.address_components[3].short_name;
-       document.getElementById('zip-code').value = place.address_components[5].long_name;
+       document.getElementById('restaurantName').value = place.name;
+       document.getElementById('restaurantLatitude').value = place.geometry.location.lat();
+       document.getElementById('restaurantLongitude').value = place.geometry.location.lng();
+       document.getElementById('restaurantWebsite').value = place.website;
+       document.getElementById('restaurantPhoneNumber').value = place.formatted_phone_number;
+       document.getElementById('restaurantAddress').value = place.formatted_address;
+       document.getElementById('restaurantStreetNumber').value = place.address_components[0].long_name;
+       document.getElementById('restaurantStreetAddress').value = place.address_components[1].long_name;
+       document.getElementById('restaurantCity').value = place.address_components[2].long_name;
+       document.getElementById('restaurantState').value = place.address_components[3].short_name;
+       document.getElementById('restaurantZipCode').value = place.address_components[5].long_name;
      });
 }
 google.maps.event.addDomListener(window, 'load', initialize); 
@@ -248,7 +227,6 @@ function processForm(e) {
       var file = fileUpload.files[0];
       var name = document.getElementById('picture').value;
       var filename = name.replace(/^.*[\\\/]/, '');
-
       var parseFile = new Parse.File(filename, file);
     }
 
@@ -271,7 +249,7 @@ function processForm(e) {
     var checkboxes = document.getElementsByName('dealtype');
     var checkboxesChecked = [];
 
-    for (var i=0; i<checkboxes.length; i++) {
+    for (var i = 0; i<checkboxes.length; i++) {
        if (checkboxes[i].checked) {
           checkboxesChecked.push(checkboxes[i].value);
        }
@@ -295,10 +273,10 @@ function processForm(e) {
 
     var dealTitle = toTitleCase(document.getElementById('deal').value.toString());
     deal.set("title", dealTitle);
-    var dealDescription = document.getElementById('deal-description').value.toLowerCase();
+    var dealDescription = document.getElementById('dealDescription').value.toLowerCase();
     deal.set("description", dealDescription);
     deal.set("tags", concatDealTagArrayTrim);
-    deal.set("submittedBy", document.getElementById('submitted-by').value);
+    deal.set("submittedBy", document.getElementById('submittedBy').value);
     deal.set("downVotes", 0);
     deal.set("upVotes", 0);
     deal.set("rating", 0);
@@ -324,28 +302,28 @@ function processForm(e) {
       success: function(deal) {
         // Execute any logic that should take place after the object is saved.
         
-        var restaurantDescriptionArray = document.getElementById('restaurant-description').value;
+        var restaurantDescriptionArray = document.getElementById('restaurantDescription').value;
         var restaurantDescriptionArraySplit = restaurantDescriptionArray.toString().split(', ');
 
-        restaurantQuery.equalTo("name", document.getElementById('name').value);
-        restaurantQuery.equalTo("streetAddress", document.getElementById('street-address').value)
+        restaurantQuery.equalTo("name", document.getElementById('restaurantName').value);
+        restaurantQuery.equalTo("streetAddress", document.getElementById('restaurantStreetAddress').value)
         restaurantQuery.find({
           success: function(restaurants) {
             if (restaurants.length == 0) {
               var restaurant = new Restaurant();
               // New restaurant.
-              restaurant.set("name", document.getElementById('name').value);
+              restaurant.set("name", document.getElementById('restaurantName').value);
               restaurant.set("description", restaurantDescriptionArraySplit);
-              restaurant.set("phoneNumber", document.getElementById('phone-number').value);
-              restaurant.set("website", document.getElementById('website').value);
-              restaurant.set("streetNumber", document.getElementById('street-number').value);
-              restaurant.set("streetAddress", document.getElementById('street-address').value);
-              restaurant.set("city", document.getElementById('city').value);
-              restaurant.set("zipCode", document.getElementById('zip-code').value);
-              restaurant.set("state", document.getElementById('state').value)
+              restaurant.set("phoneNumber", document.getElementById('restaurantPhoneNumber').value);
+              restaurant.set("website", document.getElementById('restaurantWebsite').value);
+              restaurant.set("streetNumber", document.getElementById('restaurantStreetNumber').value);
+              restaurant.set("streetAddress", document.getElementById('restaurantStreetAddress').value);
+              restaurant.set("city", document.getElementById('restaurantCity').value);
+              restaurant.set("zipCode", document.getElementById('restaurantZipCode').value);
+              restaurant.set("state", document.getElementById('restaurantState').value)
               restaurant.set("availability", restaurantAvailabilityObject);
               restaurant.set("picture", parseFile);
-              restaurant.set("submittedBy", document.getElementById('submitted-by').value);
+              restaurant.set("submittedBy", document.getElementById('submittedBy').value);
               restaurant.set("location", point);
               deal.set("restaurantId", restaurant);
               deal.save(null, {
@@ -386,8 +364,6 @@ function processForm(e) {
 
       },
       error: function(deal, error) {
-        // Execute any logic that should take place if the save fails.
-        // error is a Parse.Error with an error code and message.
         alert('Failed to create new deal object, with error code: ' + error.message);
       }
     });
