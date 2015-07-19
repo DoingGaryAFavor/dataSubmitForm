@@ -9,10 +9,10 @@
   <div class = "header">
     <center>
       <img src = "https://lh3.googleusercontent.com/vT1y-k8taMANJW1-yE4K9sG-DKnFogDqzFqQlCw4P_E=s144-no">
-    	<h1>Restaurants and Deals</h1>
+      <h1>Restaurants and Deals</h1>
     </center>
   </div>
-  <form id = "my-form" class = "left">
+  <form id = "my-form">
     <div class = "form">
       <div class = "restaurant">
         <div class = "restaurantTitle">
@@ -58,10 +58,12 @@
             Restaurant Type
           </center>
         </div>
-        <center>
-          Alcohol<input id = "restaurantType" type = "checkbox" name = "restauranttype" value = "Alcohol">
-          Wheelchair Accessible<input id = "restaurantType1" type = "checkbox" name = "restauranttype" value = "Wheelchair Accessible">
-        </center>
+        <div class = "restaurantTypeItems">
+          <center>
+            Alcohol<input id = "alcohol" type = "checkbox" value = "Alcohol">
+            Wheelchair Accessible<input id = "wheelchairAccessible" type = "checkbox" value = "Wheelchair Accessible">
+          </center>
+        </div>
       </div>
       <div class = "restaurant">
         <div class = "restaurantAvailability">
@@ -69,40 +71,36 @@
             Restaurant Availability
           </center>
         </div>
+        <div class = "choices">
           Sunday:
-            <input id = "sundaySt" type = "text" placeholder = "15:00">
+            <input id="sundaySt" type="text" name="Sunday Open" placeholder="Please use 24 hour time">
           To:
-            <input id = "sundayEn" type = "text" placeholder = "18:00">
-        
+            <input id="sundayEn" type="text" name="Sunday Close" placeholder="For example: 0900">
           Monday:
-            <input id = "mondaySt" type = "text" placeholder = "15:00">
+            <input id="mondaySt" type="text" name="Monday Open" placeholder="Please use 24 hour time">
           To:
-            <input id = "mondayEn" type = "text" placeholder = "18:00">
-         
+            <input id="mondayEn" type="text" name="Monday Close" placeholder="For example: 0900"> 
           Tuesday:
-            <input id = "tuesdaySt" type = "text" placeholder = "15:00">
+            <input id="tuesdaySt" type="text" name="Tuesday Open" placeholder="Please use 24 hour time">
           To:
-            <input id = "tuesdayEn" type = "text" placeholder = "18:00">
-        
+            <input id="tuesdayEn" type="text" name="Tuesday Close" placeholder="For example: 0900">
           Wednesday:
-            <input id = "wednesdaySt" type = "text" placeholder = "15:00">
+           <input id="wednesdaySt" type="text" name="Wednesday Open" placeholder="Please use 24 hour time">
           To:
-            <input id = "wednesdayEn" type = "text" placeholder = "18:00">
-        
+           <input id="wednesdayEn" type="text" name="Wednesday Close" placeholder="For example: 0900">
           Thursday:
-            <input id = "thursdaySt" type = "text" placeholder = "15:00">
+           <input id="thursdaySt" type="text" name="Thursday Open" placeholder="Please use 24 hour time">
           To:
-            <input id = "thursdayEn" type = "text" placeholder = "18:00">
-         
+            <input id="thursdayEn" type="text" name="Thursday Close" placeholder="For example: 0900">
           Friday:
-            <input id = "fridaySt" type = "text" placeholder = "15:00">
+           <input id="fridaySt" type="text" name="Friday Open" placeholder="Please use 24 hour time">
           To:
-            <input id = "fridayEn" type = "text" placeholder = "18:00">
-          
+            <input id="fridayEn" type="text" name="Friday Close" placeholder="For example: 0900">
           Saturday:
-            <input id = "saturdaySt" type = "text" placeholder = "15:00">
+            <input id="saturdaySt" type="text" name="Saturday Open" placeholder="Please use 24 hour time">
           To:
-            <input id = "saturdayEn" type = "text" placeholder = "18:00">
+            <input id="saturdayEn" type="text" name="Saturday Close" placeholder="For example: 0900">
+        </div>
       </div>
       <div class = "deal">
         <div class = "dealTitle">
@@ -110,10 +108,18 @@
             Deal Information
           </center>
         </div>    
-        Deal:
-        	<input id = "deal" type = "text">
-        Deal Description:
-        	<input id = "dealDescription" type = "text">
+        Deal Item:
+          <input id = "dealItem" type = "text" placeholder = "Fish Taco">
+        Primary Tag:
+          <input id = "dealPrimaryTag" type = "text" placeholder = "Taco">
+        Fineprint:
+          <input id = "dealFinePrint" type = "text" placeholder = "Deal Restrictions e.g. Must buy beer with tacos. Deal only applies to fish tacos.">
+        Deal Price:
+          <input id = "dealPrice" type = "number" step = "0.01" min = "0">
+        Deal Amount Off:
+          <input id = "dealAmountOff" type = "number" step = "0.01" min = "0" placeholder = "Leave empty if deal has percentage off">
+        Deal Percent Off:
+          <input id = "dealPercentOff" type = "number" min = "0" placeholder = "Leave empty if deal has amount off">
       </div>
       <div class = "dealType">
         <div class = "dealTypeTitle">
@@ -121,14 +127,28 @@
             Deal Type
           </center>
         </div>
-        <center>
-          Food<input id = "dealType" type = "checkbox" name = "dealtype" value = "Food">
-          Drink<input id = "dealType1" type = "checkbox" name = "dealtype" value = "Drink">
-          Featured<input id = "dealType2" type = "checkbox" name = "dealtype" value = "Featured"> 
-          Vegetarian<input id = "dealType3" type = "checkbox" name = "dealtype" value = "Vegetarian">
-          Vegan<input id = "dealType4" type = "checkbox" name = "dealtype" value = "Vegan">
-          Gluten Free<input id = "dealType5" type = "checkbox" name = "dealtype" value = "GlutenFree">
-        </center>
+        <div class = "dealTypeItems">
+          <center>
+            Food
+              <input id = "dealType" type = "checkbox" name = "dealtype" value = "Food">
+            Drink
+              <input id = "dealType1" type = "checkbox" name = "dealtype" value = "Drink">
+            Featured
+              <input id = "dealType2" type = "checkbox" name = "dealtype" value = "Featured">
+            Other Deal Type
+              <input id = "dealType3" type = "text" name = "customdeal" placeholder="Other deal tags e.g. Seafood">
+          </center>
+        </div>
+        <div class = "dealSpecificTags">
+          <center>
+            Vegetarian
+              <input id = "vegetarian" type = "checkbox" value = "Vegetarian">
+            Vegan
+              <input id = "vegan" type = "checkbox" value = "Vegan">
+            Gluten Free
+              <input id = "glutenFree" type = "checkbox" value = "GlutenFree">
+          </center>
+        </div>
       </div>
       <div class = "deal">
         <div class = "dealAvailability">
@@ -136,34 +156,36 @@
             Deal Availability
           </center>
         </div>
-        Sunday:
-          <input id = "sundayDealSt" type = "text" placeholder = "15:00">
-        To:
-          <input id = "sundayDealEn" type = "text" placeholder = "18:00">
-        Monday:
-          <input id = "mondayDealSt" type = "text" placeholder = "15:00">
-        To:
-          <input id = "mondayDealEn" type = "text" placeholder = "18:00">
-        Tuesday:
-          <input id = "tuesdayDealSt" type = "text" placeholder = "15:00">
-        To:
-          <input id = "tuesdayDealEn" type = "text" placeholder = "18:00">
-        Wednesday:
-          <input id = "wednesdayDealSt" type = "text" placeholder = "15:00">
-        To:
-          <input id = "wednesdayDealEn" type = "text" placeholder = "18:00">
-        Thursday:
-          <input id = "thursdayDealSt" type = "text" placeholder = "15:00">
-        To:
-          <input id = "thursdayDealEn" type = "text" placeholder = "18:00">
-        Friday:
-          <input id = "fridayDealSt" type = "text" placeholder = "15:00">
-        To:
-          <input id = "fridayDealEn" type = "text" placeholder = "18:00">
-        Saturday:
-          <input id = "saturdayDealSt" type = "text" placeholder = "15:00">
-        To:
-          <input id = "saturdayDealEn" type = "text" placeholder = "18:00">
+        <div class = "choices">
+          Sunday:
+            <input id = "sundayDealSt" type = "text" placeholder = "1500">
+          To:
+            <input id = "sundayDealEn" type = "text" placeholder = "1800">
+          Monday:
+            <input id = "mondayDealSt" type = "text" placeholder = "1500">
+          To:
+            <input id = "mondayDealEn" type = "text" placeholder = "1800">
+          Tuesday:
+            <input id = "tuesdayDealSt" type = "text" placeholder = "1500">
+          To:
+            <input id = "tuesdayDealEn" type = "text" placeholder = "1800">
+          Wednesday:
+            <input id = "wednesdayDealSt" type = "text" placeholder = "1500">
+          To:
+            <input id = "wednesdayDealEn" type = "text" placeholder = "1800">
+          Thursday:
+            <input id = "thursdayDealSt" type = "text" placeholder = "1500">
+          To:
+            <input id = "thursdayDealEn" type = "text" placeholder = "1800">
+          Friday:
+            <input id = "fridayDealSt" type = "text" placeholder = "1500">
+          To:
+            <input id = "fridayDealEn" type = "text" placeholder = "1800">
+          Saturday:
+            <input id = "saturdayDealSt" type = "text" placeholder = "1500">
+          To:
+            <input id = "saturdayDealEn" type = "text" placeholder = "1800">
+        </div>
       </div>
       <div class = "miscInfo">
         <div class = "submittedBy">
@@ -237,14 +259,6 @@ function toTitleCase(str)
 function processForm(e) {
     if (e.preventDefault) e.preventDefault();
 
-    var fileUpload = document.getElementById('picture');
-    if (fileUpload.files.length > 0) {
-      var file = fileUpload.files[0];
-      var name = document.getElementById('picture').value;
-      var filename = name.replace(/^.*[\\\/]/, '');
-      var parseFile = new Parse.File(filename, file);
-    }
-
     var Deal = Parse.Object.extend("deals");
     var deal = new Deal();
 
@@ -260,6 +274,31 @@ function processForm(e) {
       fridaySt: document.getElementById('fridaySt').value, fridayEn: document.getElementById('fridayEn').value,
       saturdaySt: document.getElementById('saturdaySt').value, saturdayEn: document.getElementById('saturdayEn').value
     };
+
+    var vegan = document.getElementById('vegan');
+    var veganValue = false;
+    if (vegan.checked)
+      veganValue = true;
+
+    var vegetarian = document.getElementById('vegetarian');
+    var vegetarianValue = false;
+    if (vegetarian.checked)
+      vegetarianValue = true;
+
+    var glutenFree = document.getElementById('glutenFree');
+    var glutenFreeValue = false;
+    if (glutenFree.checked)
+      glutenFreeValue = true;
+
+    var alochol = document.getElementById('alcohol');
+    var alcoholValue = false;
+    if (alcohol.checked)
+      alcoholValue = true;
+
+    var wheelchairAccessible = document.getElementById('wheelchairAccessible');
+    var wheelchairAccessibleValue = false;
+    if (wheelchairAccessible.checked)
+      wheelchairAccessibleValue = true;
 
     var checkboxes = document.getElementsByName('dealtype');
     var checkboxesChecked = [];
@@ -286,11 +325,22 @@ function processForm(e) {
       var concatDealTagArrayTrim = concatDealTagArray.map(Function.prototype.call, String.prototype.trim);
     }
 
-    var dealTitle = toTitleCase(document.getElementById('deal').value.toString());
-    deal.set("title", dealTitle);
-    var dealDescription = document.getElementById('dealDescription').value.toLowerCase();
-    deal.set("description", dealDescription);
+    var restaurantDescriptionArray = document.getElementById('restaurantDescription').value;
+    var restaurantDescriptionArraySplit = restaurantDescriptionArray.toString().split(",");
+    var restaurantDescriptionArrayTrim = restaurantDescriptionArraySplit.map(Function.prototype.call, String.prototype.trim);
+
+    var dealItem = toTitleCase(document.getElementById('dealItem').value.toString());
+    deal.set("item", dealItem);
+    var dealPrimaryTag = toTitleCase(document.getElementById('dealPrimaryTag').value.toString());;
+    deal.set("primaryTag", dealPrimaryTag);
+    deal.set("fineprint", toTitleCase(document.getElementById('dealFinePrint').value));
+    deal.set("reducedPrice", parseFloat(document.getElementById('dealPrice').value));
+    deal.set("amountOff", parseFloat(document.getElementById('dealAmountOff').value));
+    deal.set("percentOff", parseFloat(document.getElementById('dealPercentOff').value));
     deal.set("tags", concatDealTagArrayTrim);
+    deal.set("vegan", veganValue);
+    deal.set("vegetarian", vegetarianValue);
+    deal.set("glutenFree", glutenFreeValue);
     deal.set("submittedBy", document.getElementById('submittedBy').value);
     deal.set("downVotes", 0);
     deal.set("upVotes", 0);
@@ -310,15 +360,12 @@ function processForm(e) {
     deal.set("fridayEn", parseInt(document.getElementById('fridayDealEn').value));
     deal.set("saturdaySt", parseInt(document.getElementById('saturdayDealSt').value));
     deal.set("saturdayEn", parseInt(document.getElementById('saturdayDealEn').value));
-    var point = new Parse.GeoPoint({latitude: parseFloat(document.getElementById('latitude').value),
-                 longitude: parseFloat(document.getElementById('longitude').value)});
+    var point = new Parse.GeoPoint({latitude: parseFloat(document.getElementById('restaurantLatitude').value),
+                 longitude: parseFloat(document.getElementById('restaurantLongitude').value)});
 
     deal.save(null, {
       success: function(deal) {
         // Execute any logic that should take place after the object is saved.
-        
-        var restaurantDescriptionArray = document.getElementById('restaurantDescription').value;
-        var restaurantDescriptionArraySplit = restaurantDescriptionArray.toString().split(', ');
 
         restaurantQuery.equalTo("name", document.getElementById('restaurantName').value);
         restaurantQuery.equalTo("streetAddress", document.getElementById('restaurantStreetAddress').value)
@@ -328,18 +375,19 @@ function processForm(e) {
               var restaurant = new Restaurant();
               // New restaurant.
               restaurant.set("name", document.getElementById('restaurantName').value);
-              restaurant.set("description", restaurantDescriptionArraySplit);
+              restaurant.set("description", restaurantDescriptionArrayTrim);
               restaurant.set("phoneNumber", document.getElementById('restaurantPhoneNumber').value);
               restaurant.set("website", document.getElementById('restaurantWebsite').value);
+              restaurant.set("location", point);
               restaurant.set("streetNumber", document.getElementById('restaurantStreetNumber').value);
               restaurant.set("streetAddress", document.getElementById('restaurantStreetAddress').value);
               restaurant.set("city", document.getElementById('restaurantCity').value);
-              restaurant.set("zipCode", document.getElementById('restaurantZipCode').value);
               restaurant.set("state", document.getElementById('restaurantState').value)
+              restaurant.set("zipCode", document.getElementById('restaurantZipCode').value);
               restaurant.set("availability", restaurantAvailabilityObject);
-              restaurant.set("picture", parseFile);
+              restaurant.set("wheelchairAccess", wheelchairAccessibleValue);
+              restaurant.set("twentyOnePlus", alcoholValue);
               restaurant.set("submittedBy", document.getElementById('submittedBy').value);
-              restaurant.set("location", point);
               deal.set("restaurantId", restaurant);
               deal.save(null, {
                 success: function(deal){ },

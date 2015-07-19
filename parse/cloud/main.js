@@ -327,43 +327,114 @@ var newGitHubUser = function(accessToken, githubData) {
   });
 }
 
-Parse.Cloud.define("UpVote", function(request, response) {
+Parse.Cloud.define("upVote", function(request, response) {
   Parse.Cloud.useMasterKey();
-  var query = new Parse.Query(Parse.Object.extend("deals"));
-  // query.get(request.params.id), {
-  query.equalTo("objectId", request.params.id);
-  query.get().then(function(deal) {
-      deal.increment("upVotes");
-      var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
-      deal.set("rating", ratingCalculation);
-      deal.save();
-      response.success("Successfully upvoted deal " + deal.id);
-    }, function(error) {
-      response.error("Got an error " + error.code + " : " + error.message + ". Deal not saved!");
-    });
-});
+  var deviceQuery = new Parse.Query(Parse.Object.extend("User"));
+  deviceQuery.equalTo("deviceId", request.params.deviceId);
+  deviceQuery.first({
+    success: function (user) {
+      if (typeof user == "undefined") {
+        var userClass = Parse.Object.extend("User");
+        var user = new userClass();
+        user.save(
+          {deviceId: request.params.deviceId, upVotes: [], 
+            username: request.params.deviceId, password: ""},{
+          success:function(user ) {
+            Parse.Cloud.run("upVote", request.params, {
+              success: function(result) {
+                response.success(result);
+              }, error: function(error) {
+                response.error(error);
+              }
+            });
+          }, error:function(user, error) {
+            response.error("Unable to create user" + error.message);
+          }
+        });
+      } else if (user.get("upVotes").indexOf(request.params.objectId) == -1) {
+        user.add("upVotes", request.params.objectId);
+        user.save();
+        var query = new Parse.Query(Parse.Object.extend("deals"));
+        query.equalTo("objectId", request.params.objectId);
+        query.get().then(function(deal) {
+            deal.increment("upVotes");
+            var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
+            deal.set("rating", ratingCalculation);
+            deal.save();
+            console.log(request.params);
+            response.success("Successfully upvoted deal " + deal.id);
+          }, function(error) {
+            response.error("Got an error " + error.code + " : " + error.message + ". Deal not saved!");
+          });
+      } else {
+        response.error("User has already up voted the deal: " + request.params.objectId);
+      }
+    }, error: function (error) {
+      response.error("Failed to find device " + request.params.deviceId + error.code);
+    }
+  });
+})
 
-Parse.Cloud.define("DownVote", function(request, response) {
+Parse.Cloud.define("downVote", function(request, response) {
   Parse.Cloud.useMasterKey();
-  var query = new Parse.Query(Parse.Object.extend("deals"));
-  // query.get(request.object.get("upVotes"), {
-  query.equalTo("objectId", request.params.id);
-  query.get().then(function(deal) {
-      deal.increment("downVotes");
-      var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
-      deal.set("rating", ratingCalculation);
-      deal.save();
-      response.success("Successfully downvoted deal " + deal.id);
-    }, function(error) {
-      response.error("Got an error " + error.code + " : " + error.message + ". Deal not saved!");
-    });
-});
+  var deviceQuery = new Parse.Query(Parse.Object.extend("User"));
+  deviceQuery.equalTo("deviceId", request.params.deviceId);
+  deviceQuery.first({
+    success: function (user) {
+      if (typeof user == "undefined") {
+        var userClass = Parse.Object.extend("User");
+        var user = new userClass();
+        user.save(
+          {deviceId: request.params.deviceId, upVotes: [], 
+            username: request.params.deviceId, password: ""},{
+          success:function(user ) {
+            Parse.Cloud.run("downVote", request.params, {
+              success: function(result) {
+                response.success(result);
+              }, error: function(error) {
+                response.error(error);
+              }
+            });
+          }, error:function(user, error) {
+            response.error("Unable to create user" + error.message);
+          }
+        });
+      } else if (user.get("downVotes").indexOf(request.params.objectId) == -1) {
+        user.add("downVotes", request.params.objectId);
+        user.save();
+        var query = new Parse.Query(Parse.Object.extend("deals"));
+        query.equalTo("objectId", request.params.objectId);
+        query.get().then(function(deal) {
+            deal.increment("downVotes");
+            var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
+            deal.set("rating", ratingCalculation);
+            deal.save();
+            response.success("Successfully downvoted deal " + deal.id);
+          }, function(error) {
+            response.error("Got an error " + error.code + " : " + error.message + ". Deal not saved!");
+          });
+      } else {
+        response.error("User has already down voted the deal: " + request.params.objectId);
+      }
+    }, error: function (error) {
+      response.error("Failed to find device " + request.params.deviceId + error.code);
+    }
+  });
+})
 
-Parse.Cloud.define("UndoUpVote", function(request, response) {
+Parse.Cloud.define("undoUpVote", function(request, response) {
   Parse.Cloud.useMasterKey();
+ /* var deviceQuery = new Parse.Query(Parse.Object.extend("User"));
+  deviceQuery.equalTo("deviceId", request.params.deviceId);
+  deviceQuery.first({
+    success: function (user) {
+      var vote = user.get("upVotes");*/
+
+
+
+
   var query = new Parse.Query(Parse.Object.extend("deals"));
-  // query.get(request.object.get("upVotes"), {
-  query.equalTo("objectId", request.params.id);
+  query.equalTo("objectId", request.params.objectId);
   query.get().then(function(deal) {
       deal.increment("upVotes", -1);
       var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
@@ -375,11 +446,10 @@ Parse.Cloud.define("UndoUpVote", function(request, response) {
     });
 });
 
-Parse.Cloud.define("UndoDownVote", function(request, response) {
+Parse.Cloud.define("undoDownVote", function(request, response) {
   Parse.Cloud.useMasterKey();
   var query = new Parse.Query(Parse.Object.extend("deals"));
-  // query.get(request.object.get("upVotes"), {
-  query.equalTo("objectId", request.params.id);
+  query.equalTo("objectId", request.params.objectId);
   query.get().then(function(deal) {
       deal.increment("downVotes", -1);
       var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
@@ -397,11 +467,11 @@ Parse.Cloud.define("zeroUpVotes", function(request, response) {
   query.greaterThan("upVotes", 0);
   query.find().then(function(deal) {
       for (var i = 0; i < deal.length; i++) {
-        console.log("Inside for loop");
-        console.log("Deal number " + i + " with " + deal[i].get("upVotes") + " up votes");
+        // console.log("Inside for loop");
+        // console.log("Deal number " + i + " with " + deal[i].get("upVotes") + " up votes");
         deal[i].set("upVotes", 0);
         deal[i].save();
-        console.log("After deal save, deal up vote is now: " + deal[i].get("upVotes"));
+        // console.log("After deal save, deal up vote is now: " + deal[i].get("upVotes"));
       }
       // use promise to extend the time response.success is called
       var promise = Parse.Promise.as();
@@ -458,11 +528,41 @@ Parse.Cloud.define("zeroDownVotes", function(request, response) {
   query.greaterThan("downVotes", 0);
   query.find().then(function(deal) {
       for (var i = 0; i < deal.length; i++) {
-        console.log("Inside for loop");
-        console.log("Deal number " + i + " with " + deal[i].get("downVotes") + " down votes");
+        // console.log("Inside for loop");
+        // console.log("Deal number " + i + " with " + deal[i].get("downVotes") + " down votes");
         deal[i].set("downVotes", 0);
         deal[i].save();
-        console.log("After deal save, deal down vote is now: " + deal[i].get("downVotes"));
+        // console.log("After deal save, deal down vote is now: " + deal[i].get("downVotes"));
+      }
+      // use promise to extend the time response.success is called
+      var promise = Parse.Promise.as();
+      _.each(deal, function(result) {
+        // For each item, extend the promise with a function to save it
+        promise = promise.then(function() {
+          // Return a promise that will be resolved when the saves are finished
+          return result.save();
+        });
+      });
+      return promise;
+  }).then(function() {
+  // Every deal was updated
+    response.success("Finished setting all down vote values to zero");
+  }, function(error) {
+    response.error("Got an error " + error.code + " : " + error.message + ".");
+  });
+});
+
+Parse.Cloud.define("zeroRatings", function(request, response) {
+  Parse.Cloud.useMasterKey();
+  var query = new Parse.Query(Parse.Object.extend("deals"));
+  query.greaterThan("rating", 0);
+  query.find().then(function(deal) {
+      for (var i = 0; i < deal.length; i++) {
+        // console.log("Inside for loop");
+        // console.log("Deal number " + i + " with " + deal[i].get("downVotes") + " down votes");
+        deal[i].set("rating", 0);
+        deal[i].save();
+        // console.log("After deal save, deal down vote is now: " + deal[i].get("downVotes"));
       }
       // use promise to extend the time response.success is called
       var promise = Parse.Promise.as();
@@ -519,7 +619,7 @@ Parse.Cloud.define("eraseDealTags", function(request, response) {
   query.notEqualTo("tags", []);
   query.find().then(function(deal) {
       for (var i = 0; i < deal.length; i++) {
-        console.log("Inside if function");
+        // console.log("Inside if function");
         deal[i].set("tags", []);
         deal[i].save();
       }
@@ -548,7 +648,7 @@ Parse.Cloud.define("assignDealTags", function(request, response) {
   query.notEqualTo("tags", "featured");
   query.find().then(function(deal) {
       for (var i = 0; i < deal.length; i++) {
-        console.log("Inside if function");
+        // console.log("Inside if function");
         deal[i].addUnique("tags", "featured");
         deal[i].save();
       }

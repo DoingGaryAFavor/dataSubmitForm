@@ -2,37 +2,49 @@
 	width:700px;
 	float: center;
 }
+
 .restaurant .restaurantTitle {
   font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
   font-size: 16pt;
-  margin-bottom: 20px;
+  margin: 10px 0px 10px 0px;
 }
 
 .restaurant .restaurantAvailability {
   font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
   font-size: 16pt;
-  margin-bottom: 20px;
+  margin: 10px 0px 10px 0px;
+}
+
+.restaurant .choices {
+  display: block;
+  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
+  font-size: 16pt;
+  margin: 10px 0px 10px 0px;
 }
 
 .restaurantType {
-  margin-bottom: 20px;
+  margin: 10px 0px 10px 0px;
 }
 
 .restaurantType .restaurantTypeTitle {
   font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
   font-size: 16pt;
-  margin-bottom: 20px;
+  margin: 10px 0px 10px 0px;
+}
+
+.restaurantType .restaurantTypeItems input {
+  margin: 10px 10px 10px 10px;
 }
 
 .restaurant .sub {
   font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
   font-size: 16pt;  
-  margin-bottom: 20px;
+  margin: 10px 0px 10px 0px;
 }
 
 .restaurant input {
 	width :100%;
-  margin-bottom: 20px;
+  margin: 10px 0px 10px 0px;
 }
 
 .deal {
@@ -45,40 +57,39 @@
 .deal .dealTitle {
   font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
   font-size: 16pt;
-  margin-bottom: 20px;
+  margin: 10px 0px 10px 0px;
 }
 
 .deal .dealAvailability {
   font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
   font-size: 16pt;
-  width-bottom: 20px;
+  margin: 10px 0px 10px 0px;
 }
 
 .deal input{
   width: 100%;
-  margin-bottom: 20px;
+  margin: 10px 0px 10px 0px;
 }
 
 .dealType {
-  margin-bottom: 20px;
+  margin: 10px 0px 10px 0px;
 }
 
 .dealType .dealTypeTitle {
   font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
   font-size: 16pt;
-  margin-bottom: 20px;
+  margin: 10px 0px 10px 0px;
+}
+
+.dealType .dealTypeItems input {
+  margin: 10px 10px 10px 10px;
 }
 
 .miscInfo input {
   width: 100%;
 }
 
-.form {
-  width: 100%;
-}
-
 body {	
-  background-color: white;
   font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
   font-size: 12pt;    
 }
@@ -100,16 +111,12 @@ input {
   margin-right: auto ;
 }
 
-.left {
-  position: relative;
-}
-
 .submittedBy {
-  margin-bottom: 20px;
+  margin: 10px 0px 10px 0px;
 }
 
 .submitbutton {
-  background-color: #ed8223;
+  background-color: #6B0C2F;
   color: #fff;
   font-family: 'Helvetica Neue',sans-serif;
   font-size: 18px;
