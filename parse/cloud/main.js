@@ -337,7 +337,7 @@ Parse.Cloud.define("upVote", function(request, response) {
         var userClass = Parse.Object.extend("User");
         var user = new userClass();
         user.save(
-          {deviceId: request.params.deviceId, upVotes: [], 
+          {deviceId: request.params.deviceId, upVotes: [], downVotes: [],
             username: request.params.deviceId, password: ""},{
           success:function(user ) {
             Parse.Cloud.run("upVote", request.params, {
@@ -352,6 +352,21 @@ Parse.Cloud.define("upVote", function(request, response) {
           }
         });
       } else if (user.get("upVotes").indexOf(request.params.objectId) == -1) {
+        if (user.get("downVotes").indexOf(request.params.objectId) != -1) {
+          user.remove("downVotes", request.params.objectId);
+          user.save();
+          var query = new Parse.Query(Parse.Object.extend("deals"));
+          query.equalTo("objectId", request.params.objectId);
+          query.get().then(function(deal) {
+            deal.increment("downVotes", -1);
+            var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
+            deal.set("rating", ratingCalculation);
+            deal.save();
+            response.success("Reverted downvote on " + request.params.objectId);
+          }, function(error) {
+            response.error("Got an error " + error.code + " : " + error.message + ". Deal not saved!");
+          });
+        }
         user.add("upVotes", request.params.objectId);
         user.save();
         var query = new Parse.Query(Parse.Object.extend("deals"));
@@ -385,7 +400,7 @@ Parse.Cloud.define("downVote", function(request, response) {
         var userClass = Parse.Object.extend("User");
         var user = new userClass();
         user.save(
-          {deviceId: request.params.deviceId, upVotes: [], 
+          {deviceId: request.params.deviceId, upVotes: [], downVotes: [],
             username: request.params.deviceId, password: ""},{
           success:function(user ) {
             Parse.Cloud.run("downVote", request.params, {
@@ -400,6 +415,21 @@ Parse.Cloud.define("downVote", function(request, response) {
           }
         });
       } else if (user.get("downVotes").indexOf(request.params.objectId) == -1) {
+        if (user.get("upVotes").indexOf(request.params.objectId) != -1) {
+          user.remove("upVotes", request.params.objectId);
+          user.save();
+          var query = new Parse.Query(Parse.Object.extend("deals"));
+          query.equalTo("objectId", request.params.objectId);
+          query.get().then(function(deal) {
+            deal.increment("upVotes", -1);
+            var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
+            deal.set("rating", ratingCalculation);
+            deal.save();
+            response.success("Reverted upvote on " + request.params.objectId);
+          }, function(error) {
+            response.error("Got an error " + error.code + " : " + error.message + ". Deal not saved!");
+          });
+        }
         user.add("downVotes", request.params.objectId);
         user.save();
         var query = new Parse.Query(Parse.Object.extend("deals"));
@@ -424,41 +454,56 @@ Parse.Cloud.define("downVote", function(request, response) {
 
 Parse.Cloud.define("undoUpVote", function(request, response) {
   Parse.Cloud.useMasterKey();
- /* var deviceQuery = new Parse.Query(Parse.Object.extend("User"));
+  var deviceQuery = new Parse.Query(Parse.Object.extend("User"));
   deviceQuery.equalTo("deviceId", request.params.deviceId);
   deviceQuery.first({
     success: function (user) {
-      var vote = user.get("upVotes");*/
-
-
-
-
-  var query = new Parse.Query(Parse.Object.extend("deals"));
-  query.equalTo("objectId", request.params.objectId);
-  query.get().then(function(deal) {
-      deal.increment("upVotes", -1);
-      var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
-      deal.set("rating", ratingCalculation);
-      deal.save();
-      response.success("Reverted upvote on " + deal.id);
-    }, function(error) {
-      response.error("Got an error " + error.code + " : " + error.message + ". Deal not saved!");
-    });
-});
+      var userUpVotes = user.get("upVotes");
+      user.remove("upVotes", request.params.objectId);
+      user.save();
+      var query = new Parse.Query(Parse.Object.extend("deals"));
+        query.equalTo("objectId", request.params.objectId);
+        query.get().then(function(deal) {
+          deal.increment("upVotes", -1);
+          var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
+          deal.set("rating", ratingCalculation);
+          deal.save();
+          response.success("Reverted upvote on " + request.params.objectId);
+        }, function(error) {
+          response.error("Got an error " + error.code + " : " + error.message + ". Deal not saved!");
+        });
+      response.success("Successfully reverted upvote on deal " + request.params.objectId);
+    }, error: function (error) {
+      response.error("Failed to revert upvote on deal " + deal.id + error.code);
+    }
+  });
+})
 
 Parse.Cloud.define("undoDownVote", function(request, response) {
   Parse.Cloud.useMasterKey();
-  var query = new Parse.Query(Parse.Object.extend("deals"));
-  query.equalTo("objectId", request.params.objectId);
-  query.get().then(function(deal) {
-      deal.increment("downVotes", -1);
-      var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
-      deal.set("rating", ratingCalculation);
-      deal.save();
-      response.success("Reverted downvote on " + deal.id);
-    }, function(error) {
-      response.error("Got an error " + error.code + " : " + error.message + ". Deal not saved!");
-    });
+  var deviceQuery = new Parse.Query(Parse.Object.extend("User"));
+  deviceQuery.equalTo("deviceId", request.params.deviceId);
+  deviceQuery.first({
+    success: function (user) {
+      var userDownVotes = user.get("downVotes");
+      user.remove("downVotes", request.params.objectId);
+      user.save();
+      var query = new Parse.Query(Parse.Object.extend("deals"));
+        query.equalTo("objectId", request.params.objectId);
+        query.get().then(function(deal) {
+          deal.increment("downVotes", -1);
+          var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
+          deal.set("rating", ratingCalculation);
+          deal.save();
+          response.success("Reverted downvote on " + request.params.objectId);
+        }, function(error) {
+          response.error("Got an error " + error.code + " : " + error.message + ". Deal not saved!");
+        });
+      response.success("Successfully reverted downvote on deal " + request.params.objectId);
+    }, error: function (error) {
+      response.error("Failed to revert downvote on deal " + deal.id + error.code);
+    }
+  });
 });
 
 Parse.Cloud.define("zeroUpVotes", function(request, response) {
