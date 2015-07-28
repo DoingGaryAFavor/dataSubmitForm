@@ -353,19 +353,7 @@ Parse.Cloud.define("upVote", function(request, response) {
         });
       } else if (user.get("upVotes").indexOf(request.params.objectId) == -1) {
         /*if (user.get("downVotes").indexOf(request.params.objectId) != -1) {
-          undoDownVote(user, request.params.objectId, {
-            success: function(result) {
-              upVote(user, request.params.objectId, {
-                success: function(result) {
-                  response.success(result);
-                }, error: function(error) {
-                  response.error(error);
-                }
-              });
-            }, error: function(error) {
-              response.error(error);
-            }
-          });
+          return false;
         } else {*/
           upVote(user, request.params.objectId, {
             success: function(result) {
@@ -374,7 +362,7 @@ Parse.Cloud.define("upVote", function(request, response) {
               response.error(error);
             }
           });
-        //}
+       // }
       } else {
         response.error("User has already up voted the deal: " + request.params.objectId);
       }
@@ -410,19 +398,7 @@ Parse.Cloud.define("downVote", function(request, response) {
         });
       } else if (user.get("downVotes").indexOf(request.params.objectId) == -1) {
         /*if (user.get("upVotes").indexOf(request.params.objectId) != -1) {
-          undoUpVote(user, request.params.objectId, {
-            success: function(result) {
-              downVote(user, request.params.objectId, {
-                success: function(result) {
-                  response.success(result);
-                }, error: function(error) {
-                  response.error(error);
-                }
-              });
-            }, error: function(error) {
-              response.error(error);
-            }
-          });
+          return;
         } else {*/
           downVote(user, request.params.objectId, {
             success: function(result) {
@@ -431,7 +407,7 @@ Parse.Cloud.define("downVote", function(request, response) {
               response.error(error);
             }
           });
-       // }
+        //}
       } else {
         response.error("User has already down voted the deal: " + request.params.objectId);
       }
@@ -532,7 +508,9 @@ function updateUpVote (objectId, value, options) {
   query.equalTo("objectId", objectId);
   query.get().then(function(deal) {
     deal.increment("upVotes", value);
-    var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
+    var ratingCalculation = 0;
+    if (deal.get("upVotes") != 0) 
+      ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
     deal.set("rating", ratingCalculation);
     deal.save();
     options.success("Successfully updated up vote value of deal " + objectId + " by " + value);
@@ -546,7 +524,9 @@ function updateDownVote (objectId, value, options) {
   query.equalTo("objectId", objectId);
   query.get().then(function(deal) {
     deal.increment("downVotes", value);
-    var ratingCalculation = (100 * (deal.get("upVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
+    var ratingCalculation = 0;
+    if (deal.get("upVotes") != 0)
+      ratingCalculation = (100 * (deal.get("downVotes") / (deal.get("upVotes") + deal.get("downVotes"))));
     deal.set("rating", ratingCalculation);
     deal.save();
     options.success("Successfully updated down vote value of deal " + objectId + " by " + value);

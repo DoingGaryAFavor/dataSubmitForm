@@ -24,8 +24,6 @@
           <input id = "searchTextField" type = "text" placeholder = "Enter a restaurant" autocomplete = "on" runat = "server" />
         Restaurant Name:
           <input id = "restaurantName" type = "text">
-        Restaurant Description:
-          <input id = "restaurantDescription" type = "text">
         Website:
           <input id = "restaurantWebsite" type = "text">
         Phone Number:
@@ -73,33 +71,33 @@
         </div>
         <div class = "choices">
           Sunday:
-            <input id="sundaySt" type="text" name="Sunday Open" placeholder="Please use 24 hour time">
+            <input id = "sundaySt" type = "text" name = "Sunday Open" placeholder = "Use 24 hour time">
           To:
-            <input id="sundayEn" type="text" name="Sunday Close" placeholder="For example: 0900">
+            <input id = "sundayEn" type = "text" name = "Sunday Close" placeholder = "e.g. 0900 or 1800">
           Monday:
-            <input id="mondaySt" type="text" name="Monday Open" placeholder="Please use 24 hour time">
+            <input id = "mondaySt" type = "text" name = "Monday Open" placeholder = "Use 24 hour time">
           To:
-            <input id="mondayEn" type="text" name="Monday Close" placeholder="For example: 0900"> 
+            <input id = "mondayEn" type = "text" name = "Monday Close" placeholder = "e.g. 0900 or 1800"> 
           Tuesday:
-            <input id="tuesdaySt" type="text" name="Tuesday Open" placeholder="Please use 24 hour time">
+            <input id = "tuesdaySt" type = "text" name = "Tuesday Open" placeholder = "Use 24 hour time">
           To:
-            <input id="tuesdayEn" type="text" name="Tuesday Close" placeholder="For example: 0900">
+            <input id = "tuesdayEn" type = "text" name = "Tuesday Close" placeholder = "e.g. 0900 or 1800">
           Wednesday:
-           <input id="wednesdaySt" type="text" name="Wednesday Open" placeholder="Please use 24 hour time">
+           <input id = "wednesdaySt" type = "text" name = "Wednesday Open" placeholder = "Use 24 hour time">
           To:
-           <input id="wednesdayEn" type="text" name="Wednesday Close" placeholder="For example: 0900">
+           <input id = "wednesdayEn" type = "text" name = "Wednesday Close" placeholder = "e.g. 0900 or 1800">
           Thursday:
-           <input id="thursdaySt" type="text" name="Thursday Open" placeholder="Please use 24 hour time">
+           <input id = "thursdaySt" type = "text" name = "Thursday Open" placeholder = "Use 24 hour time">
           To:
-            <input id="thursdayEn" type="text" name="Thursday Close" placeholder="For example: 0900">
+            <input id = "thursdayEn" type = "text" name = "Thursday Close" placeholder = "e.g. 0900 or 1800">
           Friday:
-           <input id="fridaySt" type="text" name="Friday Open" placeholder="Please use 24 hour time">
+           <input id = "fridaySt" type = "text" name = "Friday Open" placeholder = "Use 24 hour time">
           To:
-            <input id="fridayEn" type="text" name="Friday Close" placeholder="For example: 0900">
+            <input id = "fridayEn" type = "text" name = "Friday Close" placeholder = "e.g. 0900 or 1800">
           Saturday:
-            <input id="saturdaySt" type="text" name="Saturday Open" placeholder="Please use 24 hour time">
+            <input id = "saturdaySt" type = "text" name = "Saturday Open" placeholder = "Use 24 hour time">
           To:
-            <input id="saturdayEn" type="text" name="Saturday Close" placeholder="For example: 0900">
+            <input id = "saturdayEn" type = "text" name = "Saturday Close" placeholder = "e.g. 0900 or 1800">
         </div>
       </div>
       <div class = "deal">
@@ -109,11 +107,11 @@
           </center>
         </div>    
         Deal Item:
-          <input id = "dealItem" type = "text" placeholder = "Fish Taco">
+          <input id = "dealItem" type = "text" placeholder = "Fish Tacos" required>
         Primary Tag:
-          <input id = "dealPrimaryTag" type = "text" placeholder = "Taco">
+          <input id = "dealPrimaryTag" type = "text" placeholder = "Tacos">
         Fineprint:
-          <input id = "dealFinePrint" type = "text" placeholder = "Deal Restrictions e.g. Must buy beer with tacos. Deal only applies to fish tacos.">
+          <input id = "dealFinePrint" type = "text" placeholder = "Deal Restrictions e.g. Must buy beer with tacos or Deal only applies to fish tacos">
         Deal Price:
           <input id = "dealPrice" type = "number" step = "0.01" min = "0">
         Deal Amount Off:
@@ -135,8 +133,9 @@
               <input id = "dealType1" type = "checkbox" name = "dealtype" value = "Drink">
             Featured
               <input id = "dealType2" type = "checkbox" name = "dealtype" value = "Featured">
-            Other Deal Type
-              <input id = "dealType3" type = "text" name = "customdeal" placeholder="Other deal tags e.g. Seafood">
+              <div class = "dealTypeItemsCustom">
+                <input id = "dealType3" type = "text" name = "customdeal" placeholder = "Other searchable deal tags e.g. Seafood, Mexican, Asian">
+              </div>
           </center>
         </div>
         <div class = "dealSpecificTags">
@@ -158,33 +157,33 @@
         </div>
         <div class = "choices">
           Sunday:
-            <input id = "sundayDealSt" type = "text" placeholder = "1500">
+            <input id = "sundayDealSt" type = "text" placeholder = "Use 24 hour time">
           To:
-            <input id = "sundayDealEn" type = "text" placeholder = "1800">
+            <input id = "sundayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
           Monday:
-            <input id = "mondayDealSt" type = "text" placeholder = "1500">
+            <input id = "mondayDealSt" type = "text" placeholder = "Use 24 hour time">
           To:
-            <input id = "mondayDealEn" type = "text" placeholder = "1800">
+            <input id = "mondayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
           Tuesday:
-            <input id = "tuesdayDealSt" type = "text" placeholder = "1500">
+            <input id = "tuesdayDealSt" type = "text" placeholder = "Use 24 hour time">
           To:
-            <input id = "tuesdayDealEn" type = "text" placeholder = "1800">
+            <input id = "tuesdayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
           Wednesday:
-            <input id = "wednesdayDealSt" type = "text" placeholder = "1500">
+            <input id = "wednesdayDealSt" type = "text" placeholder = "Use 24 hour time">
           To:
-            <input id = "wednesdayDealEn" type = "text" placeholder = "1800">
+            <input id = "wednesdayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
           Thursday:
-            <input id = "thursdayDealSt" type = "text" placeholder = "1500">
+            <input id = "thursdayDealSt" type = "text" placeholder = "Use 24 hour time">
           To:
-            <input id = "thursdayDealEn" type = "text" placeholder = "1800">
+            <input id = "thursdayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
           Friday:
-            <input id = "fridayDealSt" type = "text" placeholder = "1500">
+            <input id = "fridayDealSt" type = "text" placeholder = "Use 24 hour time">
           To:
-            <input id = "fridayDealEn" type = "text" placeholder = "1800">
+            <input id = "fridayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
           Saturday:
-            <input id = "saturdayDealSt" type = "text" placeholder = "1500">
+            <input id = "saturdayDealSt" type = "text" placeholder = "Use 24 hour time">
           To:
-            <input id = "saturdayDealEn" type = "text" placeholder = "1800">
+            <input id = "saturdayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
         </div>
       </div>
       <div class = "miscInfo">
@@ -317,17 +316,13 @@ function processForm(e) {
     var customDealTagArraySplit = customDealTagArray.toString().toLowerCase().split(",");
     var customDealTagArrayTrim = customDealTagArraySplit.map(Function.prototype.call, String.prototype.trim);
 
-    if (customDealTagArray == "") {
+    if (customDealTagArray ==  "") {
       var concatDealTagArrayTrim = dealTagArrayTrim;
     } else {
       var dealTagArray = customDealTagArrayTrim + ',' + dealTagArrayTrim;
       var concatDealTagArray = dealTagArray.toString().split(",");
       var concatDealTagArrayTrim = concatDealTagArray.map(Function.prototype.call, String.prototype.trim);
     }
-
-    var restaurantDescriptionArray = document.getElementById('restaurantDescription').value;
-    var restaurantDescriptionArraySplit = restaurantDescriptionArray.toString().split(",");
-    var restaurantDescriptionArrayTrim = restaurantDescriptionArraySplit.map(Function.prototype.call, String.prototype.trim);
 
     var dealItem = toTitleCase(document.getElementById('dealItem').value.toString());
     deal.set("item", dealItem);
@@ -371,11 +366,10 @@ function processForm(e) {
         restaurantQuery.equalTo("streetAddress", document.getElementById('restaurantStreetAddress').value)
         restaurantQuery.find({
           success: function(restaurants) {
-            if (restaurants.length == 0) {
+            if (restaurants.length ==  0) {
               var restaurant = new Restaurant();
               // New restaurant.
               restaurant.set("name", document.getElementById('restaurantName').value);
-              restaurant.set("description", restaurantDescriptionArrayTrim);
               restaurant.set("phoneNumber", document.getElementById('restaurantPhoneNumber').value);
               restaurant.set("website", document.getElementById('restaurantWebsite').value);
               restaurant.set("location", point);
@@ -401,7 +395,7 @@ function processForm(e) {
                   alert("Failed to create restaurant, deal still created. You may need to delete this deal. Error code: " + error.message)
                 }
               });
-            } else if (restaurants.length == 1) {
+            } else if (restaurants.length ==  1) {
               deal.set("restaurantId", restaurants[0]);
               deal.save(null, {
                 success: function(deal){ },
