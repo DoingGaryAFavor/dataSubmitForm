@@ -4,11 +4,11 @@
   },
   "applications": {
     "_default": {
-      "link": "burrd"
+      "link": "burrd-qa"
     },
-    "burrd": {
-      "applicationId": "2TR1bOpjpFL8Wm7a7TXcbuoFCyJRB0VdSOXnf8tB",
-      "masterKey": "909g3Cymns0Saxm5ehaJlYPFdBn0w6uBASXAoeUP"
+    "burrd-qa": {
+      "applicationId": "zjbuJvWrvzgdpDvRnHejLD008hLGf6zHua5nCGvq",
+      "masterKey": "SBYvCc0QUwvOKt1ue5nXYu1jeLH1fg0rwjkbwCh9"
     }
   }
 }

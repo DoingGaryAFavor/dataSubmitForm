@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel = "stylesheet" type = "text/css" href = "style.css">
+  <title>Deal Entry Form</title>
+</head>
+
+<body>
+  <div class = "header">
+    <center>
+      <img src = "https://lh3.googleusercontent.com/vT1y-k8taMANJW1-yE4K9sG-DKnFogDqzFqQlCw4P_E=s144-no">
+      <h1>Restaurants and Deals</h1>
+    </center>
+  </div>
+  <form id = "my-form">
+    <div class = "form">
+      <div class = "restaurant">
+        <div class = "restaurantTitle">
+          <center>
+            Restaurant Information
+          </center>
+        </div>
+        Google Maps Search: 
+          <input id = "searchTextField" type = "text" placeholder = "Enter a restaurant" autocomplete = "on" runat = "server" />
+        Restaurant Name:
+          <input id = "restaurantName" type = "text">
+        Website:
+          <input id = "restaurantWebsite" type = "text">
+        Phone Number:
+          <input id = "restaurantPhoneNumber" type = "text">
+        Formatted Address:
+          <input id = "restaurantAddress" type = "text">
+        <div class = "sub">
+          <center>
+            Please validate all location fields!
+          </center>
+        </div>
+        Street Number:
+          <input id = "restaurantStreetNumber" type = "text">
+        Street Address:
+          <input id = "restaurantStreetAddress" type = "text">
+        City:
+          <input id = "restaurantCity" type = "text">
+        State:
+          <input id = "restaurantState" type = "text">
+        Zip Code:
+          <input id = "restaurantZipCode" type = "text">
+        Latitude:
+          <input id = "restaurantLatitude" type = "text">
+        Longitude:
+          <input id = "restaurantLongitude" type = "text">
+      </div>
+      <div class = "restaurantType">
+        <div class = "restaurantTypeTitle">
+          <center>
+            Restaurant Type
+          </center>
+        </div>
+        <div class = "restaurantTypeItems">
+          <center>
+            Alcohol<input id = "alcohol" type = "checkbox" value = "Alcohol">
+            Wheelchair Accessible<input id = "wheelchairAccessible" type = "checkbox" value = "Wheelchair Accessible">
+          </center>
+        </div>
+      </div>
+      <div class = "restaurant">
+        <div class = "restaurantAvailability">
+          <center>
+            Restaurant Availability
+          </center>
+        </div>
+        <div class = "choices">
+          Sunday:
+            <input id = "sundaySt" type = "text" name = "Sunday Open" placeholder = "Use 24 hour time">
+          To:
+            <input id = "sundayEn" type = "text" name = "Sunday Close" placeholder = "e.g. 0900 or 1800">
+          Monday:
+            <input id = "mondaySt" type = "text" name = "Monday Open" placeholder = "Use 24 hour time">
+          To:
+            <input id = "mondayEn" type = "text" name = "Monday Close" placeholder = "e.g. 0900 or 1800"> 
+          Tuesday:
+            <input id = "tuesdaySt" type = "text" name = "Tuesday Open" placeholder = "Use 24 hour time">
+          To:
+            <input id = "tuesdayEn" type = "text" name = "Tuesday Close" placeholder = "e.g. 0900 or 1800">
+          Wednesday:
+           <input id = "wednesdaySt" type = "text" name = "Wednesday Open" placeholder = "Use 24 hour time">
+          To:
+           <input id = "wednesdayEn" type = "text" name = "Wednesday Close" placeholder = "e.g. 0900 or 1800">
+          Thursday:
+           <input id = "thursdaySt" type = "text" name = "Thursday Open" placeholder = "Use 24 hour time">
+          To:
+            <input id = "thursdayEn" type = "text" name = "Thursday Close" placeholder = "e.g. 0900 or 1800">
+          Friday:
+           <input id = "fridaySt" type = "text" name = "Friday Open" placeholder = "Use 24 hour time">
+          To:
+            <input id = "fridayEn" type = "text" name = "Friday Close" placeholder = "e.g. 0900 or 1800">
+          Saturday:
+            <input id = "saturdaySt" type = "text" name = "Saturday Open" placeholder = "Use 24 hour time">
+          To:
+            <input id = "saturdayEn" type = "text" name = "Saturday Close" placeholder = "e.g. 0900 or 1800">
+        </div>
+      </div>
+      <div class = "deal">
+        <div class = "dealTitle">
+          <center>
+            Deal Information
+          </center>
+        </div>    
+        Deal Item:
+          <input id = "dealItem" type = "text" placeholder = "Fish Taco" required>
+        Primary Tag:
+          <input id = "dealPrimaryTag" type = "text" placeholder = "Taco">
+        Fineprint:
+          <input id = "dealFinePrint" type = "text" placeholder = "Deal Restrictions e.g. Must buy beer with tacos or Deal only applies to fish tacos">
+        Deal Price:
+          <input id = "dealPrice" type = "number" step = "0.01" min = "0">
+        Deal Amount Off:
+          <input id = "dealAmountOff" type = "number" step = "0.01" min = "0" placeholder = "Leave empty if deal has percentage off">
+        Deal Percent Off:
+          <input id = "dealPercentOff" type = "number" min = "0" placeholder = "Leave empty if deal has amount off">
+      </div>
+      <div class = "dealType">
+        <div class = "dealTypeTitle">
+          <center>
+            Deal Type
+          </center>
+        </div>
+        <div class = "dealTypeItems">
+          <center>
+            Food
+              <input id = "dealType" type = "checkbox" name = "dealtype" value = "Food">
+            Drink
+              <input id = "dealType1" type = "checkbox" name = "dealtype" value = "Drink">
+            Featured
+              <input id = "dealType2" type = "checkbox" name = "dealtype" value = "Featured">
+              <div class = "dealTypeItemsCustom">
+                <input id = "dealType3" type = "text" name = "customdeal" placeholder = "Other searchable deal tags e.g. Seafood, Mexican, Asian">
+              </div>
+          </center>
+        </div>
+        <div class = "dealSpecificTags">
+          <center>
+            Vegetarian
+              <input id = "vegetarian" type = "checkbox" value = "Vegetarian">
+            Vegan
+              <input id = "vegan" type = "checkbox" value = "Vegan">
+            Gluten Free
+              <input id = "glutenFree" type = "checkbox" value = "GlutenFree">
+          </center>
+        </div>
+      </div>
+      <div class = "deal">
+        <div class = "dealAvailability">
+          <center>
+            Deal Availability
+          </center>
+        </div>
+        <div class = "choices">
+          Sunday:
+            <input id = "sundayDealSt" type = "text" placeholder = "Use 24 hour time">
+          To:
+            <input id = "sundayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
+          Monday:
+            <input id = "mondayDealSt" type = "text" placeholder = "Use 24 hour time">
+          To:
+            <input id = "mondayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
+          Tuesday:
+            <input id = "tuesdayDealSt" type = "text" placeholder = "Use 24 hour time">
+          To:
+            <input id = "tuesdayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
+          Wednesday:
+            <input id = "wednesdayDealSt" type = "text" placeholder = "Use 24 hour time">
+          To:
+            <input id = "wednesdayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
+          Thursday:
+            <input id = "thursdayDealSt" type = "text" placeholder = "Use 24 hour time">
+          To:
+            <input id = "thursdayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
+          Friday:
+            <input id = "fridayDealSt" type = "text" placeholder = "Use 24 hour time">
+          To:
+            <input id = "fridayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
+          Saturday:
+            <input id = "saturdayDealSt" type = "text" placeholder = "Use 24 hour time">
+          To:
+            <input id = "saturdayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
+        </div>
+      </div>
+      <div class = "miscInfo">
+        <div class = "submittedBy">
+          Restaurant and Deal Submitted By:
+            <input id = "submittedBy" type = "text" placeholder = "First name only">
+        </div>
+        <center>
+          <input class = "submitbutton" type = "submit" value = "Submit">
+        </center>
+      </div>
+    </div>
+  </form>
+  </body>
+  <script
+    type = "text/javascript" src = "https://www.parsecdn.com/js/parse-1.4.2.min.js">
+  </script>
+  <script type="text/javascript" src = "https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places">
+  </script>
+  <script type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+  </script>
+  <script
+    type = "text/javascript" src = "/main.js">
+  </script>
+</html>
