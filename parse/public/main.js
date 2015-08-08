@@ -2,8 +2,7 @@ var constants = {
   'Month' : '111111111111',
   'DaysOfMonth' : '0000000000000000000000000000000',
   'WeeksOfMonth' : '11111',
-  'DayOfWeek' : '0000000',
-  'NullTime' : '4095'
+  'DayOfWeek' : '0000000'
 }
 
 // appliction id, javascript id
@@ -162,109 +161,15 @@ function processForm(e) {
       return n.length >= width ? n : new Array(width - n.length + 1).join(z) + n;
     }
 
-    var restaurantFirstOpen1 = parseInt(document.getElementById('restaurantFirstOpen1').value).toString(2);
-    var restaurantFirstOpen1LeadingZeroes = pad(restaurantFirstOpen1, 12);
-    if (document.getElementById('restaurantLastOpen1').value == "")
-      var restaurantLastOpen1 = parseInt(constants.NullTime).toString(2);
-    else
-      var restaurantLastOpen1 = parseInt(document.getElementById('restaurantLastOpen1').value).toString(2);
-    var restaurantLastOpen1LeadingZeroes = pad(restaurantLastOpen1, 12);
-    var openTime1 = restaurantLastOpen1LeadingZeroes.concat(restaurantFirstOpen1LeadingZeroes);
-    if (document.getElementById('restaurantLastOpen1').value == "" && document.getElementById('restaurantFirstOpen1').value == "")
-      var openTime1Value = null;
-    else
-      var openTime1Value = parseInt(openTime1, 2);
-
-    if (document.getElementById('restaurantFirstClose1').value == "")
-      var restaurantFirstClose1 = parseInt(constants.NullTime).toString(2);
-    else
-      var restaurantFirstClose1 = parseInt(document.getElementById('restaurantFirstClose1').value).toString(2);
-    var restaurantFirstClose1LeadingZeroes = pad(restaurantFirstClose1, 12);
-    var restaurantLastClose1 = parseInt(document.getElementById('restaurantLastClose1').value).toString(2);
-    var restaurantLastClose1LeadingZeroes = pad(restaurantLastClose1, 12);
-    var closeTime1 = restaurantLastClose1LeadingZeroes.concat(restaurantFirstClose1LeadingZeroes);
-    if (document.getElementById('restaurantFirstClose1').value == "" && document.getElementById('restaurantLastClose1').value == "")
-      var closeTime1Value = null;
-    else
-      var closeTime1Value = parseInt(closeTime1, 2);
-
-    var restaurantFirstOpen2 = parseInt(document.getElementById('restaurantFirstOpen2').value).toString(2);
-    var restaurantFirstOpen2LeadingZeroes = pad(restaurantFirstOpen2, 12);
-    if (document.getElementById('restaurantLastOpen2').value == "")
-      var restaurantLastOpen2 = parseInt(constants.NullTime).toString(2);
-    else
-      var restaurantLastOpen2 = parseInt(document.getElementById('restaurantLastOpen2').value).toString(2);
-    var restaurantLastOpen2LeadingZeroes = pad(restaurantLastOpen2, 12);
-    var openTime2 = restaurantLastOpen2LeadingZeroes.concat(restaurantFirstOpen2LeadingZeroes);
-    if (document.getElementById('restaurantLastOpen2').value == "" && document.getElementById('restaurantFirstOpen2').value == "")
-      var openTime2Value = null;
-    else
-      var openTime2Value = parseInt(openTime2, 2);
-
-    if (document.getElementById('restaurantFirstClose2').value == "")
-      var restaurantFirstClose2 = parseInt(constants.NullTime).toString(2);
-    else
-      var restaurantFirstClose2 = parseInt(document.getElementById('restaurantFirstClose2').value).toString(2);
-    var restaurantFirstClose2LeadingZeroes = pad(restaurantFirstClose2, 12);
-    var restaurantLastClose2 = parseInt(document.getElementById('restaurantLastClose2').value).toString(2);
-    var restaurantLastClose2LeadingZeroes = pad(restaurantLastClose2, 12);
-    var closeTime2 = restaurantLastClose2LeadingZeroes.concat(restaurantFirstClose2LeadingZeroes);
-    if (document.getElementById('restaurantFirstClose2').value == "" && document.getElementById('restaurantLastClose2').value == "")
-      var closeTime2Value = null;
-    else
-      var closeTime2Value = parseInt(closeTime2, 2);
-
-    var dealFirstOpen1 = parseInt(document.getElementById('dealFirstOpen1').value).toString(2);
-    var dealFirstOpen1LeadingZeroes = pad(dealFirstOpen1, 12);
-    if (document.getElementById('dealLastOpen1').value == "")
-      var dealLastOpen1 = parseInt(constants.NullTime).toString(2);
-    else
-      var dealLastOpen1 = parseInt(document.getElementById('dealLastOpen1').value).toString(2);
-    var dealLastOpen1LeadingZeroes = pad(dealLastOpen1, 12);
-    var dealOpenTime1 = dealLastOpen1LeadingZeroes.concat(dealFirstOpen1LeadingZeroes);
-    if (document.getElementById('dealLastOpen1').value == "" && document.getElementById('dealFirstOpen1').value == "")
-      var dealOpenTime1Value = null;
-    else
-      var dealOpenTime1Value = parseInt(dealOpenTime1, 2);
-
-    if (document.getElementById('dealFirstClose1').value == "")
-      var dealFirstClose1 = parseInt(constants.NullTime).toString(2);
-    else
-      var dealFirstClose1 = parseInt(document.getElementById('dealFirstClose1').value).toString(2);
-    var dealFirstClose1LeadingZeroes = pad(dealFirstClose1, 12);
-    var dealLastClose1 = parseInt(document.getElementById('dealLastClose1').value).toString(2);
-    var dealLastClose1LeadingZeroes = pad(dealLastClose1, 12);
-    var dealCloseTime1 = dealLastClose1LeadingZeroes.concat(dealFirstClose1LeadingZeroes);
-    if (document.getElementById('dealLastClose1').value == "" && document.getElementById('dealFirstClose1').value == "")
-      var dealCloseTime1Value = null;
-    else
-      var dealCloseTime1Value = parseInt(dealCloseTime1, 2);
-
-    var dealFirstOpen2 = parseInt(document.getElementById('dealFirstOpen2').value).toString(2);
-    var dealFirstOpen2LeadingZeroes = pad(dealFirstOpen2, 12);
-    if (document.getElementById('dealLastOpen2').value == "")
-      var dealLastOpen2 = parseInt(constants.NullTime).toString(2);
-    else
-      var dealLastOpen2 = parseInt(document.getElementById('dealLastOpen2').value).toString(2);
-    var dealLastOpen2LeadingZeroes = pad(dealLastOpen2, 12);
-    var dealOpenTime2 = dealLastOpen2LeadingZeroes.concat(dealFirstOpen2LeadingZeroes);
-    if (document.getElementById('dealLastOpen2').value == "" && document.getElementById('dealFirstOpen2').value == "")
-      var dealOpenTime2Value = null;
-    else
-      var dealOpenTime2Value = parseInt(dealOpenTime2, 2);
-
-    if (document.getElementById('dealFirstClose2').value == "")
-      var dealFirstClose2 = parseInt(constants.NullTime).toString(2);
-    else
-      var dealFirstClose2 = parseInt(document.getElementById('dealFirstClose2').value).toString(2);
-    var dealFirstClose2LeadingZeroes = pad(dealFirstClose2, 12);
-    var dealLastClose2 = parseInt(document.getElementById('dealLastClose2').value).toString(2);
-    var dealLastClose2LeadingZeroes = pad(dealLastClose2, 12);
-    var dealCloseTime2 = dealLastClose2LeadingZeroes.concat(dealFirstClose2LeadingZeroes);
-    if (document.getElementById('dealLastClose2').value == "" && document.getElementById('dealFirstClose2').value == "")
-      var dealCloseTime2Value = null;
-    else
-      var dealCloseTime2Value = parseInt(dealCloseTime2, 2);
+    function parseTimeValue(elementId) {
+      var elementValue = document.getElementById(elementId).value)
+      var time
+      if (elementValue != "") {
+        return parseInt(elementValue)
+      } else {
+        return null
+      }
+    }
 
     var dealTagArrayLowerCase = checkboxesChecked.toString().toLowerCase();
     var dealTagArraySplit = dealTagArrayLowerCase.toString().split(",");
@@ -302,11 +207,15 @@ function processForm(e) {
     deal.set("rating", 0);
     deal.set("flags", 0);
     deal.set("recurrence1", dealRecurrence1Value);
-    deal.set("openTime1", dealOpenTime1Value);
-    deal.set("closeTime1", dealCloseTime1Value);
+    deal.set("firstOpenTime1", parseTimeValue('dealFirstOpen1'));
+    deal.set("lastOpenTime1", parseTimeValue('dealLastOpen1'));
+    deal.set("firstCloseTime1", parseTimeValue('dealFirstClose1'));
+    deal.set("lastCloseTime1", parseTimeValue('dealLastClose1'));
     deal.set("recurrence2", dealRecurrence2Value);
-    deal.set("openTime2", dealOpenTime2Value);
-    deal.set("closeTime2", dealCloseTime2Value);
+    deal.set("firstOpenTime2", parseTimeValue('dealFirstOpen2'));
+    deal.set("lastOpenTime2", parseTimeValue('dealLastOpen2'));
+    deal.set("firstCloseTime2", parseTimeValue('dealFirstClose2'));
+    deal.set("lastCloseTime2", parseTimeValue('dealLastClose2'));
     /*deal.set("sundaySt", parseInt(document.getElementById('sundayDealSt').value));
     deal.set("sundayEn", parseInt(document.getElementById('sundayDealEn').value));
     deal.set("mondaySt", parseInt(document.getElementById('mondayDealSt').value));
@@ -347,11 +256,15 @@ function processForm(e) {
               // restaurant.set("availability", restaurantAvailabilityObject);
               restaurant.set("twentyOnePlus", alcoholValue);
               restaurant.set("recurrence1", restaurantRecurrence1Value);
-              restaurant.set("openTime1", openTime1Value);
-              restaurant.set("closeTime1", closeTime1Value);
+              restaurant.set("firstOpenTime1", parseTimeValue('restaurantFirstOpen1'));
+              restaurant.set("lastOpenTime1", parseTimeValue('restaurantLastOpen1'));
+              restaurant.set("firstCloseTime1", parseTimeValue('restaurantFirstClose1'));
+              restaurant.set("lastCloseTime1", parseTimeValue('restaurantLastClose1'));
               restaurant.set("recurrence2", restaurantRecurrence2Value);
-              restaurant.set("openTime2", openTime2Value);
-              restaurant.set("closeTime2", closeTime2Value);
+              restaurant.set("firstOpenTime2", parseTimeValue('restaurantFirstOpen2'));
+              restaurant.set("lastOpenTime2", parseTimeValue('restaurantLastOpen2'));
+              restaurant.set("firstCloseTime2", parseTimeValue('restaurantFirstClose2'));
+              restaurant.set("lastCloseTime2", parseTimeValue('restaurantLastClose2'));
               restaurant.set("submittedBy", toTitleCase(document.getElementById('submittedBy').value));
               deal.set("restaurantId", restaurant);
               deal.save(null, {
