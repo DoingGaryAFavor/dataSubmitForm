@@ -1,5 +1,25 @@
+body {  
+  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
+  font-size: 12pt;    
+}
+
+.row .col-sm-4 input {
+  width: 210px;
+  margin: 10px 0px 10px 0px;
+}
+
+.row .col-sm-6 input {
+  width: 335px;
+  margin: 10px 0px 10px 0px;
+}
+
 .restaurant {
-  width:700px;
+  width: 700px;
+  margin: 10px 0px 10px 0px;
+}
+
+.restaurant .mdl-textfield {
+  width: 100%;
 }
 
 .restaurant .restaurantTitle {
@@ -8,42 +28,36 @@
   margin: 10px 0px 10px 0px;
 }
 
-.restaurant .restaurantAvailability {
-  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
-  font-size: 16pt;
-  margin: 10px 0px 10px 0px;
-}
-
-.restaurant .choices {
-  display: block;
-  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
-  font-size: 16pt;
-  margin: 10px 0px 10px 0px;
-}
-
-.restaurantType {
-  margin: 10px 0px 10px 0px;
-}
-
-.restaurantType .restaurantTypeTitle {
-  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
-  font-size: 16pt;
-  margin: 10px 0px 10px 0px;
-}
-
-.restaurantType .restaurantTypeItems input {
-  margin: 10px 10px 10px 10px;
-}
-
 .restaurant .sub {
   font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
   font-size: 16pt;  
   margin: 10px 0px 10px 0px;
 }
 
-.restaurant input {
-  width: 700px;
+.restaurant .restaurantTypeTitle {
+  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
+  font-size: 16pt;
+  margin: 20px 0px 20px 0px;
+}
+
+.restaurantTypeItems {
+  display: flex;
+  margin: 10px 10px 10px 10px;
+}
+
+.restaurant .restaurantAvailabilityTitle {
+  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
+  font-size: 16pt;
+  margin: 20px 0px 20px 0px;
+}
+
+.restaurantAvailability .restaurantAvailabilityDays {
+  display: flex;
   margin: 10px 0px 10px 0px;
+}
+
+.restaurantAvailability .restaurantAvailabilityTimes .mdl-textfield {
+  width: 100%;
 }
 
 .deal {
@@ -52,21 +66,29 @@
   margin-right: auto ;
 }
 
+.deal .mdl-textfield {
+  width: 100%;
+}
+
 .deal .dealTitle {
   font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
   font-size: 16pt;
   margin: 10px 0px 10px 0px;
 }
 
-.deal .dealAvailability {
+.deal .primaryTag .primaryTagTitle {
   font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
   font-size: 16pt;
   margin: 10px 0px 10px 0px;
 }
 
-.deal input{
+.deal input {
   width: 700px;
   margin: 10px 0px 10px 0px;
+}
+
+.deal .dealCategoryOrSingular input {
+  margin: 10px 10px 10px 10px;
 }
 
 .dealType {
@@ -88,35 +110,38 @@
 }
 
 .dealType .dealTypeItems {
-  width: 700px;
+  display: flex;
 }
 
-.dealType .dealTypeItems .dealTypeItemsCustom input {
-  width: 350px;
+.dealType .dealTypeItemsCustom .mdl-textfield {
+  width: 100%;
 }
 
-.miscInfo input {
-  width: 700px;
+.dealType .dealSpecificTags {
+  display: flex;
 }
 
-body {  
+.deal .dealAvailabilityTitle {
   font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
-  font-size: 12pt;    
+  font-size: 16pt;
+  margin: 10px 0px 10px 0px;
 }
 
-h1 {
-  font-family: "Sentinel SSm A","Sentinel SSm B",Georgia,serif;
-  font-size:20pt;
-  width: 500px;
+.dealAvailability .dealAvailabilityDays {
+  display: flex;
+  margin: 10px 0px 10px 0px;
 }
 
-input {   
-  border: 1px solid;
+.dealAvailability .dealAvailabilityTimes .mdl-textfield {
+  width: 100%;
+}
+
+.miscInfo .submittedBy .mdl-textfield{
+  width: 100%;
 }
 
 .form {
   width: 700px;
-  float: center;
   margin-left: auto ;
   margin-right: auto ;
 }

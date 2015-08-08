@@ -1,15 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang = "en">
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel = "stylesheet" type = "text/css" href = "style.css">
+
+  <!--Bootstrap-->
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
   <title>Deal Entry Form</title>
+
+  <!--Material Design Lite-->
+  <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.amber-red.min.css"> 
+  <script src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+  <!--Roboto Font-->
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
 </head>
 
 <body>
   <div class = "header">
     <center>
       <img src = "https://lh3.googleusercontent.com/vT1y-k8taMANJW1-yE4K9sG-DKnFogDqzFqQlCw4P_E=s144-no">
-      <h1>Restaurants and Deals</h1>
+      <h3>Restaurants and Deals</h3>
     </center>
   </div>
   <form id = "my-form">
@@ -20,180 +34,507 @@
             Restaurant Information
           </center>
         </div>
-        Google Maps Search: 
-          <input id = "searchTextField" type = "text" placeholder = "Enter a restaurant" autocomplete = "on" runat = "server" />
-        Restaurant Name:
-          <input id = "restaurantName" type = "text">
-        Website:
-          <input id = "restaurantWebsite" type = "text">
-        Phone Number:
-          <input id = "restaurantPhoneNumber" type = "text">
-        Formatted Address:
-          <input id = "restaurantAddress" type = "text">
+
+        <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label restaurant">
+          <input id = "searchTextField" type = "text" class = "mdl-textfield__input" placeholder = "" autocomplete = "on" runat = "server">
+          <label class = "mdl-textfield__label" for = "searchTextField">Enter a business location</label>
+        </div>
+
+        <div class = "mdl-textfield mdl-js-textfield restaurantName">
+          <input id = "restaurantName" type = "text" placeholder = "Restaurant" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "restaurantName"></label>
+        </div>
+
+        <div class = "mdl-tooltip" for = "restaurantName">
+          Restaurant Name
+        </div>
+
+        <div class = "mdl-textfield mdl-js-textfield website">
+          <input id = "restaurantWebsite" type = "text" placeholder = "Website" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "restaurantWebsite"></label>
+        </div>
+
+        <div class = "mdl-tooltip" for = "restaurantWebsite">
+          Website
+        </div>
+
+        <div class = "mdl-textfield mdl-js-textfield phoneNumber">
+          <input id = "restaurantPhoneNumber" type = "text" placeholder = "Phone Number" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "restaurantPhoneNumber"></label>
+        </div>
+
+        <div class = "mdl-tooltip" for = "restaurantPhoneNumber">
+          Phone Number
+        </div>
+
+        <div class = "mdl-textfield mdl-js-textfield location">
+          <input id = "restaurantAddress" type = "text" placeholder = "Address" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "restaurantAddress"></label>
+        </div>
+
+        <div class = "mdl-tooltip" for = "restaurantAddress">
+          Restaurant Address
+        </div>
+
         <div class = "sub">
           <center>
             Please validate all location fields!
           </center>
         </div>
-        Street Number:
-          <input id = "restaurantStreetNumber" type = "text">
-        Street Address:
-          <input id = "restaurantStreetAddress" type = "text">
-        City:
-          <input id = "restaurantCity" type = "text">
-        State:
-          <input id = "restaurantState" type = "text">
-        Zip Code:
-          <input id = "restaurantZipCode" type = "text">
-        Latitude:
-          <input id = "restaurantLatitude" type = "text">
-        Longitude:
-          <input id = "restaurantLongitude" type = "text">
+
+        <div class = "mdl-textfield mdl-js-textfield streetNumber">
+          <input id = "restaurantStreetNumber" type = "text" placeholder = "Street Number" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "restaurantStreetNumber"></label>
+        </div>
+
+        <div class = "mdl-tooltip" for = "restaurantStreetNumber">
+          Street Number
+        </div>
+
+        <div class = "mdl-textfield mdl-js-textfield streetAddress">
+          <input id = "restaurantStreetAddress" type = "text" placeholder = "Street Addres" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "restaurantStreetAddress"></label>
+        </div>
+
+        <div class = "mdl-tooltip" for = "restaurantStreetAddress">
+          Street Address
+        </div>
+        
+        <div class = "mdl-textfield mdl-js-textfield city">
+          <input id = "restaurantCity" type = "text" placeholder = "City" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "restaurantCity"></label>
+        </div>
+
+        <div class = "mdl-tooltip" for = "restaurantCity">
+          City
+        </div>
+
+        <div class = "mdl-textfield mdl-js-textfield state">
+          <input id = "restaurantState" type = "text" placeholder = "State" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "restaurantState"></label>
+        </div>
+
+        <div class = "mdl-tooltip" for = "restaurantState">
+          State
+        </div>
+        
+        <div class = "mdl-textfield mdl-js-textfield zipCode">
+          <input id = "restaurantZipCode" type = "text" placeholder = "Zip Code" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "restaurantZipCode"></label>
+        </div>
+
+        <div class = "mdl-tooltip" for = "restaurantZipCode">
+          Zip Code
+        </div>
+        
+        <div class = "mdl-textfield mdl-js-textfield latitude">
+          <input id = "restaurantLatitude" type = "text" placeholder = "Latitude" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "restaurantLatitude"></label>
+        </div>
+
+        <div class = "mdl-tooltip" for = "restaurantLatitude">
+          Latitude
+        </div>
+        
+        <div class = "mdl-textfield mdl-js-textfield longitude">
+          <input id = "restaurantLongitude" type = "text" placeholder = "Longitude" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "restaurantLongitude"></label>
+        </div>
+
+        <div class = "mdl-tooltip" for = "restaurantLongitude">
+          Longitude
+        </div>
       </div>
-      <div class = "restaurantType">
+      <div class = "restaurant">
         <div class = "restaurantTypeTitle">
           <center>
             Restaurant Type
           </center>
         </div>
-        <div class = "restaurantTypeItems">
-          <center>
-            Alcohol<input id = "alcohol" type = "checkbox" value = "Alcohol">
-            Wheelchair Accessible<input id = "wheelchairAccessible" type = "checkbox" value = "Wheelchair Accessible">
-          </center>
-        </div>
+      </div>
+      <div class = "restaurantTypeItems" align = "center">
+        <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "alcohol">
+          <input id = "alcohol" type = "checkbox" value = "Alcohol" class = "mdl-checkbox__input"/>
+          <span class = "mdl-checkbox__label">Twenty One Plus</span>
+        </label>
       </div>
       <div class = "restaurant">
-        <div class = "restaurantAvailability">
+        <div class = "restaurantAvailabilityTitle">
           <center>
             Restaurant Availability
           </center>
         </div>
-        <div class = "choices">
-          Sunday:
-            <input id = "sundaySt" type = "text" name = "Sunday Open" placeholder = "Use 24 hour time">
-          To:
-            <input id = "sundayEn" type = "text" name = "Sunday Close" placeholder = "e.g. 0900 or 1800">
-          Monday:
-            <input id = "mondaySt" type = "text" name = "Monday Open" placeholder = "Use 24 hour time">
-          To:
-            <input id = "mondayEn" type = "text" name = "Monday Close" placeholder = "e.g. 0900 or 1800"> 
-          Tuesday:
-            <input id = "tuesdaySt" type = "text" name = "Tuesday Open" placeholder = "Use 24 hour time">
-          To:
-            <input id = "tuesdayEn" type = "text" name = "Tuesday Close" placeholder = "e.g. 0900 or 1800">
-          Wednesday:
-           <input id = "wednesdaySt" type = "text" name = "Wednesday Open" placeholder = "Use 24 hour time">
-          To:
-           <input id = "wednesdayEn" type = "text" name = "Wednesday Close" placeholder = "e.g. 0900 or 1800">
-          Thursday:
-           <input id = "thursdaySt" type = "text" name = "Thursday Open" placeholder = "Use 24 hour time">
-          To:
-            <input id = "thursdayEn" type = "text" name = "Thursday Close" placeholder = "e.g. 0900 or 1800">
-          Friday:
-           <input id = "fridaySt" type = "text" name = "Friday Open" placeholder = "Use 24 hour time">
-          To:
-            <input id = "fridayEn" type = "text" name = "Friday Close" placeholder = "e.g. 0900 or 1800">
-          Saturday:
-            <input id = "saturdaySt" type = "text" name = "Saturday Open" placeholder = "Use 24 hour time">
-          To:
-            <input id = "saturdayEn" type = "text" name = "Saturday Close" placeholder = "e.g. 0900 or 1800">
+      </div>
+      <div class = "restaurantAvailability">
+        <div class = "restaurantAvailabilityDays">
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "restaurantSunday1">
+            <span class = "mdl-checkbox__label">Sun</span>
+            <input type = "checkbox" id = "restaurantSunday1" name = "restaurantDays1" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "restaurantMonday1">
+            <span class = "mdl-checkbox__label">Mon</span>
+            <input type = "checkbox" id = "restaurantMonday1" name = "restaurantDays1" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "restaurantTuesday1">
+            <span class = "mdl-checkbox__label">Tue</span>
+            <input type = "checkbox" id = "restaurantTuesday1" name = "restaurantDays1" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "restaurantWednesday1">
+            <span class = "mdl-checkbox__label">Wed</span>
+            <input type = "checkbox" id = "restaurantWednesday1" name = "restaurantDays1" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "restaurantThursday1">
+            <span class = "mdl-checkbox__label">Thu</span>
+            <input type = "checkbox" id = "restaurantThursday1" name = "restaurantDays1" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "restaurantFriday1">
+            <span class = "mdl-checkbox__label">Fri</span>
+            <input type = "checkbox" id = "restaurantFriday1" name = "restaurantDays1" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "restaurantSaturday1">
+            <span class = "mdl-checkbox__label">Sat</span>
+            <input type = "checkbox" id = "restaurantSaturday1" name = "restaurantDays1" class = "mdl-checkbox__input" />
+          </label>
+        </div>
+
+        <div class = "restaurantAvailabilityTimes">
+          <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label restaurantFirstOpen1">
+            <input class = "mdl-textfield__input" type = "text" id = "restaurantFirstOpen1" />
+            <label class = "mdl-textfield__label" for = "restaurantFirstOpen1">First Open (Only use First Open and Last Close if a restaurant has continuous hours)</label>
+          </div>
+
+           <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label restaurantFirstClose1">
+            <input class = "mdl-textfield__input" type = "text" id = "restaurantFirstClose1" />
+            <label class = "mdl-textfield__label" for = "restaurantFirstClose1">First Close (Please use 24 hour time format)</label>
+          </div>
+
+           <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label restaurantLastOpen1">
+            <input class = "mdl-textfield__input" type = "text" id = "restaurantLastOpen1" />
+            <label class = "mdl-textfield__label" for = "restaurantLastOpen1">Last Open (Please use 24 hour time format)</label>
+          </div>
+
+           <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label restaurantLastClose1">
+            <input class = "mdl-textfield__input" type = "text" id = "restaurantLastClose1" />
+            <label class = "mdl-textfield__label" for = "restaurantLastClose1">Last Close (Please use 24 hour time format)</label>
+          </div>
+        </div>
+
+        <div class = "restaurantAvailabilityDays">
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "restaurantSunday2">
+            <span class = "mdl-checkbox__label">Sun</span>
+            <input type = "checkbox" id = "restaurantSunday2" name = "restaurantDays2" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "restaurantMonday2">
+            <span class = "mdl-checkbox__label">Mon</span>
+            <input type = "checkbox" id = "restaurantMonday2" name = "restaurantDays2" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "restaurantTuesday2">
+            <span class = "mdl-checkbox__label">Tue</span>
+            <input type = "checkbox" id = "restaurantTuesday2" name = "restaurantDays2" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "restaurantWednesday2">
+            <span class = "mdl-checkbox__label">Wed</span>
+            <input type = "checkbox" id = "restaurantWednesday2" name = "restaurantDays2" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "restaurantThursday2">
+            <span class = "mdl-checkbox__label">Thu</span>
+            <input type = "checkbox" id = "restaurantThursday2" name = "restaurantDays2" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "restaurantFriday2">
+            <span class = "mdl-checkbox__label">Fri</span>
+            <input type = "checkbox" id = "restaurantFriday2" name = "restaurantDays2" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "restaurantSaturday2">
+            <span class = "mdl-checkbox__label">Sat</span>
+            <input type = "checkbox" id = "restaurantSaturday2" name = "restaurantDays2" class = "mdl-checkbox__input" />
+          </label>
+        </div>
+
+        <div class = "restaurantAvailabilityTimes">
+          <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label restaurantFirstOpen2">
+            <input class = "mdl-textfield__input" type = "text" id = "restaurantFirstOpen2" />
+            <label class = "mdl-textfield__label" for = "restaurantFirstOpen2">First Open (Only use First Open and Last Close if a restaurant has continuous hours)</label>
+          </div>
+
+           <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label restaurantFirstClose2">
+            <input class = "mdl-textfield__input" type = "text" id = "restaurantFirstClose2" />
+            <label class = "mdl-textfield__label" for = "restaurantFirstClose2">First Close (Please use 24 hour time format)</label>
+          </div>
+
+           <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label restaurantLastOpen2">
+            <input class = "mdl-textfield__input" type = "text" id = "restaurantLastOpen2" />
+            <label class = "mdl-textfield__label" for = "restaurantLastOpen2">Last Open (Please use 24 hour time format)</label>
+          </div>
+
+           <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label restaurantLastClose2">
+            <input class = "mdl-textfield__input" type = "text" id = "restaurantLastClose2" />
+            <label class = "mdl-textfield__label" for = "restaurantLastClose2">Last Close (Please use 24 hour time format)</label>
+          </div>
         </div>
       </div>
+      
       <div class = "deal">
         <div class = "dealTitle">
           <center>
             Deal Information
           </center>
-        </div>    
-        Deal Item:
-          <input id = "dealItem" type = "text" placeholder = "Fish Taco" required>
-        Primary Tag:
-          <input id = "dealPrimaryTag" type = "text" placeholder = "Taco">
-        Fineprint:
-          <input id = "dealFinePrint" type = "text" placeholder = "Deal Restrictions e.g. Must buy beer with tacos or Deal only applies to fish tacos">
-        Deal Price:
-          <input id = "dealPrice" type = "number" step = "0.01" min = "0">
-        Deal Amount Off:
-          <input id = "dealAmountOff" type = "number" step = "0.01" min = "0" placeholder = "Leave empty if deal has percentage off">
-        Deal Percent Off:
-          <input id = "dealPercentOff" type = "number" min = "0" placeholder = "Leave empty if deal has amount off">
+        </div>
+
+        <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label dealItem">
+          <input id = "dealItem" type = "text" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "dealItem">Deal Item (For singular deals e.g. Fish Taco. A deal is either singular or categorical)</label>
+        </div>
+        
+        <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label categoricalItem">
+          <input id = "categoricalItem" type = "text" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "categoricalItem">Categorical Item (For categorical deals e.g. Beers. A deal is either singular or categorical)</label>
+        </div>
+
+        <div class = "primaryTag">
+          <center>
+            <div class = "primaryTagTitle">
+              Deal Primary Tag:
+            </div>
+            <select id = "dealPrimaryTag">
+              <option value = "Asian">Asian</option>
+              <option value = "Beer">Beer</option>
+              <option value = "Burger">Burger</option>
+              <option value = "Cocktail">Cockatil</option>
+              <option value = "Food">Food</option>
+              <option value = "Pizza">Pizza</option>
+              <option value = "Shot">Shot</option>
+              <option value = "Taco">Taco</option>
+              <option value = "Wine">Wine</option>
+              <option value = "Wings">Wings</option>
+            </select>
+          </center>
+        </div>
+     
+        <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label dealFinePrint">
+          <input id = "dealFinePrint" type = "text" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "dealFinePrint">Fineprint (Deal Restrictions e.g. Must buy beer with tacos or Deal only applies to fish tacos)</label>
+        </div>
+       
+        <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label dealPrice">
+          <input id = "dealPrice" type="text" pattern="-?[0-9]*(\.[0-9]+)?" step = "0.01" min = "0" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "dealPrice">Deal Price</label>
+          <span class = "mdl-textfield__error">Input is not a number!</span>
+        </div>
+
+        <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label dealAmountOff">
+          <input id = "dealAmountOff" type="text" pattern="-?[0-9]*(\.[0-9]+)?" step = "0.01" min = "0" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "dealAmountOff">Deal Amount Off (Leave empty if deal has percentage off)</label>
+          <span class = "mdl-textfield__error">Input is not a number!</span>
+        </div>
+        
+        <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label dealPercentOff">
+          <input id = "dealPercentOff" type="text" pattern="-?[0-9]*(\.[0-9]+)?" min = "0" class = "mdl-textfield__input">
+          <label class = "mdl-textfield__label" for = "dealPercentOff">Deal Percent Off (Leave empty if deal has amount off)</label>
+          <span class = "mdl-textfield__error">Input is not a number!</span>
+        </div>
       </div>
+
       <div class = "dealType">
         <div class = "dealTypeTitle">
           <center>
             Deal Type
           </center>
         </div>
+
         <div class = "dealTypeItems">
-          <center>
-            Food
-              <input id = "dealType" type = "checkbox" name = "dealtype" value = "Food">
-            Drink
-              <input id = "dealType1" type = "checkbox" name = "dealtype" value = "Drink">
-            Featured
-              <input id = "dealType2" type = "checkbox" name = "dealtype" value = "Featured">
-              <div class = "dealTypeItemsCustom">
-                <input id = "dealType3" type = "text" name = "customdeal" placeholder = "Other searchable deal tags e.g. Seafood, Mexican, Asian">
-              </div>
-          </center>
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealType">
+            <span class = "mdl-checkbox__label">Food</span>
+            <input id = "dealType" type = "checkbox" name = "dealtype" value = "Food" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealType1">
+            <span class = "mdl-checkbox__label">Drink</span>
+            <input id = "dealType1" type = "checkbox" name = "dealtype" value = "Drink" class = "mdl-checkbox__input" />
+          </label>
+            
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealType2">
+            <span class = "mdl-checkbox__label">Featured</span>
+            <input id = "dealType2" type = "checkbox" name = "dealtype" value = "Featured" class = "mdl-checkbox__input" />
+          </label>
         </div>
+
+        <div class = "dealTypeItemsCustom">
+          <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label dealType3">
+            <input id = "dealType3" type = "text" name = "customdeal" class = "mdl-textfield__input">
+            <label class = "mdl-textfield__label" for = "dealType3">Other searchable deal tags e.g. Seafood, Mexican, Asian</label>
+          </div>
+        </div>
+
         <div class = "dealSpecificTags">
-          <center>
-            Vegetarian
-              <input id = "vegetarian" type = "checkbox" value = "Vegetarian">
-            Vegan
-              <input id = "vegan" type = "checkbox" value = "Vegan">
-            Gluten Free
-              <input id = "glutenFree" type = "checkbox" value = "GlutenFree">
-          </center>
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "vegetarian">
+            <span class = "mdl-checkbox__label">Vegetarian</span>
+            <input id = "vegetarian" type = "checkbox" value = "Vegetarian" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "vegan">
+            <span class = "mdl-checkbox__label">Vegan</span>
+            <input id = "vegan" type = "checkbox" value = "Vegan" class = "mdl-checkbox__input" />
+          </label>
+            
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "glutenFree">
+            <span class = "mdl-checkbox__label">Gluten Free</span>
+            <input id = "glutenFree" type = "checkbox" value = "GlutenFree" class = "mdl-checkbox__input" />
+          </label>          
         </div>
+
       </div>
       <div class = "deal">
-        <div class = "dealAvailability">
+        <div class = "dealAvailabilityTitle">
           <center>
             Deal Availability
           </center>
         </div>
-        <div class = "choices">
-          Sunday:
-            <input id = "sundayDealSt" type = "text" placeholder = "Use 24 hour time">
-          To:
-            <input id = "sundayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
-          Monday:
-            <input id = "mondayDealSt" type = "text" placeholder = "Use 24 hour time">
-          To:
-            <input id = "mondayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
-          Tuesday:
-            <input id = "tuesdayDealSt" type = "text" placeholder = "Use 24 hour time">
-          To:
-            <input id = "tuesdayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
-          Wednesday:
-            <input id = "wednesdayDealSt" type = "text" placeholder = "Use 24 hour time">
-          To:
-            <input id = "wednesdayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
-          Thursday:
-            <input id = "thursdayDealSt" type = "text" placeholder = "Use 24 hour time">
-          To:
-            <input id = "thursdayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
-          Friday:
-            <input id = "fridayDealSt" type = "text" placeholder = "Use 24 hour time">
-          To:
-            <input id = "fridayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
-          Saturday:
-            <input id = "saturdayDealSt" type = "text" placeholder = "Use 24 hour time">
-          To:
-            <input id = "saturdayDealEn" type = "text" placeholder = "e.g. 0900 or 1800">
+      </div>
+
+      <div class = "dealAvailability">
+        <div class = "dealAvailabilityDays">
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealSunday1">
+            <span class = "mdl-checkbox__label">Sun</span>
+            <input type = "checkbox" id = "dealSunday1" name = "dealDays1" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealMonday1">
+            <span class = "mdl-checkbox__label">Mon</span>
+            <input type = "checkbox" id = "dealMonday1" name = "dealDays1" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealTuesday1">
+            <span class = "mdl-checkbox__label">Tue</span>
+            <input type = "checkbox" id = "dealTuesday1" name = "dealDays1" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealWednesday1">
+            <span class = "mdl-checkbox__label">Wed</span>
+            <input type = "checkbox" id = "dealWednesday1" name = "dealDays1" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealThursday1">
+            <span class = "mdl-checkbox__label">Thu</span>
+            <input type = "checkbox" id = "dealThursday1" name = "dealDays1" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealFriday1">
+            <span class = "mdl-checkbox__label">Fri</span>
+            <input type = "checkbox" id = "dealFriday1" name = "dealDays1" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealSaturday1">
+            <span class = "mdl-checkbox__label">Sat</span>
+            <input type = "checkbox" id = "dealSaturday1" name = "dealDays1" class = "mdl-checkbox__input" />
+          </label>
+        </div>
+
+        <div class = "dealAvailabilityTimes">
+          <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label dealFirstOpen1">
+            <input class = "mdl-textfield__input" type = "text" id = "dealFirstOpen1" />
+            <label class = "mdl-textfield__label" for = "dealFirstOpen1">First Open (Only use First Open and Last Close if a deal has continuous hours)</label>
+          </div>
+
+           <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label dealFirstClose1">
+            <input class = "mdl-textfield__input" type = "text" id = "dealFirstClose1" />
+            <label class = "mdl-textfield__label" for = "dealFirstClose1">First Close (Please use 24 hour time format)</label>
+          </div>
+
+           <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label dealLastOpen1">
+            <input class = "mdl-textfield__input" type = "text" id = "dealLastOpen1" />
+            <label class = "mdl-textfield__label" for = "dealLastOpen1">Last Open (Please use 24 hour time format)</label>
+          </div>
+
+           <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label dealLastClose1">
+            <input class = "mdl-textfield__input" type = "text" id = "dealLastClose1" />
+            <label class = "mdl-textfield__label" for = "dealLastClose1">Last Close (Please use 24 hour time format)</label>
+          </div>
+        </div>
+
+        <div class = "dealAvailabilityDays">
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealSunday2">
+            <span class = "mdl-checkbox__label">Sun</span>
+            <input type = "checkbox" id = "dealSunday2" name = "dealDays2" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealMonday2">
+            <span class = "mdl-checkbox__label">Mon</span>
+            <input type = "checkbox" id = "dealMonday2" name = "dealDays2" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealTuesday2">
+            <span class = "mdl-checkbox__label">Tue</span>
+            <input type = "checkbox" id = "dealTuesday2" name = "dealDays2" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealWednesday2">
+            <span class = "mdl-checkbox__label">Wed</span>
+            <input type = "checkbox" id = "dealWednesday2" name = "dealDays2" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealThursday2">
+            <span class = "mdl-checkbox__label">Thu</span>
+            <input type = "checkbox" id = "dealThursday2" name = "dealDays2" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealFriday2">
+            <span class = "mdl-checkbox__label">Fri</span>
+            <input type = "checkbox" id = "dealFriday2" name = "dealDays2" class = "mdl-checkbox__input" />
+          </label>
+
+          <label class = "mdl-checkbox mdl-js-checkbox mdl-js-ripple-effect" for = "dealSaturday2">
+            <span class = "mdl-checkbox__label">Sat</span>
+            <input type = "checkbox" id = "dealSaturday2" name = "dealDays2" class = "mdl-checkbox__input" />
+          </label>
+        </div>
+
+        <div class = "dealAvailabilityTimes">
+          <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label dealFirstOpen2">
+            <input class = "mdl-textfield__input" type = "text" id = "dealFirstOpen2" />
+            <label class = "mdl-textfield__label" for = "dealFirstOpen2">First Open (Only use First Open and Last Close if a deal has continuous hours)</label>
+          </div>
+
+           <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label dealFirstClose2">
+            <input class = "mdl-textfield__input" type = "text" id = "dealFirstClose2" />
+            <label class = "mdl-textfield__label" for = "dealFirstClose2">First Close (Please use 24 hour time format)</label>
+          </div>
+
+           <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label dealLastOpen2">
+            <input class = "mdl-textfield__input" type = "text" id = "dealLastOpen2" />
+            <label class = "mdl-textfield__label" for = "dealLastOpen2">Last Open (Please use 24 hour time format)</label>
+          </div>
+
+           <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label dealLastClose2">
+            <input class = "mdl-textfield__input" type = "text" id = "dealLastClose2" />
+            <label class = "mdl-textfield__label" for = "dealLastClose2">Last Close (Please use 24 hour time format)</label>
+          </div>
         </div>
       </div>
+
       <div class = "miscInfo">
         <div class = "submittedBy">
-          Restaurant and Deal Submitted By:
-            <input id = "submittedBy" type = "text" placeholder = "First name only">
+          <div class = "mdl-textfield mdl-js-textfield mdl-textfield--floating-label submittedBy">
+            <input class = "mdl-textfield__input" type = "text" id = "submittedBy"/>
+            <label class = "mdl-textfield__label" for = "submittedBy">Submitted By</label>
+          </div>
         </div>
-        <center>
+
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+          Submit
           <input class = "submitbutton" type = "submit" value = "Submit">
-        </center>
+        </button>
       </div>
     </div>
   </form>
@@ -201,9 +542,9 @@
   <script
     type = "text/javascript" src = "https://www.parsecdn.com/js/parse-1.4.2.min.js">
   </script>
-  <script type="text/javascript" src = "https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places">
+  <script type = "text/javascript" src = "https://maps.googleapis.com/maps/api/js?sensor=false&amp;libraries=places">
   </script>
-  <script type="text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
+  <script type = "text/javascript" src = "https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js">
   </script>
   <script
     type = "text/javascript" src = "/main.js">
