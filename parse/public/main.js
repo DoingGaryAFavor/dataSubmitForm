@@ -1,7 +1,7 @@
 var constants = {
   'Month' : '111111111111',
   'DaysOfMonth' : '0000000000000000000000000000000',
-  'WeeksOfMonth' : '1111',
+  'WeeksOfMonth' : '11111',
   'DayOfWeek' : '0000000',
   'NullTime' : '4095'
 }
@@ -103,7 +103,8 @@ function processForm(e) {
       day = day >> 1;
     }
 
-    var restaurantRecurrence1Value = constants.Month.concat(constants.DaysOfMonth).concat(constants.WeeksOfMonth).concat(daysOfWeekBitValue.toString(2));
+    var daysOfWeekBitValuePad = pad(daysOfWeekBitValue.toString(2), 7);
+    var restaurantRecurrence1Value = constants.Month.concat(constants.DaysOfMonth).concat(constants.WeeksOfMonth).concat(daysOfWeekBitValuePad);
 
     var restaurantDays2CheckBoxes = document.getElementsByName('restaurantDays2');
     var restaurantDays2Checked = [];
@@ -118,8 +119,10 @@ function processForm(e) {
 
     if (daysOfWeekBitValue2 == 0)
       var restaurantRecurrence2Value = null;
-    else 
-      restaurantRecurrence2Value = constants.Month.concat(constants.DaysOfMonth).concat(constants.WeeksOfMonth).concat(daysOfWeekBitValue2.toString(2));
+    else {
+      var daysOfWeekBitValue2Pad = pad(daysOfWeekBitValue2.toString(2), 7);
+      var restaurantRecurrence2Value = constants.Month.concat(constants.DaysOfMonth).concat(constants.WeeksOfMonth).concat(daysOfWeekBitValue2Pad);
+    }
 
     var dealDays1CheckBoxes = document.getElementsByName('dealDays1');
     var dealDays1Checked = [];
@@ -132,7 +135,8 @@ function processForm(e) {
       day = day >> 1;
     }
 
-    var dealRecurrence1Value = constants.Month.concat(constants.DaysOfMonth).concat(constants.WeeksOfMonth).concat(dealDaysOfWeekBitValue.toString(2));
+    var dealDaysOfWeekBitValuePad = pad(dealDaysOfWeekBitValue.toString(2), 7);
+    var dealRecurrence1Value = constants.Month.concat(constants.DaysOfMonth).concat(constants.WeeksOfMonth).concat(dealDaysOfWeekBitValuePad);
 
     var dealDays2CheckBoxes = document.getElementsByName('dealDays2');
     var dealDays2Checked = [];
@@ -147,8 +151,10 @@ function processForm(e) {
 
     if (dealDaysOfWeekBitValue2 == 0)
       var dealRecurrence2Value = null;
-    else
-      dealRecurrence2Value = constants.Month.concat(constants.DaysOfMonth).concat(constants.WeeksOfMonth).concat(dealDaysOfWeekBitValue2.toString(2));
+    else {
+      var dealDaysOfWeekBitValue2Pad = pad(dealDaysOfWeekBitValue2.toString(2), 7);
+      var dealRecurrence2Value = constants.Month.concat(constants.DaysOfMonth).concat(constants.WeeksOfMonth).concat(dealDaysOfWeekBitValue2Pad);
+    }
 
     function pad(n, width, z) {
       z = z || '0';
