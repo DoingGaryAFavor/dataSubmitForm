@@ -35,9 +35,6 @@ Parse.Cloud.define("upVote", function(request, response) {
           }
         });
       } else if (user.get("upVotes").indexOf(request.params.objectId) == -1) {
-        /*if (user.get("downVotes").indexOf(request.params.objectId) != -1) {
-          return false;
-        } else {*/
           upVote(user, request.params.objectId, {
             success: function(result) {
               response.success(result);
@@ -45,7 +42,6 @@ Parse.Cloud.define("upVote", function(request, response) {
               response.error(error);
             }
           });
-       // }
       } else {
         response.error("User has already up voted the deal: " + request.params.objectId);
       }
@@ -80,9 +76,6 @@ Parse.Cloud.define("downVote", function(request, response) {
           }
         });
       } else if (user.get("downVotes").indexOf(request.params.objectId) == -1) {
-        /*if (user.get("upVotes").indexOf(request.params.objectId) != -1) {
-          return;
-        } else {*/
           downVote(user, request.params.objectId, {
             success: function(result) {
               response.success(result);
@@ -90,12 +83,41 @@ Parse.Cloud.define("downVote", function(request, response) {
               response.error(error);
             }
           });
-        //}
       } else {
         response.error("User has already down voted the deal: " + request.params.objectId);
       }
     }, error: function (error) {
       response.error("Failed to find device " + request.params.deviceId + error.code);
+    }
+  });
+})
+
+Parse.Cloud.define("isDealUpVoted", function(request, response) {
+  var deviceQuery = new Parse.Query(Parse.Object.extend("User"));
+  deviceQuery.equalTo("deviceId", request.params.deviceId);
+  deviceQuery.first({
+    success: function(user) {
+      if(user.get("upVotes").indexOf(request.params.objectId) == 1)
+        response.success(true);
+      else
+        response.success(false);
+    }, error: function(error) {
+      response.error("User does not exist in the system")
+    }
+  });
+})
+
+Parse.Cloud.define("isDealDownVoted", function(request, response) {
+  var deviceQuery = new Parse.Query(Parse.Object.extend("User"));
+  deviceQuery.equalTo("deviceId", request.params.deviceId);
+  deviceQuery.first({
+    success: function(user) {
+      if(user.get("downVotes").indexOf(request.params.objectId) == 1)
+        response.success(true);
+      else
+        response.success(false);
+    }, error: function(error) {
+      response.error("User does not exist in the system")
     }
   });
 })
